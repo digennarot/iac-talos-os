@@ -1,0 +1,141 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/budimanjojo/talhelper/master/pkg/config/schemas/talconfig.json
+---
+# renovate: datasource=docker depName=ghcr.io/siderolabs/installer
+talosVersion: v1.9.5
+# renovate: datasource=docker depName=ghcr.io/siderolabs/kubelet
+kubernetesVersion: v1.32.2
+
+clusterName: talos-cluster
+endpoint: https://192.168.0.199:6443
+clusterPodNets:
+  - 10.14.0.0/16
+clusterSvcNets:
+  - 10.15.0.0/16
+additionalApiServerCertSans:
+  - 192.168.0.199
+  - 127.0.0.1
+additionalMachineCertSans:
+  - 192.168.0.199
+  - 127.0.0.1
+nodes:
+  - hostname: talos-master-00
+    controlPlane: true
+    ipAddress: 192.168.0.170
+    installDisk: /dev/sda
+    talosImageURL: factory.talos.dev/installer-secureboot/4dd8e3a8b6203d3c14f049da8db4d3bb0d6d3e70c5e89dfcc1e709e81914f63c:v1.9.5
+    networkInterfaces:
+      - deviceSelector:
+          hardwareAddr: "00:00:00:00:00:00"
+        dhcp: false
+        vip:
+          ip: 192.168.0.199
+  - hostname: talos-master-01
+    controlPlane: true
+    ipAddress: 192.168.0.171
+    installDisk: /dev/sda
+    talosImageURL: factory.talos.dev/installer-secureboot/4dd8e3a8b6203d3c14f049da8db4d3bb0d6d3e70c5e89dfcc1e709e81914f63c:v1.9.5
+    networkInterfaces:
+      - deviceSelector:
+          hardwareAddr: "00:00:00:00:00:00"
+        dhcp: false
+        vip:
+          ip: 192.168.0.199
+  - hostname: talos-master-02
+    controlPlane: true
+    ipAddress: 192.168.0.172
+    installDisk: /dev/sda
+    talosImageURL: factory.talos.dev/installer-secureboot/4dd8e3a8b6203d3c14f049da8db4d3bb0d6d3e70c5e89dfcc1e709e81914f63c:v1.9.5
+    networkInterfaces:
+      - deviceSelector:
+          hardwareAddr: "00:00:00:00:00:00"
+        dhcp: false
+        vip:
+          ip: 192.168.0.199
+  - hostname: talos-worker-00
+    controlPlane: false
+    ipAddress: 192.168.0.180
+    installDisk: /dev/sda
+    talosImageURL: factory.talos.dev/installer-secureboot/4dd8e3a8b6203d3c14f049da8db4d3bb0d6d3e70c5e89dfcc1e709e81914f63c:v1.9.5
+    networkInterfaces:
+      - deviceSelector:
+          hardwareAddr: "00:00:00:00:00:00"
+        dhcp: false
+    patches:
+      - |-
+        machine:
+          udev:
+            rules:
+              - SUBSYSTEM=="drm", KERNEL=="renderD*", GROUP="44", MODE="0660"
+              - SUBSYSTEM=="drm", KERNEL=="card*", GROUP="44", MODE="0660"
+
+  - hostname: talos-worker-01
+    controlPlane: false
+    ipAddress: 192.168.0.181
+    installDisk: /dev/sda
+    talosImageURL: factory.talos.dev/installer-secureboot/4dd8e3a8b6203d3c14f049da8db4d3bb0d6d3e70c5e89dfcc1e709e81914f63c:v1.9.5
+    networkInterfaces:
+      - deviceSelector:
+          hardwareAddr: "00:00:00:00:00:00"
+        dhcp: false
+  - hostname: talos-worker-02
+    controlPlane: false
+    ipAddress: 192.168.0.182
+    installDisk: /dev/sda
+    talosImageURL: factory.talos.dev/installer-secureboot/4dd8e3a8b6203d3c14f049da8db4d3bb0d6d3e70c5e89dfcc1e709e81914f63c:v1.9.5
+    networkInterfaces:
+      - deviceSelector:
+          hardwareAddr: "00:00:00:00:00:00"
+        dhcp: false
+
+patches:
+
+  # Force nameserver
+  - |-
+    machine:
+      network:
+        nameservers:
+          - 1.1.1.1
+          - 1.0.0.1
+
+  # Configure NTP
+  - |-
+    machine:
+      time:
+        disabled: false
+        servers: ["time.cloudflare.com"]
+
+controlPlane:
+  patches:
+    # Cluster configuration
+    - |-
+      cluster:
+        # allowSchedulingOnControlPlanes: true
+        controllerManager:
+          extraArgs:
+            bind-address: 0.0.0.0
+        proxy:
+          disabled: true
+        network:
+          cni:
+            name: none
+        scheduler:
+          extraArgs:
+            bind-address: 0.0.0.0
+worker:
+  patches:
+    # Machine configuration
+    - |-
+      machine:
+        kubelet:
+          extraMounts:
+            - destination: /var/mnt/longhorn
+              type: bind
+              source: /var/mnt/longhorn
+              options:
+                - bind
+                - rshared
+                - rw
+        disks:
+            - device: /dev/sdb
+              partitions:
+                - mountpoint: /var/mnt/longhorn

@@ -1,0 +1,49 @@
+variable "proxmox_api_token_id" {
+  type = string
+}
+
+variable "proxmox_api_token_secret" {
+  type = string
+}
+
+variable "proxmox_api_url" {
+  type = string
+}
+
+variable "proxmox_node" {
+  type = string
+}
+
+variable "proxmox_storage" {
+  type = string
+}
+
+variable "cpu_type" {
+  type    = string
+  default = "kvm64"
+}
+
+variable "cores" {
+  type    = string
+  default = "2"
+}
+
+variable "cloudinit_storage_pool" {
+  type    = string
+  default = "local-zfs"
+}
+
+variable "talos_version" {
+  type    = string
+  default = "v1.9.5"
+}
+
+variable "base_iso_file" {
+  type    = string
+  default = "archlinux-2025.03.01-x86_64.iso"
+}
+
+
+locals {
+  image = "https://github.com/talos-systems/talos/releases/download/${var.talos_version}/nocloud-amd64.raw.xz"
+}
