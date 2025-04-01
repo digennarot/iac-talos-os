@@ -1,0 +1,27 @@
+# Terraform/Tofu state files
+tofu/terraform.tfstate
+tofu/terraform.tfstate.backup
+tofu/.terraform/
+tofu/.terraform.lock.hcl
+tofu/.terraform.tfstate.*
+
+# Tofu plan file
+tofu/.tfplan
+
+# Sensitive user files
+tofu/credentails.auto.tfvars
+tofu/credentials.auto.tfvars
+tofu/*.tfvars.json
+tofu/*.tfvars.local
+tofu/override.tf
+tofu/override.tf.json
+
+# VS Code and editor junk
+*.swp
+*.swo
+*.bak
+*~
+.tofu_history
+.idea/
+.vscode/
+
