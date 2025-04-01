@@ -22,7 +22,7 @@ nodes:
     controlPlane: true
     ipAddress: 192.168.0.170
     installDisk: /dev/sda
-    talosImageURL: factory.talos.dev/installer-secureboot/4dd8e3a8b6203d3c14f049da8db4d3bb0d6d3e70c5e89dfcc1e709e81914f63c:v1.9.5
+    talosImageURL: factory.talos.dev/installer/59611c02daecc0d88fe235aea81c87ae8dbf2f184a598ff8b4e18157e612798c:v1.9.5
     networkInterfaces:
       - deviceSelector:
           hardwareAddr: "00:00:00:00:00:00"
@@ -33,7 +33,7 @@ nodes:
     controlPlane: true
     ipAddress: 192.168.0.171
     installDisk: /dev/sda
-    talosImageURL: factory.talos.dev/installer-secureboot/4dd8e3a8b6203d3c14f049da8db4d3bb0d6d3e70c5e89dfcc1e709e81914f63c:v1.9.5
+    talosImageURL: factory.talos.dev/installer/59611c02daecc0d88fe235aea81c87ae8dbf2f184a598ff8b4e18157e612798c:v1.9.5
     networkInterfaces:
       - deviceSelector:
           hardwareAddr: "00:00:00:00:00:00"
@@ -44,7 +44,7 @@ nodes:
     controlPlane: true
     ipAddress: 192.168.0.172
     installDisk: /dev/sda
-    talosImageURL: factory.talos.dev/installer-secureboot/4dd8e3a8b6203d3c14f049da8db4d3bb0d6d3e70c5e89dfcc1e709e81914f63c:v1.9.5
+    talosImageURL: factory.talos.dev/installer/59611c02daecc0d88fe235aea81c87ae8dbf2f184a598ff8b4e18157e612798c:v1.9.5
     networkInterfaces:
       - deviceSelector:
           hardwareAddr: "00:00:00:00:00:00"
@@ -55,7 +55,7 @@ nodes:
     controlPlane: false
     ipAddress: 192.168.0.180
     installDisk: /dev/sda
-    talosImageURL: factory.talos.dev/installer-secureboot/4dd8e3a8b6203d3c14f049da8db4d3bb0d6d3e70c5e89dfcc1e709e81914f63c:v1.9.5
+    talosImageURL: factory.talos.dev/installer/59611c02daecc0d88fe235aea81c87ae8dbf2f184a598ff8b4e18157e612798c:v1.9.5
     networkInterfaces:
       - deviceSelector:
           hardwareAddr: "00:00:00:00:00:00"
@@ -72,7 +72,7 @@ nodes:
     controlPlane: false
     ipAddress: 192.168.0.181
     installDisk: /dev/sda
-    talosImageURL: factory.talos.dev/installer-secureboot/4dd8e3a8b6203d3c14f049da8db4d3bb0d6d3e70c5e89dfcc1e709e81914f63c:v1.9.5
+    talosImageURL: factory.talos.dev/installer/59611c02daecc0d88fe235aea81c87ae8dbf2f184a598ff8b4e18157e612798c:v1.9.5
     networkInterfaces:
       - deviceSelector:
           hardwareAddr: "00:00:00:00:00:00"
@@ -81,7 +81,7 @@ nodes:
     controlPlane: false
     ipAddress: 192.168.0.182
     installDisk: /dev/sda
-    talosImageURL: factory.talos.dev/installer-secureboot/4dd8e3a8b6203d3c14f049da8db4d3bb0d6d3e70c5e89dfcc1e709e81914f63c:v1.9.5
+    talosImageURL: factory.talos.dev/installer/59611c02daecc0d88fe235aea81c87ae8dbf2f184a598ff8b4e18157e612798c:v1.9.5
     networkInterfaces:
       - deviceSelector:
           hardwareAddr: "00:00:00:00:00:00"

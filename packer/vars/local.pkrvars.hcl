@@ -6,4 +6,4 @@ proxmox_api_token_secret = "72c739f0-ff44-451b-bb4c-b79b7d31eea5" # API Token
 proxmox_storage      = "local-zfs"
 cpu_type             = "host"
 talos_version        = "v1.9.5"
-#base_iso_file        = "local:iso/archlinux-2025.03.01-x86_64.iso"
+base_iso_file        = "local:iso/archlinux-2025.03.01-x86_64.iso"

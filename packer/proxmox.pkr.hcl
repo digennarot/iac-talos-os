@@ -14,18 +14,19 @@ source "proxmox-iso" "talos" {
   node                     = var.proxmox_node
   insecure_skip_tls_verify = true
 
-
   boot_iso {
     type     = "scsi"
-    iso_file = "local:iso/${var.base_iso_file}"
+    iso_file = var.base_iso_file # Esempio: local:iso/archlinux-2025.03.01-x86_64.iso
     unmount  = true
   }
 
   scsi_controller = "virtio-scsi-single"
+
   network_adapters {
     bridge = "vmbr0"
     model  = "virtio"
   }
+
   disks {
     type         = "scsi"
     storage_pool = var.proxmox_storage
@@ -35,36 +36,40 @@ source "proxmox-iso" "talos" {
     cache_mode   = "writethrough"
   }
 
-  memory       = 2048
-  vm_id        = "9700"
-  cores        = var.cores
-  cpu_type     = var.cpu_type
-  sockets      = "1"
+  memory   = 2048
+  vm_id    = 9700
+  cores    = var.cores
+  cpu_type = var.cpu_type
+  sockets  = 1
+
   ssh_username = "root"
   ssh_password = "packer"
   ssh_timeout  = "15m"
 
-  cloud_init              = true
-  cloud_init_storage_pool = var.cloudinit_storage_pool
-
   template_name        = "talos-${var.talos_version}-cloud-init-template"
-  template_description = "Talos ${var.talos_version} cloud-init, built on ${formatdate("YYYY-MM-DD hh:mm:ss ZZZ", timestamp())}"
-
-  boot_wait = "25s"
+  template_description = "Talos ${var.talos_version}, preparato via ArchLinux ISO"
+  boot_wait            = "25s"
   boot_command = [
     "<enter><wait1m>",
     "passwd<enter><wait>packer<enter><wait>packer<enter>"
   ]
+
 }
 
+# === Blocco build Packer ===
 build {
   sources = ["source.proxmox-iso.talos"]
+
   provisioner "shell" {
     inline = [
-      "curl -s -L ${local.image} -o /tmp/talos.raw.xz",
-      "if file /tmp/talos.raw.xz | grep -q 'XZ compressed'; then xz -d -c /tmp/talos.raw.xz | dd of=/dev/sda; else dd if=/tmp/talos.raw.xz of=/dev/sda; fi",
-      "sync",
+      "echo '[0/4] Installazione dipendenze (xz, curl)...'",
+      "which xz || pacman -Sy --noconfirm xz",
+      "which zstd || pacman -Sy --noconfirm zstd",
+      "which curl || pacman -Sy --noconfirm curl",
+
+      "echo '[1/4] Scarico e scrivo immagine Talos direttamente...'",
+      "curl -sL ${local.image} | zstd -d -c | dd of=/dev/sda bs=4M conv=fsync status=progress",
+      "sync"
     ]
   }
 }
-
