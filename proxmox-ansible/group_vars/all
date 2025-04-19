@@ -1,0 +1,50 @@
+# Utenti Proxmox
+proxmox_users:
+  - name: terraform@pve
+    comment: "User for Terraform automation"
+    enabled: true
+
+# Ruoli personalizzati
+proxmox_roles:
+  - name: Terraform
+    privileges:
+      - "Datastore.Allocate"
+      - "Datastore.AllocateSpace"
+      - "Datastore.AllocateTemplate"
+      - "Datastore.Audit"
+      - "Pool.Allocate"
+      - "Sys.Audit"
+      - "Sys.Console"
+      - "Sys.Modify"
+      - "SDN.Use"
+      - "VM.Allocate"
+      - "VM.Audit"
+      - "VM.Clone"
+      - "VM.Config.CDROM"
+      - "VM.Config.Cloudinit"
+      - "VM.Config.CPU"
+      - "VM.Config.Disk"
+      - "VM.Config.HWType"
+      - "VM.Config.Memory"
+      - "VM.Config.Network"
+      - "VM.Config.Options"
+      - "VM.Migrate"
+      - "VM.Monitor"
+      - "VM.PowerMgmt"
+      - "User.Modify"
+      - "Realm.AllocateUser"
+
+# ACLs assegnate (ruoli agli utenti su path)
+proxmox_acls:
+  - path: /
+    users:
+      - terraform@pve
+    roles:
+      - Terraform
+
+# Token associati agli utenti
+proxmox_tokens:
+  - user: terraform@pve
+    token_id: provider
+    comment: "Terraform API Token"
+    privsep: false

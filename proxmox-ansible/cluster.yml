@@ -1,0 +1,8 @@
+- hosts: all
+  become: true
+  roles:
+    - role: lae.proxmox
+      vars:
+        pve_group: proxmox_cluster
+        pve_cluster_enabled: true
+

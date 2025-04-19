@@ -1,0 +1,110 @@
+- name: Prepare proxmox
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Init
+      ansible.builtin.include_role:
+        name: 00_init
+
+    - name: Configure-network
+      ansible.builtin.include_role:
+        name: 09_configure_network
+
+    - name: Date timezone
+      ansible.builtin.include_role:
+        name: 02_date_timezone
+
+    - name: Prepare repos
+      ansible.builtin.include_role:
+        name: 03_prepare_repos
+
+    - name: Install software
+      ansible.builtin.include_role:
+        name: 04_install_software
+
+    - name: Run role for init sshd user
+      ansible.builtin.include_role:
+        name: 05_init_sshd
+
+    - name: Сonfigure-users
+      ansible.builtin.include_role:
+        name: 06_configure_users
+
+    - name: Configure-bash
+      ansible.builtin.include_role:
+        name: 07_configure_bash
+
+    - name: Prepare system
+      ansible.builtin.include_role:
+        name: 08_prepare_system
+
+    - name: Configure-zfs
+      ansible.builtin.include_role:
+        name: 10_configure_zfs
+
+    - name: Configure-proxmox
+      ansible.builtin.include_role:
+        name: 11_configure_proxmox
+
+    - name: Enable pcie-passthrough
+      ansible.builtin.include_role:
+        name: 12_pcie_passthrough
+
+    - name: Configure ksmtuned
+      ansible.builtin.include_role:
+        name: 13_ksmtuned
+
+    - name: Ram disk
+      ansible.builtin.include_role:
+        name: 14_create_ramdisk
+
+    - name: Set cpu performance
+      ansible.builtin.include_role:
+        name: 15_cpu_performance
+
+    - name: Web show temperatures
+      ansible.builtin.include_role:
+        name: 16_web_temp_sensors
+
+    - name: Kernel pinning
+      ansible.builtin.include_role:
+        name: 17_pin_kernel
+
+    - name: Fail2ban
+      ansible.builtin.include_role:
+        name: 18_fail2ban
+
+    - name: Nested virtualization
+      ansible.builtin.include_role:
+        name: 19_nested_virtualization
+
+    - name: Enable nginx
+      ansible.builtin.include_role:
+        name: 20_nginx
+
+    - name: Move logs to tmpfs
+      ansible.builtin.include_role:
+        name: 21_logs_tmpfs
+
+    - name: Cluster
+      ansible.builtin.include_role:
+        name: 98_cluster_preparation
+
+    - name: Update system
+      ansible.builtin.include_role:
+        name: 99_update_reboot
+
+  handlers:
+    - name: Update GRUB
+      ansible.builtin.command: update-grub
+      changed_when: false
+
+    - name: Proxmox Boot Tool Refresh
+      ansible.builtin.command: proxmox-boot-tool refresh
+      changed_when: false
+
+
+- hosts: pve1
+  become: True
+  roles:
+    - lae.proxmox

@@ -1,0 +1,47 @@
+---
+- name: Ensure each node is listed in /etc/hosts
+  lineinfile:
+    path: /etc/hosts
+    line: "{{ hostvars[item].ansible_host }} {{ item }}"
+    state: present
+  loop: "{{ groups['proxmox_cluster'] }}"
+  when: hostvars[item].ansible_host is defined
+
+- name: Ensure SSH keypair exists
+  openssh_keypair:
+    path: /root/.ssh/id_rsa
+    type: rsa
+    size: 2048
+    state: present
+  when: inventory_hostname != groups['proxmox_cluster'][0]
+
+- name: Check if public SSH key exists
+  stat:
+    path: /root/.ssh/id_rsa.pub
+  register: pubkey_check
+  when: inventory_hostname != groups['proxmox_cluster'][0]
+
+- name: Debug public key existence
+  debug:
+    msg: "Public key found: ready to distribute."
+  when:
+    - inventory_hostname != groups['proxmox_cluster'][0]
+    - pubkey_check.stat.exists
+
+- name: Read public SSH key from remote host
+  slurp:
+    src: /root/.ssh/id_rsa.pub
+  register: ssh_pubkey
+  when:
+    - inventory_hostname != groups['proxmox_cluster'][0]
+    - pubkey_check.stat.exists
+
+- name: Install public SSH key on master node
+  authorized_key:
+    user: root
+    key: "{{ ssh_pubkey['content'] | b64decode }}"
+  delegate_to: "{{ groups['proxmox_cluster'][0] }}"
+  when:
+    - inventory_hostname != groups['proxmox_cluster'][0]
+    - pubkey_check.stat.exists
+

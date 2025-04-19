@@ -24,4 +24,4 @@ tofu/override.tf.json
 .tofu_history
 .idea/
 .vscode/
-
+*.iso

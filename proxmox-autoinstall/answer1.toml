@@ -1,0 +1,20 @@
+[global]
+keyboard      = "it"
+country       = "it"
+fqdn          = "pve1.tss.com"
+mailto        = "admin@no.invalid"
+timezone      = "Europe/Rome"
+root-password = "CambiarePassword"
+
+[network]
+source             = "from-answer"
+cidr               = "192.168.0.200/24"
+gateway            = "192.168.0.1"
+dns                = "8.8.8.8"
+filter.ID_NET_NAME = "enp1s0"
+
+[disk-setup]
+filesystem     = "zfs"
+zfs.raid       = "raid0"
+filter.DEVTYPE = "disk"
+

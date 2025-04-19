@@ -1,8 +1,8 @@
-resource "proxmox_vm_qemu" "talos" {
-  for_each = var.nodes
+resource "proxmox_vm_qemu" "talos_masters" {
+  for_each = local.selected_master_nodes
 
   name        = each.value.node_name
-  target_node = var.proxmox_node
+  target_node = local.target_proxmox_node
   vmid        = each.value.vm_id
   clone       = each.value.clone_target
   onboot      = true
@@ -15,7 +15,6 @@ resource "proxmox_vm_qemu" "talos" {
   memory   = each.value.node_memory
   scsihw   = "virtio-scsi-single"
 
-  # Disco principale
   disk {
     slot     = "scsi0"
     size     = each.value.node_disk
@@ -25,7 +24,6 @@ resource "proxmox_vm_qemu" "talos" {
     iothread = true
   }
 
-  # Cloud-Init come disco
   disk {
     slot    = "scsi1"
     type    = "cloudinit"

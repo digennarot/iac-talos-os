@@ -1,0 +1,2 @@
+- name: Join this node to the cluster
+  command: pvecm add {{ hostvars[_init_node].ansible_host }} --force

@@ -1,0 +1,5 @@
+proxmox_cluster_nodes: "{{ groups['proxmox_cluster'] | map('extract', hostvars, ['ansible_host']) | list }}"
+vars:
+  proxmox_acls: >
+    {{ pve_acls | map('extract', {'users': lambda x: [x.user], 'roles': lambda x: [x.role], 'path': lambda x: x.path}) | list }}
+

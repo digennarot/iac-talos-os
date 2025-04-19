@@ -14,8 +14,9 @@ variable "proxmox_node" {
   type = string
 }
 
+
 variable "cluster_id" {
-  description = "ID del cluster da deployare (a o b)"
+  description = "ID del cluster da deployare (a o b o c)"
   type        = string
   validation {
     condition     = contains(["a", "b"], var.cluster_id)
@@ -24,69 +25,84 @@ variable "cluster_id" {
 }
 
 variable "cluster_a_master_nodes" {
-  type = map(any)
-  default = {
-    "0a" = {
-      vm_id          = 200
-      node_name      = "talos-a-master-00"
-      clone_target   = "talos-v1.9.5-cloud-init-template"
-      node_cpu_cores = "2"
-      node_memory    = 2048
-      node_ipconfig  = "ip=192.168.0.100/24,gw=192.168.0.1"
-      node_disk      = "12"
-    }
-  }
+  type = map(object({
+    node_name      = string
+    vm_id          = number
+    clone_target   = string
+    node_cpu_cores = number
+    node_memory    = number
+    node_disk      = string
+    node_ipconfig  = string
+  }))
 }
 
 variable "cluster_a_worker_nodes" {
-  type = map(any)
-  default = {
-    "1a" = {
-      vm_id                = 300
-      node_name            = "talos-a-worker-00"
-      clone_target         = "talos-v1.9.5-cloud-init-template"
-      node_cpu_cores       = "1"
-      node_memory          = 1024
-      node_ipconfig        = "ip=192.168.0.101/24,gw=192.168.0.1"
-      node_disk            = "12"
-      additional_node_disk = "32"
-    }
-  }
+  type = map(object({
+    node_name      = string
+    vm_id          = number
+    clone_target   = string
+    node_cpu_cores = number
+    node_memory    = number
+    node_disk      = string
+    node_ipconfig  = string
+  }))
 }
 
 variable "cluster_b_master_nodes" {
-  type = map(any)
-  default = {
-    "0b" = {
-      vm_id          = 210
-      node_name      = "talos-b-master-00"
-      clone_target   = "talos-v1.9.5-cloud-init-template"
-      node_cpu_cores = "2"
-      node_memory    = 2048
-      node_ipconfig  = "ip=192.168.178.100/24,gw=192.168.178.1"
-      node_disk      = "12"
-    }
-  }
+  type = map(object({
+    node_name      = string
+    vm_id          = number
+    clone_target   = string
+    node_cpu_cores = number
+    node_memory    = number
+    node_disk      = string
+    node_ipconfig  = string
+  }))
 }
 
 variable "cluster_b_worker_nodes" {
-  type = map(any)
-  default = {
-    "1b" = {
-      vm_id                = 310
-      node_name            = "talos-b-worker-00"
-      clone_target         = "talos-v1.9.5-cloud-init-template"
-      node_cpu_cores       = "1"
-      node_memory          = 1024
-      node_ipconfig        = "ip=192.168.101.180/24,gw=192.168.178.1"
-      node_disk            = "12"
-      additional_node_disk = "32"
-    }
-  }
+  type = map(object({
+    node_name      = string
+    vm_id          = number
+    clone_target   = string
+    node_cpu_cores = number
+    node_memory    = number
+    node_disk      = string
+    node_ipconfig  = string
+  }))
 }
 
+variable "cluster_c_master_nodes" {
+  type = map(object({
+    node_name      = string
+    vm_id          = number
+    clone_target   = string
+    node_cpu_cores = number
+    node_memory    = number
+    node_disk      = string
+    node_ipconfig  = string
+  }))
+}
+
+variable "cluster_c_worker_nodes" {
+  type = map(object({
+    node_name      = string
+    vm_id          = number
+    clone_target   = string
+    node_cpu_cores = number
+    node_memory    = number
+    node_disk      = string
+    node_ipconfig  = string
+  }))
+}
 variable "env" {
   description = "Ambiente di deployment (es: dev, test, prod)"
   type        = string
   default     = "dev"
+}
+
+variable "proxmox_nodes" {
+  description = "Lista dei nodi fisici Proxmox (es: pve1, pve2, pve3)"
+  type        = list(string)
+  default     = ["pve1", "pve2", "pve3"]
 }

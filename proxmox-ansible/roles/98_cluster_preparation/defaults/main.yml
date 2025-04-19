@@ -1,0 +1,5 @@
+pve_group: proxmox_cluster
+pve_cluster_clustername: pve-cluster
+pve_cluster_addr0: "{{ ansible_host }}"
+pve_cluster_conf: "/etc/pve/corosync.conf"
+pve_cluster_ha_groups: []
