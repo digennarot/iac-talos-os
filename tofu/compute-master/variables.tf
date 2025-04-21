@@ -19,6 +19,19 @@ variable "proxmox_api_token_secret" {
   sensitive   = true
 }
 
+variable "clusters" {
+  description = "Mappa clusters dal root"
+  type        = map(any)
+}
+
+variable "cluster_id" {
+  description = "ID del cluster da deployare"
+  type        = string
+}
+variable "shared_storage_id" {
+  description = "Storage condiviso (ZFS) per i template e dischi"
+  type        = string
+}
 variable "nodes" {
   description = "Mappa dei nodi da creare (master o worker)"
   type = map(object({

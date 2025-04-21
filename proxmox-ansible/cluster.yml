@@ -5,4 +5,25 @@
       vars:
         pve_group: proxmox_cluster
         pve_cluster_enabled: true
+        pve_cluster_clustername: pve-cluster
 
+        # Abilito il modulo ZFS (installazione di zfsutils-linux + ZED)
+        pve_zfs_module_enabled: true
+
+        # Definisco lo storage ZFS basato su un pool esistente "rpool/data"
+        pve_storages:
+          - name: zfs-shared
+            type: zfspool
+            pool: rpool/data
+            content:
+              - images
+              - rootdir
+            sparse: true
+
+        # (opzionale) se vuoi creare volumi aggiuntivi sul pool ZFS:
+        pve_zfs_create_volumes:
+          - rpool/iso
+
+        # Repo PVE enterprise o no‐subscription
+        pve_repo: pve-no-subscription
+        pve_extra_packages: []

@@ -6,6 +6,9 @@ module "compute_master" {
   proxmox_api_token_secret = var.proxmox_api_token_secret
   proxmox_node             = var.proxmox_node
   nodes                    = local.selected_master_nodes
+  clusters                 = var.clusters
+  cluster_id               = var.cluster_id
+  shared_storage_id        = var.shared_storage_id
 }
 
 module "compute_worker" {
@@ -15,12 +18,7 @@ module "compute_worker" {
   proxmox_api_token_secret = var.proxmox_api_token_secret
   proxmox_node             = var.proxmox_node
   nodes                    = local.selected_worker_nodes
-}
-
-output "master_mac_addrs" {
-  value = module.compute_master.mac_addrs
-}
-
-output "worker_mac_addrs" {
-  value = module.compute_worker.mac_addrs
+  clusters                 = var.clusters
+  cluster_id               = var.cluster_id
+  shared_storage_id        = var.shared_storage_id
 }

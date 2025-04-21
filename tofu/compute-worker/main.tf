@@ -1,12 +1,14 @@
 resource "proxmox_vm_qemu" "talos_workers" {
   for_each = local.selected_worker_nodes
 
-  name        = each.value.node_name
-  target_node = local.target_proxmox_node
-  vmid        = each.value.vm_id
-  clone       = each.value.clone_target
-  onboot      = true
-  boot        = "order=scsi1;scsi0"
+  name = each.value.node_name
+  target_node = local.target_proxmox_nodes[
+    index(keys(local.selected_worker_nodes), each.key)
+  ]
+  vmid   = each.value.vm_id
+  clone  = each.value.clone_target
+  onboot = true
+  boot   = "order=scsi1;scsi0"
 
   agent    = 1
   cpu_type = "host"
@@ -19,7 +21,7 @@ resource "proxmox_vm_qemu" "talos_workers" {
     slot     = "scsi0"
     size     = each.value.node_disk
     type     = "disk"
-    storage  = "local-zfs"
+    storage  = local.shared_storage
     format   = "raw"
     iothread = true
   }
@@ -27,7 +29,7 @@ resource "proxmox_vm_qemu" "talos_workers" {
   disk {
     slot    = "scsi1"
     type    = "cloudinit"
-    storage = "local-zfs"
+    storage = local.shared_storage
   }
 
   network {

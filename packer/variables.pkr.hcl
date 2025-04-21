@@ -29,7 +29,7 @@ variable "proxmox_storage" {
 variable "cloudinit_storage_pool" {
   description = "Storage pool per il disco Cloud-Init (opzionale, non usato da Talos ma richiesto dal plugin Proxmox)"
   type        = string
-  default     = "local-zfs"
+  default     = "zfs-shared"
 }
 
 # === Risorse della VM ===
