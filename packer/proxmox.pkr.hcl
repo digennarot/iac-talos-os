@@ -1,75 +1,82 @@
 packer {
   required_plugins {
-    proxmox = {
+    proxmox-iso = {
       version = ">= 1.2.2"
       source  = "github.com/hashicorp/proxmox"
     }
   }
 }
 
+variable "proxmox_url"       { type = string }
+variable "proxmox_token_id"  { type = string }
+variable "proxmox_token_secret" { type = string }
+variable "proxmox_node"      { type = string, default = "pve1" }
+variable "template_vmid"     { type = number, default = 9700 }
+variable "talos_version"     { type = string, default = "v1.9.5" }
+variable "image_factory_url" { type = string, default = "https://factory.talos.dev" }
+variable "schematic_file"    { type = string, default = "${path.module}/schematic.yaml" }
+
 source "proxmox-iso" "talos" {
-  proxmox_url              = var.proxmox_api_url
-  username                 = var.proxmox_api_token_id
-  token                    = var.proxmox_api_token_secret
+  proxmox_url              = var.proxmox_url
+  username                 = var.proxmox_token_id
+  token                    = var.proxmox_token_secret
   node                     = var.proxmox_node
   insecure_skip_tls_verify = true
 
   boot_iso {
     type     = "scsi"
-    iso_file = var.base_iso_file # Esempio: local:iso/archlinux-2025.03.01-x86_64.iso
+    iso_file = "local:iso/archlinux-2025.03.01-x86_64.iso"
     unmount  = true
   }
 
-  scsi_controller = "virtio-scsi-single"
+  vm_id    = var.template_vmid
+  memory   = 2048
+  cores    = 2
+  cpu_type = "host"
+  sockets  = 1
+
+  disk {
+    size         = "1500M"
+    format       = "raw"
+    storage_pool = "zfs-shared"
+    cache_mode   = "writethrough"
+    io_thread    = true
+    type         = "scsi"
+  }
 
   network_adapters {
     bridge = "vmbr0"
     model  = "virtio"
   }
 
-  disks {
-    type         = "scsi"
-    storage_pool = var.proxmox_storage
-    format       = "raw"
-    disk_size    = "1500M"
-    io_thread    = true
-    cache_mode   = "writethrough"
-  }
-
-  memory   = 2048
-  vm_id    = 9700
-  cores    = var.cores
-  cpu_type = var.cpu_type
-  sockets  = 1
-
   ssh_username = "root"
   ssh_password = "packer"
-  ssh_timeout  = "15m"
+  ssh_timeout  = "10m"
 
   template_name        = "talos-${var.talos_version}-cloud-init-template"
-  template_description = "Talos ${var.talos_version}, preparato via ArchLinux ISO"
+  template_description = "Talos ${var.talos_version} via Image Factory"
   boot_wait            = "25s"
   boot_command = [
-    "<enter><wait1m>",
-    "passwd<enter><wait>packer<enter><wait>packer<enter>"
+    "<enter><wait1m>"
   ]
-
 }
 
-# === Blocco build Packer ===
 build {
   sources = ["source.proxmox-iso.talos"]
 
-  provisioner "shell" {
+  provisioner "shell-local" {
     inline = [
-      "echo '[0/4] Installazione dipendenze (xz, curl)...'",
-      "which xz || pacman -Sy --noconfirm xz",
-      "which zstd || pacman -Sy --noconfirm zstd",
-      "which curl || pacman -Sy --noconfirm curl",
+      # 1) POST the schematic to get the ID:
+      "SCHEMATIC=$(curl -s -X POST \"${var.image_factory_url}/schematics\" \\
+        --data-binary @${var.schematic_file} | jq -r .id)",
 
-      "echo '[1/4] Scarico e scrivo immagine Talos direttamente...'",
-      "curl -sL ${local.image} | zstd -d -c | dd of=/dev/sda bs=4M conv=fsync status=progress",
-      "sync"
+      # 2) pull & dd the Talos raw image straight into the new VM disk:
+      "curl -sL \"${var.image_factory_url}/image/${SCHEMATIC}/${var.talos_version}/nocloud-amd64.raw.gz\" \\
+         | gunzip -c | ssh root@${var.proxmox_node} \\
+            \"dd of=/dev/sda bs=4M conv=fsync && sync\"",
+
+      # 3) convert the VM into a template
+      "ssh root@${var.proxmox_node} qm template ${var.template_vmid}"
     ]
   }
 }

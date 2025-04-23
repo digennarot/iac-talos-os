@@ -1,5 +1,26 @@
-- hosts: all
+---
+- name: Prepara nodi Proxmox (install prereq)
+  hosts: all
   become: true
+  tags: prereq
+
+  tasks:
+    - name: Installa NFS client
+      apt:
+        name: nfs-common
+        state: present
+
+    - name: Installa ZFS utils
+      apt:
+        name: zfsutils-linux
+        state: present
+
+- name: Definisci storage in Proxmox
+  hosts: all
+  gather_facts: false
+  become: true
+  tags: define_storage
+
   roles:
     - role: lae.proxmox
       vars:
@@ -7,12 +28,9 @@
         pve_cluster_enabled: true
         pve_cluster_clustername: pve-cluster
 
-        # Abilito il modulo ZFS (installazione di zfsutils-linux + ZED)
-        pve_zfs_module_enabled: true
-
-        # Definisco lo storage ZFS basato su un pool esistente "rpool/data"
         pve_storages:
-          - name: zfs-shared
+          # storage ZFS locale rimane per i dataset di root
+          - name: zfs-local
             type: zfspool
             pool: rpool/data
             content:
@@ -20,10 +38,54 @@
               - rootdir
             sparse: true
 
-        # (opzionale) se vuoi creare volumi aggiuntivi sul pool ZFS:
-        pve_zfs_create_volumes:
-          - rpool/iso
+          # NFS condiviso
+          - name: nfs-shared
+            type: nfs
+            server: 192.168.0.240
+            export: /export/proxmox
+            options: vers=4
+            content:
+              - images
+              - rootdir
+              - iso
 
-        # Repo PVE enterprise o no‐subscription
         pve_repo: pve-no-subscription
         pve_extra_packages: []
+
+- name: Verifica che lo storage sia online
+  hosts: pve_cluster
+  gather_facts: no
+  become: true
+  tags: verify_storage
+
+  tasks:
+    - name: Controlla che export NFS sia visibile
+      command: showmount -e 192.168.0.240
+      register: exports
+
+    - name: Fallisci se non vedo /export/proxmox
+      fail:
+        msg: "L'export NFS /export/proxmox non è raggiungibile da {{ inventory_hostname }}"
+      when: "'/export/proxmox' not in exports.stdout"
+
+    - name: Controlla che Proxmox veda lo storage
+      command: pvesm status
+      register: status
+
+    - name: Fallisci se nfs-shared non è in pvesm status
+      fail:
+        msg: "Lo storage nfs-shared non è in linea su {{ inventory_hostname }}"
+      when: "'nfs-shared' not in status.stdout"
+
+    - name: Forza il mount di nfs-shared
+      command: pvesm mount nfs-shared
+      register: mount_nfs
+      failed_when:
+        - "( mount_nfs.rc != 0 ) and ('already mounted' not in mount_nfs.stderr)"
+
+    - name: Attendi che Proxmox veda lo storage online
+      command: pvesm status
+      register: pvesm_status
+      until: "'nfs-shared' in pvesm_status.stdout and 'online' in pvesm_status.stdout"
+      retries: 5
+      delay: 5

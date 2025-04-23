@@ -1,8 +1,3 @@
-variable "proxmox_node" {
-  description = "Nome del nodo Proxmox su cui creare la VM"
-  type        = string
-}
-
 variable "proxmox_api_url" {
   description = "URL dell'API di Proxmox (es. https://proxmox.local:8006/api2/json)"
   type        = string
@@ -44,4 +39,15 @@ variable "nodes" {
     node_disk            = string
     additional_node_disk = optional(string)
   }))
+}
+
+# modules/compute-master/variables.tf
+variable "talos_template" {
+  description = "Nome del template Talos creato su ogni nodo"
+  type        = string
+}
+
+variable "template_ready" {
+  description = "Placeholder to force cloning only after image is built"
+  type        = any
 }

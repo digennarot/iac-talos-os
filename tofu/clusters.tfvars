@@ -1,7 +1,8 @@
 # clusters.tfvars
 
+# clusters.tfvars
+cluster_id        = "a"
 shared_storage_id = "zfs-shared"
-
 clusters = {
   a = {
     masters = {
@@ -12,6 +13,24 @@ clusters = {
         node_cpu_cores = "2"
         node_memory    = 4096
         node_ipconfig  = "ip=192.168.0.100/24,gw=192.168.0.1"
+        node_disk      = "20"
+      }
+      "clA-cp02" = {
+        vm_id          = 101
+        node_name      = "clA-cp02"
+        clone_target   = "talos-v1.9.5-cloud-init-template"
+        node_cpu_cores = "2"
+        node_memory    = 4096
+        node_ipconfig  = "ip=192.168.0.110/24,gw=192.168.0.1"
+        node_disk      = "20"
+      }
+      "clA-cp03" = {
+        vm_id          = 102
+        node_name      = "clA-cp03"
+        clone_target   = "talos-v1.9.5-cloud-init-template"
+        node_cpu_cores = "2"
+        node_memory    = 4096
+        node_ipconfig  = "ip=192.168.0.120/24,gw=192.168.0.1"
         node_disk      = "20"
       }
     }
@@ -36,6 +55,16 @@ clusters = {
         node_disk            = "16"
         additional_node_disk = "64"
       }
+      "clA-wk03" = {
+        vm_id                = 130
+        node_name            = "clA-wk03"
+        clone_target         = "talos-v1.9.5-cloud-init-template"
+        node_cpu_cores       = "1"
+        node_memory          = 2048
+        node_ipconfig        = "ip=192.168.0.103/24,gw=192.168.0.1"
+        node_disk            = "16"
+        additional_node_disk = "64"
+      }
     }
     target_nodes = ["pve1", "pve2", "pve3"]
   }
@@ -51,6 +80,24 @@ clusters = {
         node_ipconfig  = "ip=192.168.178.120/24,gw=192.168.178.1"
         node_disk      = "20"
       }
+      "clB-cp02" = {
+        vm_id          = 201
+        node_name      = "clB-cp02"
+        clone_target   = "talos-v1.9.5-cloud-init-template"
+        node_cpu_cores = "2"
+        node_memory    = 4096
+        node_ipconfig  = "ip=192.168.178.121/24,gw=192.168.178.1"
+        node_disk      = "20"
+      }
+      "clB-cp03" = {
+        vm_id          = 202
+        node_name      = "clB-cp03"
+        clone_target   = "talos-v1.9.5-cloud-init-template"
+        node_cpu_cores = "2"
+        node_memory    = 4096
+        node_ipconfig  = "ip=192.168.178.122/24,gw=192.168.178.1"
+        node_disk      = "20"
+      }
     }
     workers = {
       "clB-wk01" = {
@@ -59,7 +106,7 @@ clusters = {
         clone_target         = "talos-v1.9.5-cloud-init-template"
         node_cpu_cores       = "1"
         node_memory          = 2048
-        node_ipconfig        = "ip=192.168.178.121/24,gw=192.168.178.1"
+        node_ipconfig        = "ip=192.168.178.123/24,gw=192.168.178.1"
         node_disk            = "16"
         additional_node_disk = "64"
       }
@@ -69,7 +116,17 @@ clusters = {
         clone_target         = "talos-v1.9.5-cloud-init-template"
         node_cpu_cores       = "1"
         node_memory          = 2048
-        node_ipconfig        = "ip=192.168.178.122/24,gw=192.168.178.1"
+        node_ipconfig        = "ip=192.168.178.124/24,gw=192.168.178.1"
+        node_disk            = "16"
+        additional_node_disk = "64"
+      }
+      "clB-wk03" = {
+        vm_id                = 230
+        node_name            = "clB-wk03"
+        clone_target         = "talos-v1.9.5-cloud-init-template"
+        node_cpu_cores       = "1"
+        node_memory          = 2048
+        node_ipconfig        = "ip=192.168.178.125/24,gw=192.168.178.1"
         node_disk            = "16"
         additional_node_disk = "64"
       }
@@ -88,6 +145,24 @@ clusters = {
         node_ipconfig  = "ip=192.168.178.130/24,gw=192.168.178.1"
         node_disk      = "20"
       }
+      "clC-cp02" = {
+        vm_id          = 301
+        node_name      = "clC-cp02"
+        clone_target   = "talos-v1.9.5-cloud-init-template"
+        node_cpu_cores = "2"
+        node_memory    = 4096
+        node_ipconfig  = "ip=192.168.178.131/24,gw=192.168.178.1"
+        node_disk      = "20"
+      }
+      "clC-cp03" = {
+        vm_id          = 302
+        node_name      = "clC-cp03"
+        clone_target   = "talos-v1.9.5-cloud-init-template"
+        node_cpu_cores = "2"
+        node_memory    = 4096
+        node_ipconfig  = "ip=192.168.178.132/24,gw=192.168.178.1"
+        node_disk      = "20"
+      }
     }
     workers = {
       "clC-wk01" = {
@@ -96,7 +171,7 @@ clusters = {
         clone_target         = "talos-v1.9.5-cloud-init-template"
         node_cpu_cores       = "1"
         node_memory          = 2048
-        node_ipconfig        = "ip=192.168.178.131/24,gw=192.168.178.1"
+        node_ipconfig        = "ip=192.168.178.133/24,gw=192.168.178.1"
         node_disk            = "16"
         additional_node_disk = "64"
       }
@@ -106,13 +181,24 @@ clusters = {
         clone_target         = "talos-v1.9.5-cloud-init-template"
         node_cpu_cores       = "1"
         node_memory          = 2048
-        node_ipconfig        = "ip=192.168.178.132/24,gw=192.168.178.1"
+        node_ipconfig        = "ip=192.168.178.134/24,gw=192.168.178.1"
+        node_disk            = "16"
+        additional_node_disk = "64"
+      }
+      "clC-wk03" = {
+        vm_id                = 330
+        node_name            = "clC-wk03"
+        clone_target         = "talos-v1.9.5-cloud-init-template"
+        node_cpu_cores       = "1"
+        node_memory          = 2048
+        node_ipconfig        = "ip=192.168.178.135/24,gw=192.168.178.1"
         node_disk            = "16"
         additional_node_disk = "64"
       }
     }
-    target_nodes = ["pve1", "pve2", "pve3"]
+    target_nodes            = ["pve1", "pve2", "pve3"]
+    proxmox_nodes           = ["pve1", "pve2", "pve3"]
+    proxmox_nodes_to_update = ["pve2"] # (opzionale)
+
   }
-
-
 }

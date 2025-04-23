@@ -5,10 +5,11 @@ resource "proxmox_vm_qemu" "talos_workers" {
   target_node = local.target_proxmox_nodes[
     index(keys(local.selected_worker_nodes), each.key)
   ]
-  vmid   = each.value.vm_id
-  clone  = each.value.clone_target
-  onboot = true
-  boot   = "order=scsi1;scsi0"
+  vmid       = each.value.vm_id
+  clone      = "${var.shared_storage_id}:${var.talos_template}"
+  full_clone = true
+  onboot     = true
+  boot       = "order=scsi1;scsi0"
 
   agent    = 1
   cpu_type = "host"
@@ -40,4 +41,10 @@ resource "proxmox_vm_qemu" "talos_workers" {
 
   ipconfig0 = each.value.node_ipconfig
   os_type   = "cloud-init"
+
+  depends_on = [
+    # refer to the remote null_resource via an input var
+    var.template_ready
+  ]
+
 }
