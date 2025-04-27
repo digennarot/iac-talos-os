@@ -1,14 +1,11 @@
-# modules/compute-master/variables.tf
-
-
 resource "proxmox_vm_qemu" "talos_masters" {
-  for_each = local.selected_master_nodes
-  name     = each.value.node_name
-  target_node = local.target_proxmox_nodes[
-    index(keys(local.selected_master_nodes), each.key)
-  ]
-  vmid       = each.value.vm_id
-  clone      = "${var.shared_storage_id}:${var.talos_template}"
+  for_each    = local.selected_master_nodes
+  name        = each.value.node_name
+  target_node = local.target_node
+  vmid        = each.value.vm_id
+
+  clone = var.template_name # <- your tfvar “talos-v1.9.5-cloud-init-template”
+
   full_clone = true
   onboot     = true
   boot       = "order=scsi1;scsi0"

@@ -51,3 +51,18 @@ variable "template_ready" {
   description = "Placeholder to force cloning only after image is built"
   type        = any
 }
+
+variable "template_vmids" {
+  description = "Map of Proxmox node → VMID for the Talos template"
+  type        = map(number)
+}
+
+variable "target_nodes" {
+  type        = list(string)
+  description = "The Proxmox node this cluster will live on (we pick [0])"
+}
+
+variable "clone_target" {
+  type        = string
+  description = "The template name or VMID to clone"
+}

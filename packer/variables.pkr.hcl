@@ -55,11 +55,38 @@ variable "talos_version" {
 variable "base_iso_file" {
   description = "ISO da montare come placeholder (es: ArchLinux rescue ISO)"
   type        = string
-  default     = "local:iso/archlinux-2025.03.01-x86_64.iso"
+  default     = "local:iso/archlinux-2025.04.01-x86_64.iso"
+}
+
+variable "schematic_id" {
+  type        = string
+  description = "Talos Factory schematic ID"
+}
+
+variable "vm_id" {
+  type    = number
+  default = 9700
+}
+
+variable "proxmox_nodes" {
+  type        = list(string)
+  description = "List of Proxmox nodes to build on"
+  default     = ["pve1", "pve2", "pve3"]
+}
+
+variable "template_vmids" {
+  type        = map(number)
+  description = "VMID to use for the Talos template on each node"
+  default = {
+    pve1 = 9700
+    pve2 = 9701
+    pve3 = 9702
+  }
 }
 
 # === URL immagine Talos ===
+
+# Compute the raw‐image URL dynamically
 locals {
-  # URL ufficiale immagine raw Talos (scaricata e scritta su disco via dd)
-  image = "https://factory.talos.dev/image/59611c02daecc0d88fe235aea81c87ae8dbf2f184a598ff8b4e18157e612798c/${var.talos_version}/metal-amd64.raw.zst"
+  image_url = "https://factory.talos.dev/image/${var.schematic_id}/${var.talos_version}/metal-amd64.raw.zst"
 }

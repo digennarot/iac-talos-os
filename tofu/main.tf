@@ -12,6 +12,13 @@ locals {
   schematic_id = jsondecode(data.http.schematic.response_body).id
   # name of the resulting VM template on each node
   template_name = "talos-${var.talos.version}-template"
+
+  target_node = var.clusters[var.cluster_id].target_nodes[0]
+  # Grab the cluster object for the one active cluster_id
+  this_cluster = var.clusters[var.cluster_id]
+
+  # Pull out the single Proxmox node we want
+  this_node = local.this_cluster.target_nodes[0]
 }
 
 # --------------------------------------------------
@@ -80,7 +87,10 @@ module "compute_master" {
   proxmox_api_token_id     = var.proxmox_api_token_id
   proxmox_api_token_secret = var.proxmox_api_token_secret
   talos_template           = local.template_name
+  template_vmids           = var.template_vmids
   template_ready           = null_resource.talos_template
+  target_nodes             = [local.target_node]
+  clone_target             = local.this_cluster.clone_target
 }
 
 module "compute_worker" {
@@ -93,5 +103,8 @@ module "compute_worker" {
   proxmox_api_token_id     = var.proxmox_api_token_id
   proxmox_api_token_secret = var.proxmox_api_token_secret
   talos_template           = local.template_name
+  template_vmids           = var.template_vmids
   template_ready           = null_resource.talos_template
+  target_nodes             = [local.target_node]
+  clone_target             = local.this_cluster.clone_target
 }

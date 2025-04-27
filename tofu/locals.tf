@@ -6,4 +6,6 @@ locals {
   selected_worker_nodes = local.selected.workers
 
   target_proxmox_nodes = local.selected.target_nodes
+
 }
+
