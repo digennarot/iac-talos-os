@@ -1,8 +1,7 @@
 # clusters.tfvars
 
 # clusters.tfvars
-cluster_id        = "a"
-shared_storage_id = "zfs-shared"
+shared_storage_id = "nfs-shared"
 
 clusters = {
   a = {
@@ -18,7 +17,7 @@ clusters = {
       "clA-cp02" = {
         vm_id          = 101
         node_name      = "clA-cp02"
-        clone_target   = "talos-v1.9.5-cloud-init-template"
+        clone_target   = "talos-v1.10.0-qemu"
         node_cpu_cores = "2"
         node_memory    = 4096
         node_ipconfig  = "ip=192.168.0.110/24,gw=192.168.0.1"
@@ -37,7 +36,7 @@ clusters = {
       "clA-wk01" = {
         vm_id                = 110
         node_name            = "clA-wk01"
-        clone_target         = "talos-v1.9.5-cloud-init-template"
+        clone_target         = "talos-v1.10.0-qemu"
         node_cpu_cores       = "1"
         node_memory          = 2048
         node_ipconfig        = "ip=192.168.0.101/24,gw=192.168.0.1"

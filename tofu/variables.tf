@@ -21,7 +21,6 @@ variable "clusters" {
     masters = map(object({
       vm_id                = number
       node_name            = string
-      clone_target         = string
       node_cpu_cores       = string
       node_memory          = number
       node_ipconfig        = string
@@ -31,7 +30,6 @@ variable "clusters" {
     workers = map(object({
       vm_id                = number
       node_name            = string
-      clone_target         = string
       node_cpu_cores       = string
       node_memory          = number
       node_ipconfig        = string
@@ -40,21 +38,6 @@ variable "clusters" {
     }))
     target_nodes = list(string)
   }))
-}
-
-variable "cluster_id" {
-  description = "ID del cluster da deployare (a o b o c)"
-  type        = string
-  validation {
-    condition     = contains(["a", "b"], var.cluster_id)
-    error_message = "Il valore deve essere 'a' o 'b'."
-  }
-}
-
-variable "env" {
-  description = "Ambiente di deployment (es: dev, test, prod)"
-  type        = string
-  default     = "dev"
 }
 
 variable "proxmox_nodes" {
@@ -86,21 +69,4 @@ variable "template_vmids" {
     pve3 = 9702
   }
 }
-variable "image" {
-  type = object({
-    schematic         = string # YAML/JSON inline o file("${path.module}/schematic.yaml")
-    version           = string # es. "v1.7.5"
-    update_schematic  = optional(string)
-    update_version    = optional(string)
-    arch              = optional(string, "amd64")
-    platform          = optional(string, "nocloud")
-    proxmox_datastore = optional(string, "zfs-shared")
-  })
-}
 
-variable "nodes" {
-  type = map(object({
-    host_node = string # es. "pve1"
-    update    = bool   # true per forzare re-download
-  }))
-}

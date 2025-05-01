@@ -12,10 +12,13 @@ terraform {
     # Your MinIO bucket for storing Terraform states
     bucket = "terraform-state"
 
-    # Interpolate the current Terraform workspace to separate state files
-    # cluster-a => clusters/cluster-a/terraform.tfstate
-    # cluster-b => clusters/cluster-b/terraform.tfstate
-    key = "clusters/${terraform.workspace}/terraform.tfstate"
+    # A *static* default key; Terraform will automatically
+    # prefix it per-workspace when you set workspace_key_prefix.
+    key = "clusters/terraform.tfstate"
+
+    # This tells the S3 backend to separate each workspace under
+    # that “clusters/” prefix:
+    workspace_key_prefix = "clusters"
 
     # If credentials are required
     access_key = "minioadmin"

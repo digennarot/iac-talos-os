@@ -1,10 +1,10 @@
-proxmox_api_url = "https://192.168.0.200:8006/api2/json"  # Your Proxmox IP Address
-proxmox_node = "pve1"
-
-proxmox_api_token_id     = "terraform@pve!provider"               # API Token ID
-proxmox_api_token_secret = "2438745d-ef09-46cd-8f39-a6d80d4b625c"
-
-proxmox_storage      = "zfs-shared"
-cpu_type             = "host"
-talos_version        = "v1.9.5"
-base_iso_file        = "local:iso/archlinux-2025.04.01-x86_64.iso"
+proxmox_node             = "pve1"
+proxmox_api_url          = "https://pve1:8006/api2/json" # Your Proxmox IP Address
+proxmox_api_token_id     = "terraform-prov@pve!mytoken"
+proxmox_api_token_secret = "50f6edb9-6eba-41c9-b175-a2c14e7d254a"
+proxmox_storage          = "nfs-shared"
+cpu_type                 = "host"
+talos_version            = "v1.10.0"
+base_iso_file            = "local:iso/archlinux-2025.04.01-x86_64.iso"
+static_ip                = "192.168.0.50/24"   # sostituisci con l’IP che vuoi assegnare
+gateway                  = "192.168.0.1"       # il tuo gateway

@@ -1,11 +1,22 @@
 locals {
-  clusters = var.clusters
-  selected = lookup(local.clusters, var.cluster_id, null)
+  # 1) every invocation knows its workspace name
+  workspace = terraform.workspace
+
+  # 2) grab the first cluster key (e.g. “a”)
+  default_cluster = keys(var.clusters)[0]
+
+  # 3) if workspace == one of “a”,“b”,“c”, use it;
+  #    otherwise fall back to the first key in var.clusters
+  selected = lookup(
+    var.clusters,
+    local.workspace,
+    var.clusters[local.default_cluster]
+  )
 
   selected_master_nodes = local.selected.masters
   selected_worker_nodes = local.selected.workers
 
-  target_proxmox_nodes = local.selected.target_nodes
+  # pick the first Proxmox node in the target list
+  target_node = local.selected.target_nodes[0]
 
 }
-
