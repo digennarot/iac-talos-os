@@ -1,4 +1,3 @@
-
 module "masters" {
   source                   = "./modules/compute"
   proxmox_api_url          = var.proxmox_api_url
@@ -7,7 +6,6 @@ module "masters" {
 
   nodes             = local.selected_master_nodes
   shared_storage_id = var.shared_storage_id
-  template_vmids    = var.template_vmids
   target_node       = local.target_node
   clone             = "talos-${var.talos.version}-qemu"
 }
@@ -20,7 +18,6 @@ module "workers" {
 
   nodes             = local.selected_worker_nodes
   shared_storage_id = var.shared_storage_id
-  template_vmids    = var.template_vmids
   target_node       = local.target_node
   clone             = "talos-${var.talos.version}-qemu"
 }

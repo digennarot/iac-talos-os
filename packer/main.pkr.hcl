@@ -27,14 +27,16 @@ source "proxmox-iso" "talos" {
     cache_mode   = "writethrough"
   }
 
+  vm_name  = "talos-node"
   memory   = var.memory
   vm_id    = var.template_vmid
   cores    = var.cores
   cpu_type = var.cpu_type
   sockets  = var.sockets
 
-  # 1) abilitiamo il QEMU guest agent
-  qemu_agent = true
+  # Proxmox-specific optimizations per Talos guide
+  qemu_agent         = true
+  ballooning_minimum = 0
 
   # 2) credenziali SSH e timeout prolungato
   ssh_username = "root"
@@ -72,24 +74,26 @@ build {
   provisioner "file" {
     destination = "/tmp/schematic.yaml"
     content     = <<EOF
-extraKernelArgs:
-  - ipv6.disable=1
 customization:
-  systemExtensions:
-    officialExtensions:
-      - siderolabs/qemu-guest-agent
+    extraKernelArgs:
+        - ipv6.disable=1
+    systemExtensions:
+        officialExtensions:
+            - siderolabs/qemu-guest-agent
 EOF
   }
 
   # 2) Carichiamo lo schematic, prendiamo l’ID, scarichiamo il raw.xz e lo riversiamo su /dev/sda
   provisioner "shell" {
     inline = [
-      "echo '[1/4] Creazione schematic su Image Factory…'",
-      "SCHEMATIC_ID=$(curl -sSL -X POST --data-binary @/tmp/schematic.yaml https://factory.talos.dev/v1.10/schematics | grep -o '\"id\":\"[^\"]*' | sed 's/\"id\":\"//')",
-      "echo \"[2/4] Schematic ID = $SCHEMATIC_ID\"",
-      "echo '[3/4] Download e scrittura Talos raw image…'",
-      "curl -sL https://factory.talos.dev/image/$SCHEMATIC_ID/${var.talos_version}/metal-amd64.raw.xz | xz -d -c | dd of=/dev/sda bs=4M conv=fsync status=progress",
-      "echo '[4/4] Sync e arresto VM…'"
+      "echo 'Requesting build image from Talos Factory'",
+      "ID=$(curl -kLX POST --data-binary @/tmp/schematic.yaml https://factory.talos.dev/schematics | grep -o '\"id\":\"[^\"]*' | sed 's/\"id\":\"//')",
+      "URL=https://factory.talos.dev/image/$ID/${var.talos_version}/metal-amd64.raw.zst",
+      "echo 'Downloading build image from Talos Factory: ' + $URL",
+      "curl -kL \"$URL\" -o /tmp/talos.raw.zst",
+      "echo 'Writing build image to disk'",
+      "pv /tmp/talos.raw.zst | zstd -d | dd of=/dev/sda bs=4M status=progress conv=fsync && sync",
+      "echo 'Done'",
     ]
   }
 }

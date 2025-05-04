@@ -1,10 +1,10 @@
 packer {
-  required_plugins {
-    proxmox-iso = {
-      source  = "github.com/hashicorp/proxmox"
-      version = ">= 1.2.2"
-    }
+required_plugins {
+  proxmox-iso = {
+    source  = "github.com/hashicorp/proxmox"
+    version = ">= 1.2.2"
   }
+}
 }
 
 variable "proxmox_api_url" {
@@ -76,7 +76,7 @@ variable "cloudinit_storage_pool" {
 variable "disk_size" {
   description = "Dimensione del disco placeholder (>= raw image Talos)"
   type        = string
-  default     = "4G"
+  default     = "8G"
 }
 
 variable "memory" {

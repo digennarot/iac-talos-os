@@ -32,10 +32,6 @@ variable "shared_storage_id" {
   type        = string
 }
 
-variable "template_vmids" {
-  description = "Mappa Proxmox node → VMID per il Talos template"
-  type        = map(number)
-}
 
 variable "target_node" {
   description = "Proxmox node su cui clonare (es. pve1)"

@@ -1,4 +1,3 @@
-
 variable "proxmox_api_url" {
   description = "URL API di Proxmox"
   type        = string
@@ -69,4 +68,3 @@ variable "template_vmids" {
     pve3 = 9702
   }
 }
-
