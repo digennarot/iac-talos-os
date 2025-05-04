@@ -27,7 +27,7 @@ source "proxmox-iso" "talos" {
     cache_mode   = "writethrough"
   }
 
-  vm_name  = "talos-node"
+  vm_name  = "talos-template-builder"
   memory   = var.memory
   vm_id    = var.template_vmid
   cores    = var.cores
@@ -48,19 +48,19 @@ source "proxmox-iso" "talos" {
   cloud_init_storage_pool = ""
 
   # 4) aspettiamo un po’ di più prima di inviare i tasti
-  boot_wait = "20s"
+  boot_wait = "45s"
 
   # 5) boot_command: settaggio password + rete statica  
   boot_command = [
-    "<enter><wait50s>",
+    "<enter><wait5s>",
 
     # impostiamo password root=packer
     "passwd<enter><wait1s>packer<enter><wait1s>packer<enter>",
 
     # configuriamo IP statico e gateway
     # ATTENZIONE: sostituisci 'ens18' con la tua interfaccia (usa `ip addr` in console Proxmox)
-    "ip address add ${var.static_ip} broadcast + dev ens18<enter><wait1s>",
-    "ip route add 0.0.0.0/0 via ${var.gateway} dev ens18<enter><wait1s>",
+    "ip address add ${var.static_ip} broadcast + dev ${var.interface}<enter><wait1s>",
+    "ip route add 0.0.0.0/0 via ${var.gateway} dev ${var.interface}<enter><wait1s>",
   ]
 
   template_name        = "talos-${var.talos_version}-qemu"

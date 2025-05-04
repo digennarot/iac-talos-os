@@ -1,10 +1,10 @@
 packer {
-required_plugins {
-  proxmox-iso = {
-    source  = "github.com/hashicorp/proxmox"
-    version = ">= 1.2.2"
+  required_plugins {
+    proxmox-iso = {
+      source  = "github.com/hashicorp/proxmox"
+      version = ">= 1.2.2"
+    }
   }
-}
 }
 
 variable "proxmox_api_url" {
@@ -113,3 +113,9 @@ variable "gateway" {
   type    = string
   default = "host"
 }
+
+variable "interface" {
+  type    = string
+  default = "eth0"
+}
+
