@@ -116,3 +116,8 @@ variable "bridge" {
   type        = string
   default     = "vmbr0"
 }
+
+variable "gateway" {
+  type        = string
+  default     = "192.168.0.1"
+}

@@ -51,6 +51,17 @@ resource "proxmox_vm_qemu" "nodes" {
     bridge = var.bridge
   }
 
+  # inject the ip=… kernel argument so eth0 comes up with a static IP
+  args = <<-EOF
+    -kernel /EFI/BOOT/vmlinuz-efi
+    -initrd /EFI/BOOT/initramfs.img
+    -append "init_on_alloc=1 slab_nomerge pti=on panic=0 \
+consoleblank=0 printk.devkmsg=on earlyprintk=ttyS0 \
+console=tty0 console=ttyS0 \
+talos.platform=metal \
+ip=${each.value.node_ipconfig}::${var.gateway}:255.255.255.0::eth0:off"
+  EOF
+  
   ipconfig0 = each.value.node_ipconfig
 
   tags = var.role

@@ -1,0 +1,7 @@
+talos-cluster-b-talos-master-01.yaml
+talos-cluster-b-talos-master-02.yaml
+talos-cluster-b-talos-master-03.yaml
+talos-cluster-b-talos-worker-01.yaml
+talos-cluster-b-talos-worker-02.yaml
+talos-cluster-b-talos-worker-03.yaml
+talosconfig
