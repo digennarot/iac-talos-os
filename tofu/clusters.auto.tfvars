@@ -63,6 +63,9 @@ clusters = {
       }
     }
     target_nodes = ["pve1"]
+    vip          = "192.168.0.199"
+    pod_net      = "10.14.0.0/16"
+    svc_net      = "10.15.0.0/16"
   }
 
   b = {
@@ -122,6 +125,9 @@ clusters = {
       }
     }
     target_nodes = ["pve2"]
+    vip          = "192.168.178.199"
+    pod_net      = "10.16.0.0/16"
+    svc_net      = "10.17.0.0/16"
   }
 
   c = {
@@ -181,5 +187,8 @@ clusters = {
       }
     }
     target_nodes = ["pve3"]
+    vip          = "192.168.178.199"
+    pod_net      = "10.18.0.0/16"
+    svc_net      = "10.19.0.0/16"
   }
 }

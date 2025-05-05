@@ -14,8 +14,14 @@ variable "proxmox_api_token_secret" {
   sensitive   = true
 }
 
+
+variable "role" {
+  description = "Ruolo dei nodi: 'master' o 'worker'"
+  type        = string
+}
+
 variable "nodes" {
-  description = "Mappa dei nodi da creare (master o worker)"
+  description = "Mappa dei nodi da creare"
   type = map(object({
     vm_id                = number
     node_name            = string
@@ -26,6 +32,7 @@ variable "nodes" {
     additional_node_disk = optional(string)
   }))
 }
+
 
 variable "shared_storage_id" {
   description = "ID dello storage condiviso (ZFS)"
@@ -59,13 +66,13 @@ variable "onboot" {
 variable "boot_order" {
   description = "Stringa ordine di boot"
   type        = string
-  default     = "order=scsi1;scsi0"
+  default     = "order=scsi0"
 }
 
 variable "agent" {
   description = "Abilita QEMU guest agent"
   type        = number
-  default     = 1
+  default     = 0
 }
 
 variable "agent_timeout" {

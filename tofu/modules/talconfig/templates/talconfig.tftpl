@@ -1,0 +1,57 @@
+talosVersion: ${talos_version}
+kubernetesVersion: ${kubernetes_version}
+clusterName: ${cluster_name}
+endpoint: ${endpoint}
+clusterPodNets:
+${join("\n", [for net in cluster_pod_nets : "  - ${net}"])}
+clusterSvcNets:
+${join("\n", [for net in cluster_svc_nets : "  - ${net}"])}
+additionalApiServerCertSans:
+${join("\n", [for san in additional_sans : "  - ${san}"])}
+additionalMachineCertSans:
+${join("\n", [for san in additional_sans : "  - ${san}"])}
+nodes:
+${join("\n", [
+  for node in masters : <<NODE
+  - hostname: ${node.node_name}
+    controlPlane: true
+    ipAddress: ${try(regex("ip=([0-9.]+)", node.node_ipconfig)[1], "invalid-ip")}
+    installDisk: /dev/sda
+    talosImageURL: factory.talos.dev/installer/${schematic_id}
+    networkInterfaces:
+      - deviceSelector:
+          hardwareAddr: "${node.mac_addr}"
+        dhcp: false
+NODE
+])}
+${join("\n", [
+  for node in workers : <<NODE
+  - hostname: ${node.node_name}
+    controlPlane: false
+    ipAddress: ${try(regex("ip=([0-9.]+)", node.node_ipconfig)[1], "invalid-ip")}
+    installDisk: /dev/sda
+    talosImageURL: factory.talos.dev/installer/${schematic_id}
+    networkInterfaces:
+      - deviceSelector:
+          hardwareAddr: "${node.mac_addr}"
+        dhcp: false
+${length(node.patches) > 0 ? 
+    format(
+      "    patches:\n%s",
+      join("\n", [
+        for p in node.patches : format("      - |-\n%s", p)
+      ])
+    ) 
+  : ""
+}
+NODE
+])}
+patches:
+${join("\n", [
+  for p in global_patches : format("  - |-\n%s", replace(p, "\n", "\n    "))
+])}
+controlPlane:
+  patches:
+${join("\n", [
+  for p in control_plane_patches : format("    - |-\n%s", replace(p, "\n", "\n      "))
+])}

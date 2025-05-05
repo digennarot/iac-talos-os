@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     proxmox = {
-      source  = "telmate/proxmox"
+      source = "telmate/proxmox"
       # Set version to match what you installed (3.0.1-rc8)
       version = "3.0.1-rc8"
     }

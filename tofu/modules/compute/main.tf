@@ -18,13 +18,13 @@ resource "proxmox_vm_qemu" "nodes" {
   onboot = var.onboot
   boot   = var.boot_order
 
-  agent    = var.agent
+  agent         = var.agent
   agent_timeout = var.agent_timeout
-  cpu_type = var.cpu_type
-  sockets  = var.sockets
-  cores    = each.value.node_cpu_cores
-  memory   = each.value.node_memory
-   scsihw   = var.scsihw
+  cpu_type      = var.cpu_type
+  sockets       = var.sockets
+  cores         = each.value.node_cpu_cores
+  memory        = each.value.node_memory
+  scsihw        = var.scsihw
 
   disk {
     slot     = "scsi0"
@@ -34,10 +34,16 @@ resource "proxmox_vm_qemu" "nodes" {
     format   = var.disk_format
     iothread = true
   }
-  disk {
-    slot    = "scsi1"
-    type    = "cloudinit"
-    storage = var.shared_storage_id
+
+  dynamic "disk" {
+    for_each = each.value.additional_node_disk != null ? [each.value.additional_node_disk] : []
+    content {
+      slot    = "scsi1"
+      size    = disk.value
+      type    = "disk"
+      storage = var.shared_storage_id
+      format  = var.disk_format
+    }
   }
   network {
     id     = 0
@@ -46,7 +52,7 @@ resource "proxmox_vm_qemu" "nodes" {
   }
 
   ipconfig0 = each.value.node_ipconfig
-  os_type   = "cloud-init"
 
+  tags = var.role
 }
 
