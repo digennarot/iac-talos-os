@@ -1,0 +1,21 @@
+#cloud-config
+
+write_files:
+  - path: /etc/talos/config.yaml
+    permissions: "0644"
+    content: |
+      machine:
+        hostname: <HOSTNAME>
+        network:
+          interfaces:
+            - interface: eth0
+              dhcp: false
+              addresses:
+                - <IP_ADDRESS>/<NETMASK>
+              routes:
+                - network: 0.0.0.0/0
+                  gateway: <GATEWAY>
+        install:
+          disk: /dev/sda
+          image: ghcr.io/siderolabs/installer:${TALOS_VERSION}  # Versione dinamica
+        type: <NODE_TYPE>

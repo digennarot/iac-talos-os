@@ -75,7 +75,7 @@ clusters = {
         node_name      = "clB-cp01"
         node_cpu_cores = "2"
         node_memory    = 4096
-        node_ipconfig  = "ip=192.168.178.120/24,gw=192.168.178.1"
+        node_ipconfig  = "ip=192.168.0.120/24,gw=192.168.0.1"
         node_disk      = "20"
       }
       "clB-cp02" = {
@@ -83,7 +83,7 @@ clusters = {
         node_name      = "clB-cp02"
         node_cpu_cores = "2"
         node_memory    = 4096
-        node_ipconfig  = "ip=192.168.178.121/24,gw=192.168.178.1"
+        node_ipconfig  = "ip=192.168.0.121/24,gw=192.168.0.1"
         node_disk      = "20"
       }
       "clB-cp03" = {
@@ -91,7 +91,7 @@ clusters = {
         node_name      = "clB-cp03"
         node_cpu_cores = "2"
         node_memory    = 4096
-        node_ipconfig  = "ip=192.168.178.122/24,gw=192.168.178.1"
+        node_ipconfig  = "ip=192.168.0.122/24,gw=192.168.0.1"
         node_disk      = "20"
       }
     }
@@ -101,7 +101,7 @@ clusters = {
         node_name            = "clB-wk01"
         node_cpu_cores       = "1"
         node_memory          = 2048
-        node_ipconfig        = "ip=192.168.178.123/24,gw=192.168.178.1"
+        node_ipconfig        = "ip=192.168.0.123/24,gw=192.168.0.1"
         node_disk            = "16"
         additional_node_disk = "64"
       }
@@ -110,7 +110,7 @@ clusters = {
         node_name            = "clB-wk02"
         node_cpu_cores       = "1"
         node_memory          = 2048
-        node_ipconfig        = "ip=192.168.178.124/24,gw=192.168.178.1"
+        node_ipconfig        = "ip=192.168.0.124/24,gw=192.168.0.1"
         node_disk            = "16"
         additional_node_disk = "64"
       }
@@ -119,13 +119,13 @@ clusters = {
         node_name            = "clB-wk03"
         node_cpu_cores       = "1"
         node_memory          = 2048
-        node_ipconfig        = "ip=192.168.178.125/24,gw=192.168.178.1"
+        node_ipconfig        = "ip=192.168.0.125/24,gw=192.168.0.1"
         node_disk            = "16"
         additional_node_disk = "64"
       }
     }
     target_nodes = ["pve2"]
-    vip          = "192.168.178.199"
+    vip          = "192.168.0.199"
     pod_net      = "10.16.0.0/16"
     svc_net      = "10.17.0.0/16"
   }
@@ -137,7 +137,7 @@ clusters = {
         node_name      = "clC-cp01"
         node_cpu_cores = "2"
         node_memory    = 4096
-        node_ipconfig  = "ip=192.168.178.130/24,gw=192.168.178.1"
+        node_ipconfig  = "ip=192.168.0.130/24,gw=192.168.0.1"
         node_disk      = "20"
       }
       "clC-cp02" = {
@@ -145,7 +145,7 @@ clusters = {
         node_name      = "clC-cp02"
         node_cpu_cores = "2"
         node_memory    = 4096
-        node_ipconfig  = "ip=192.168.178.131/24,gw=192.168.178.1"
+        node_ipconfig  = "ip=192.168.0.131/24,gw=192.168.0.1"
         node_disk      = "20"
       }
       "clC-cp03" = {
@@ -153,7 +153,7 @@ clusters = {
         node_name      = "clC-cp03"
         node_cpu_cores = "2"
         node_memory    = 4096
-        node_ipconfig  = "ip=192.168.178.132/24,gw=192.168.178.1"
+        node_ipconfig  = "ip=192.168.0.132/24,gw=192.168.0.1"
         node_disk      = "20"
       }
     }
@@ -163,7 +163,7 @@ clusters = {
         node_name            = "clC-wk01"
         node_cpu_cores       = "1"
         node_memory          = 2048
-        node_ipconfig        = "ip=192.168.178.133/24,gw=192.168.178.1"
+        node_ipconfig        = "ip=192.168.0.133/24,gw=192.168.0.1"
         node_disk            = "16"
         additional_node_disk = "64"
       }
@@ -172,7 +172,7 @@ clusters = {
         node_name            = "clC-wk02"
         node_cpu_cores       = "1"
         node_memory          = 2048
-        node_ipconfig        = "ip=192.168.178.134/24,gw=192.168.178.1"
+        node_ipconfig        = "ip=192.168.0.134/24,gw=192.168.0.1"
         node_disk            = "16"
         additional_node_disk = "64"
       }
@@ -181,13 +181,13 @@ clusters = {
         node_name            = "clC-wk03"
         node_cpu_cores       = "1"
         node_memory          = 2048
-        node_ipconfig        = "ip=192.168.178.135/24,gw=192.168.178.1"
+        node_ipconfig        = "ip=192.168.0.135/24,gw=192.168.0.1"
         node_disk            = "16"
         additional_node_disk = "64"
       }
     }
     target_nodes = ["pve3"]
-    vip          = "192.168.178.199"
+    vip          = "192.168.0.199"
     pod_net      = "10.18.0.0/16"
     svc_net      = "10.19.0.0/16"
   }

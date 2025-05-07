@@ -118,6 +118,11 @@ variable "bridge" {
 }
 
 variable "gateway" {
-  type        = string
-  default     = "192.168.0.1"
+  type    = string
+  default = "192.168.0.1"
+}
+
+variable "talos_version" {
+  type    = string
+  default = "1.10.0"
 }

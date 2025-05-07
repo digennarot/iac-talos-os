@@ -19,7 +19,7 @@ locals {
   # pick the first Proxmox node in the target list
   target_node = local.selected.target_nodes[0]
 
-/*   # Aggiungi mac_addr ai nodi
+  /*   # Aggiungi mac_addr ai nodi
   master_nodes_with_mac = zipmap(
     keys(local.selected_cluster.masters),
     [for idx, node in values(local.selected_cluster.masters) : merge(node, {
