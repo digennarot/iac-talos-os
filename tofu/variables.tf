@@ -39,7 +39,7 @@ variable "clusters" {
       node_disk            = string
       additional_node_disk = optional(string)
       patches              = optional(list(string))
-      mac_addr             = optional(string)
+       mac_address          = string
 
 
     }))
@@ -52,7 +52,7 @@ variable "clusters" {
       node_disk            = string
       additional_node_disk = optional(string)
       patches              = optional(list(string))
-      mac_addr             = optional(string)
+       mac_address          = string
 
 
     }))

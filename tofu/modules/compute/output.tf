@@ -5,5 +5,3 @@ output "mac_addrs" {
     lower(tostring(vm.network[0].macaddr))
   ]
 }
-
-

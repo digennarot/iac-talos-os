@@ -1,11 +1,3 @@
-provider "proxmox" {
-  alias               = "mod"
-  pm_api_url          = var.proxmox_api_url
-  pm_api_token_id     = var.proxmox_api_token_id
-  pm_api_token_secret = var.proxmox_api_token_secret
-  pm_tls_insecure     = true
-}
-
 resource "proxmox_vm_qemu" "nodes" {
   for_each    = var.nodes
   name        = each.value.node_name
@@ -49,13 +41,9 @@ resource "proxmox_vm_qemu" "nodes" {
     id     = 0
     model  = "virtio"
     bridge = var.bridge
+    macaddr = each.value.mac_address  # e.g. "02:00:0A:00:00:01"
   }
 
-  # ←――――――――――――――――――――――――――――――
-  # Pass the complete Cloud-Init network string directly:
-  ipconfig0 = each.value.node_ipconfig
-  # ――――――――――――――――――――――――――――――→
-  
   tags = var.role
 
 }

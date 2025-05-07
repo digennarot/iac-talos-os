@@ -30,6 +30,7 @@ variable "nodes" {
     node_ipconfig        = string
     node_disk            = string
     additional_node_disk = optional(string)
+    mac_address          = string
   }))
 }
 
@@ -103,12 +104,6 @@ variable "disk_format" {
   description = "Formato del disco principale"
   type        = string
   default     = "raw"
-}
-
-variable "cloudinit_slot" {
-  description = "Slot per il disco cloud-init"
-  type        = string
-  default     = "scsi1"
 }
 
 variable "bridge" {

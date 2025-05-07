@@ -5,8 +5,13 @@ terraform {
       # Set version to match what you installed (3.0.1-rc8)
       version = "3.0.1-rc8"
     }
+    talos = {
+      source  = "siderolabs/talos"
+      version = "~> 0.8.0-alpha.0" # or whatever version you want
+    }
   }
 }
+
 
 provider "proxmox" {
   # Note: This "source" line is optional in the provider block itself as
