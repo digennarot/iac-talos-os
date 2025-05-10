@@ -1,67 +1,62 @@
-# talos-cluster-c.yaml
 talosVersion: v1.10.0
 kubernetesVersion: v1.33.0
 
-clusterName: talos-cluster-c
-endpoint: https://192.168.0.202:6443
+clusterName: clC-cluster-c
+endpoint: https://192.168.0.232:6443
 
 clusterPodNets:
-  - 10.34.0.0/16
+  - 10.18.0.0/16
 clusterSvcNets:
-  - 10.35.0.0/16
+  - 10.19.0.0/16
 
 additionalApiServerCertSans:
-  - 192.168.0.202
+  - 192.168.0.232
   - 127.0.0.1
 additionalMachineCertSans:
-  - 192.168.0.202
+  - 192.168.0.232
   - 127.0.0.1
 
 nodes:
-  - hostname: talos-master-01
+  - hostname: clC-cp01
     controlPlane: true
-    ipAddress: 192.168.0.176
+    ipAddress: 192.168.0.130
     installDisk: /dev/sda
-    talosImageURL: factory.talos.dev/metal-installer/376567988ad370138ad8b2698212367b8edcb69b5fd68c80be1f2ec7d603b4ba:v1.10.0
     networkInterfaces:
       - deviceSelector:
-          hardwareAddr: "68:1d:ef:50:5f:e7"
+          hardwareAddr: "02:00:0A:02:00:01"
         dhcp: false
         vip:
-          ip: 192.168.0.202
+          ip: 192.168.0.232
 
-  - hostname: talos-master-02
+  - hostname: clC-cp02
     controlPlane: true
-    ipAddress: 192.168.0.177
+    ipAddress: 192.168.0.131
     installDisk: /dev/sda
-    talosImageURL: factory.talos.dev/metal-installer/376567988ad370138ad8b2698212367b8edcb69b5fd68c80be1f2ec7d603b4ba:v1.10.0
     networkInterfaces:
       - deviceSelector:
-          hardwareAddr: "68:1d:ef:50:5f:e7"
+          hardwareAddr: "02:00:0A:02:00:02"
         dhcp: false
         vip:
-          ip: 192.168.0.202
+          ip: 192.168.0.232
 
-  - hostname: talos-master-03
+  - hostname: clC-cp03
     controlPlane: true
-    ipAddress: 192.168.0.178
+    ipAddress: 192.168.0.132
     installDisk: /dev/sda
-    talosImageURL: factory.talos.dev/metal-installer/376567988ad370138ad8b2698212367b8edcb69b5fd68c80be1f2ec7d603b4ba:v1.10.0
     networkInterfaces:
       - deviceSelector:
-          hardwareAddr: "68:1d:ef:50:5f:e7"
+          hardwareAddr: "02:00:0A:02:00:03"
         dhcp: false
         vip:
-          ip: 192.168.0.202
+          ip: 192.168.0.232
 
-  - hostname: talos-worker-01
+  - hostname: clC-wk01
     controlPlane: false
-    ipAddress: 192.168.0.185
+    ipAddress: 192.168.0.133
     installDisk: /dev/sda
-    talosImageURL: factory.talos.dev/metal-installer/376567988ad370138ad8b2698212367b8edcb69b5fd68c80be1f2ec7d603b4ba:v1.10.0
     networkInterfaces:
       - deviceSelector:
-          hardwareAddr: "68:1d:ef:50:5f:e7"
+          hardwareAddr: "02:00:0A:02:10:01"
         dhcp: false
     patches:
       - |-
@@ -70,24 +65,22 @@ nodes:
             rules:
               - SUBSYSTEM=="drm", KERNEL=="renderD*", GROUP="44", MODE="0660"
 
-  - hostname: talos-worker-02
+  - hostname: clC-wk02
     controlPlane: false
-    ipAddress: 192.168.0.186
+    ipAddress: 192.168.0.134
     installDisk: /dev/sda
-    talosImageURL: factory.talos.dev/metal-installer/376567988ad370138ad8b2698212367b8edcb69b5fd68c80be1f2ec7d603b4ba:v1.10.0
     networkInterfaces:
       - deviceSelector:
-          hardwareAddr: "68:1d:ef:50:5f:e7"
+          hardwareAddr: "02:00:0A:02:10:02"
         dhcp: false
 
-  - hostname: talos-worker-03
+  - hostname: clC-wk03
     controlPlane: false
-    ipAddress: 192.168.0.187
+    ipAddress: 192.168.0.135
     installDisk: /dev/sda
-    talosImageURL: factory.talos.dev/metal-installer/376567988ad370138ad8b2698212367b8edcb69b5fd68c80be1f2ec7d603b4ba:v1.10.0
     networkInterfaces:
       - deviceSelector:
-          hardwareAddr: "68:1d:ef:50:5f:e7"
+          hardwareAddr: "02:00:0A:02:10:03"
         dhcp: false
 
 patches:

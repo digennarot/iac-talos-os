@@ -39,8 +39,7 @@ clusters = {
         node_name            = "clA-wk01"
         node_cpu_cores       = "1"
         node_memory          = 2048
-        node_disk            = "16"
-        additional_node_disk = "64"
+        node_disk            = "30"
         node_ipconfig        = "ip=192.168.0.113/24,gw=192.168.0.1"
         mac_address          = "02:00:0A:00:10:01"
       }
@@ -49,8 +48,7 @@ clusters = {
         node_name            = "clA-wk02"
         node_cpu_cores       = "1"
         node_memory          = 2048
-        node_disk            = "16"
-        additional_node_disk = "64"
+        node_disk            = "30"
         node_ipconfig        = "ip=192.168.0.114/24,gw=192.168.0.1"
         mac_address          = "02:00:0A:00:10:02"
       }
@@ -59,8 +57,7 @@ clusters = {
         node_name            = "clA-wk03"
         node_cpu_cores       = "1"
         node_memory          = 2048
-        node_disk            = "16"
-        additional_node_disk = "64"
+        node_disk            = "30"
         node_ipconfig        = "ip=192.168.0.115/24,gw=192.168.0.1"
         mac_address          = "02:00:0A:00:10:03"
       }
@@ -107,8 +104,7 @@ clusters = {
         node_name            = "clB-wk01"
         node_cpu_cores       = "1"
         node_memory          = 2048
-        node_disk            = "16"
-        additional_node_disk = "64"
+        node_disk            = "30"
         node_ipconfig        = "ip=192.168.0.123/24,gw=192.168.0.1"
         mac_address          = "02:00:0A:01:10:01"
       }
@@ -117,8 +113,7 @@ clusters = {
         node_name            = "clB-wk02"
         node_cpu_cores       = "1"
         node_memory          = 2048
-        node_disk            = "16"
-        additional_node_disk = "64"
+        node_disk            = "30"
         node_ipconfig        = "ip=192.168.0.124/24,gw=192.168.0.1"
         mac_address          = "02:00:0A:01:10:02"
       }
@@ -127,8 +122,7 @@ clusters = {
         node_name            = "clB-wk03"
         node_cpu_cores       = "1"
         node_memory          = 2048
-        node_disk            = "16"
-        additional_node_disk = "64"
+        node_disk            = "30"
         node_ipconfig        = "ip=192.168.0.125/24,gw=192.168.0.1"
         mac_address          = "02:00:0A:01:10:03"
       }
@@ -175,8 +169,7 @@ clusters = {
         node_name            = "clC-wk01"
         node_cpu_cores       = "1"
         node_memory          = 2048
-        node_disk            = "16"
-        additional_node_disk = "64"
+        node_disk            = "30"
         node_ipconfig        = "ip=192.168.0.133/24,gw=192.168.0.1"
         mac_address          = "02:00:0A:02:10:01"
       }
@@ -185,8 +178,7 @@ clusters = {
         node_name            = "clC-wk02"
         node_cpu_cores       = "1"
         node_memory          = 2048
-        node_disk            = "16"
-        additional_node_disk = "64"
+        node_disk            = "30"
         node_ipconfig        = "ip=192.168.0.134/24,gw=192.168.0.1"
         mac_address          = "02:00:0A:02:10:02"
       }
@@ -195,8 +187,7 @@ clusters = {
         node_name            = "clC-wk03"
         node_cpu_cores       = "1"
         node_memory          = 2048
-        node_disk            = "16"
-        additional_node_disk = "64"
+        node_disk            = "30"
         node_ipconfig        = "ip=192.168.0.135/24,gw=192.168.0.1"
         mac_address          = "02:00:0A:02:10:03"
       }
