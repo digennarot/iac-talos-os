@@ -1,0 +1,2 @@
+tofu plan -out .tfplan 
+tofu apply ".tfplan"

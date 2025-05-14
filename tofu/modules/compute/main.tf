@@ -17,6 +17,7 @@ resource "proxmox_vm_qemu" "nodes" {
   cores         = each.value.node_cpu_cores
   memory        = each.value.node_memory
   scsihw        = var.scsihw
+  skip_ipv6     = true
 
   disk {
     slot     = "scsi0"
