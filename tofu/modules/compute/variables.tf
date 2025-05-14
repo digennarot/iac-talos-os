@@ -73,7 +73,7 @@ variable "boot_order" {
 variable "agent" {
   description = "Abilita QEMU guest agent"
   type        = number
-  default     = 0
+  default     = 1
 }
 
 variable "agent_timeout" {

@@ -1,0 +1,33 @@
+1. Bootstrap the first control-plane
+If this is your first control-plane node, you need to run:
+
+talosctl apply-config --nodes 192.168.0.110 --file clusterconfig/a/cla-cla-cp01.yaml --insecure  
+talosctl apply-config --nodes 192.168.0.113 --file clusterconfig/a/cla-cla-wk01.yaml --insecure
+
+mkdir -p $HOME/.talos
+cp clusterconfig/talosconfig $HOME/.talos/cla
+
+talosctl bootstrap \
+  --nodes 192.168.0.110 \
+  --config $HOME/.talos/cla
+
+2. Verify
+
+talosctl -n 192.168.0.110 service
+You should see:
+
+NODE            SERVICE                STATE     HEALTH   LAST CHANGE   LAST EVENT
+192.168.0.110   apid                   Running   OK       41m22s ago    Health check successful
+192.168.0.110   auditd                 Running   OK       41m33s ago    Health check successful
+192.168.0.110   containerd             Running   OK       41m33s ago    Health check successful
+192.168.0.110   cri                    Running   OK       41m21s ago    Health check successful
+192.168.0.110   dashboard              Running   ?        41m23s ago    Process Process(["/sbin/dashboard"]) started with PID 2003
+192.168.0.110   etcd                   Running   OK       41m16s ago    Health check successful
+192.168.0.110   ext-qemu-guest-agent   Waiting   ?        41m32s ago    Waiting for file "/dev/virtio-ports/org.qemu.guest_agent.0" to exist
+192.168.0.110   kubelet                Running   OK       41m14s ago    Health check successful
+192.168.0.110   machined               Running   OK       41m33s ago    Health check successful
+192.168.0.110   syslogd                Running   OK       41m32s ago    Health check successful
+192.168.0.110   trustd                 Running   OK       41m21s ago    Health check successful
+192.168.0.110   udevd                  Running   OK       41m24s ago    Health check successful
+
+talosctl dashboard -n 192.168.0.110                                                                                                                              main ● ?  11:00:36 

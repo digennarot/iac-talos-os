@@ -1,8 +1,8 @@
 talosVersion: v1.10.0
 kubernetesVersion: v1.33.0
 
-clusterName: clA-cluster-a
-endpoint: https://192.168.0.230:6443
+clusterName: cla
+endpoint: https://192.168.0.110:6443
 
 clusterPodNets:
   - 10.14.0.0/16
@@ -10,92 +10,38 @@ clusterSvcNets:
   - 10.15.0.0/16
 
 additionalApiServerCertSans:
-  - 192.168.0.230
+  - 192.168.0.110
   - 127.0.0.1
+
 additionalMachineCertSans:
-  - 192.168.0.230
+  - 192.168.0.110
   - 127.0.0.1
 
-nodes:
-  - hostname: clA-cp01
-    controlPlane: true
-    ipAddress: 192.168.0.110
-    installDisk: /dev/sda
-    networkInterfaces:
-      - deviceSelector:
-          hardwareAddr: "02:00:0A:00:00:01"
-        dhcp: false
-        vip:
-          ip: 192.168.0.230
-
-  - hostname: clA-cp02
-    controlPlane: true
-    ipAddress: 192.168.0.111
-    installDisk: /dev/sda
-    networkInterfaces:
-      - deviceSelector:
-          hardwareAddr: "02:00:0A:00:00:02"
-        dhcp: false
-        vip:
-          ip: 192.168.0.230
-
-  - hostname: clA-cp03
-    controlPlane: true
-    ipAddress: 192.168.0.112
-    installDisk: /dev/sda
-    networkInterfaces:
-      - deviceSelector:
-          hardwareAddr: "02:00:0A:00:00:03"
-        dhcp: false
-        vip:
-          ip: 192.168.0.230
-
-  - hostname: clA-wk01
-    controlPlane: false
-    ipAddress: 192.168.0.113
-    installDisk: /dev/sda
-    networkInterfaces:
-      - deviceSelector:
-          hardwareAddr: "02:00:0A:00:10:01"
-        dhcp: false
-    patches:
-      - |-
-        machine:
-          udev:
-            rules:
-              - SUBSYSTEM=="drm", KERNEL=="renderD*", GROUP="44", MODE="0660"
-              - SUBSYSTEM=="drm", KERNEL=="card*",    GROUP="44", MODE="0660"
-
-  - hostname: clA-wk02
-    controlPlane: false
-    ipAddress: 192.168.0.114
-    installDisk: /dev/sda
-    networkInterfaces:
-      - deviceSelector:
-          hardwareAddr: "02:00:0A:00:10:02"
-        dhcp: false
-
-  - hostname: clA-wk03
-    controlPlane: false
-    ipAddress: 192.168.0.115
-    installDisk: /dev/sda
-    networkInterfaces:
-      - deviceSelector:
-          hardwareAddr: "02:00:0A:00:10:03"
-        dhcp: false
-
+# Centralized patches for network, time, kubelet cert rotation, audit policy, CNI, and control-plane tuning
 patches:
+  # Machine-level patches
   - |-
     machine:
       network:
         nameservers:
           - 1.1.1.1
           - 1.0.0.1
-  - |-
-    machine:
       time:
         disabled: false
-        servers: ["time.cloudflare.com"]
+        servers:
+          - time.cloudflare.com
+          - time.google.com
+      kubelet:
+        extraArgs:
+          # ⚠️ bypass all kubelet auth checks
+          authorization-mode: AlwaysAllow
+
+machine:
+  kubelet:
+    extraArgs:
+      authentication-token-webhook: "true"
+      authorization-mode: "Webhook,Node"
+
 
 controlPlane:
   patches:
@@ -108,7 +54,30 @@ controlPlane:
           disabled: true
         network:
           cni:
-            name: none
+            name: flannel
         scheduler:
           extraArgs:
             bind-address: 0.0.0.0
+
+nodes:
+  - hostname: cla-cp01
+    controlPlane: true
+    ipAddress: 192.168.0.110
+    installDisk: /dev/sda
+    networkInterfaces:
+      - interface: eth0
+        dhcp: false
+      # - deviceSelector:
+      #     hardwareAddr: "02:00:0A:00:00:01"
+        # dhcp: false
+
+  - hostname: cla-wk01
+    controlPlane: false
+    ipAddress: 192.168.0.113
+    installDisk: /dev/sda
+    networkInterfaces:
+      - interface: eth0
+        dhcp: false
+      # - deviceSelector:
+      #     hardwareAddr: "02:00:0A:00:10:01"
+        # dhcp: false

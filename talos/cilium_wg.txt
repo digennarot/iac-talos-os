@@ -1,0 +1,44 @@
+1. Look at Cilium’s “Encryption” status
+Run the Cilium agent’s status command and inspect the Encryption line:
+
+
+kubectl -n kube-system exec -it ds/cilium -- cilium-dbg status | grep Encryption
+You should see something like:
+
+
+Encryption: Wireguard [cilium_wg0 (Pubkey: <…>, Port: 51871, Peers: 2)]
+Wireguard tells you it’s enabled.
+
+cilium_wg0 is the WireGuard tunnel interface.
+
+Peers: 2 should equal (# of nodes – 1). 
+docs.cilium.io
+
+2. Check the tunnel device exists
+Make sure the cilium_wg0 interface is present inside each agent:
+
+
+kubectl -n kube-system exec -it ds/cilium -- ip link show cilium_wg0
+You should see cilium_wg0: <…> mtu 1420 … state UNKNOWN (or UP), confirming the WireGuard device is created.
+
+3. Inspect the WireGuard peer map
+For a deeper look, dump the BPF-managed encryption info:
+
+
+kubectl -n kube-system exec -it ds/cilium -- cilium-dbg debuginfo --output json \
+  | jq .encryption.wireguard.interfaces
+You’ll get a JSON blob showing each peer’s public-key, endpoint and last-handshake time. 
+That lets you confirm your nodes have exchanged keys and are talking over WireGuard. 
+
+4. Sniff encrypted packets
+Finally, generate some cross-node pod traffic (e.g. kubectl exec from a pod on node A to a pod on node B) and capture on the tunnel:
+
+
+kubectl -n kube-system exec -it ds/cilium -- bash -c "\
+  apt-get update && apt-get install -y tcpdump && \
+  tcpdump -n -i cilium_wg0"
+You should see raw IP packets (encrypted payloads) flowing over cilium_wg0. 
+docs.cilium.io
+
+If all of the above line up—WireGuard shows “Encryption: Wireguard”, you have a cilium_wg0 interface, 
+peers are listed in the debug info, and you see traffic on that interface—then your Cilium WireGuard encryption is working correctly.

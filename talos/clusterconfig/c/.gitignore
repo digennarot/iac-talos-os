@@ -5,3 +5,9 @@ talos-cluster-c-talos-worker-01.yaml
 talos-cluster-c-talos-worker-02.yaml
 talos-cluster-c-talos-worker-03.yaml
 talosconfig
+clc-cluster-c-clC-cp01.yaml
+clc-cluster-c-clC-cp02.yaml
+clc-cluster-c-clC-cp03.yaml
+clc-cluster-c-clC-wk01.yaml
+clc-cluster-c-clC-wk02.yaml
+clc-cluster-c-clC-wk03.yaml
