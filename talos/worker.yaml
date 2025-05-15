@@ -4,10 +4,10 @@ persist: true
 # Provides machine specific configuration options.
 machine:
     type: worker # Defines the role of the machine within the cluster.
-    token: x5igoj.fudx7f52yh88cexv # The `token` is used by a machine to join the PKI of the cluster.
+    token: mi6nsg.osn3rjr9h63m1bnn # The `token` is used by a machine to join the PKI of the cluster.
     # The root certificate authority of the PKI.
     ca:
-        crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJQakNCOGFBREFnRUNBaEFJazloSzRhbG9wZzdDbzQvMVhIbmZNQVVHQXl0bGNEQVFNUTR3REFZRFZRUUsKRXdWMFlXeHZjekFlRncweU5UQTFNVFF3T0RJM05EVmFGdzB6TlRBMU1USXdPREkzTkRWYU1CQXhEakFNQmdOVgpCQW9UQlhSaGJHOXpNQ293QlFZREsyVndBeUVBUWlxMFVPM3Q0SDZPaXpGUUJvWmduK0RidVJVeHJUZjNscENnCnYrRlA2LzJqWVRCZk1BNEdBMVVkRHdFQi93UUVBd0lDaERBZEJnTlZIU1VFRmpBVUJnZ3JCZ0VGQlFjREFRWUkKS3dZQkJRVUhBd0l3RHdZRFZSMFRBUUgvQkFVd0F3RUIvekFkQmdOVkhRNEVGZ1FVYWo1WHFPT21HSzB4MGl4WgpmeFlqajR5Tnk2a3dCUVlESzJWd0EwRUFBbW11T0gyS2d5dE1YeTFvVmRpWTFidGUzZnRZbzIybHlOaTdyTFZJCjNDRUJsZjAzVVZjeXRDZkkvU2NGbENiOFZiNHJpRlloMEZwZzh2RzhlSjRhQXc9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+        crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJQekNCOHFBREFnRUNBaEVBbWFLbTVTd1Q3RENJQ3RuV1J3ZWJIekFGQmdNclpYQXdFREVPTUF3R0ExVUUKQ2hNRmRHRnNiM013SGhjTk1qVXdOVEUxTVRNek5qTTFXaGNOTXpVd05URXpNVE16TmpNMVdqQVFNUTR3REFZRApWUVFLRXdWMFlXeHZjekFxTUFVR0F5dGxjQU1oQUdhSEhMV2R1akljUzJud3NDVll2eHpYR0hmWEd2VjZtRTlrCnc5bDRWWjh0bzJFd1h6QU9CZ05WSFE4QkFmOEVCQU1DQW9Rd0hRWURWUjBsQkJZd0ZBWUlLd1lCQlFVSEF3RUcKQ0NzR0FRVUZCd01DTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3SFFZRFZSME9CQllFRk1vMzdOM2hVaC80Zzd0OApaYVpPaFBLYm1KeHJNQVVHQXl0bGNBTkJBQmlKTWtvMG8vK05INkZFWk1YdUh4WTlsUXVGQjB2K0R6cmhEQy9kCjlPN3RINldzU1lCanhwVVI3MDZreVh3MDc1Z0RWb1daQ3JkMVh4NXBQQmQ5Y1E4PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
         key: ""
     # Extra certificate subject alternative names for the machine's certificate.
     certSANs: []
@@ -405,12 +405,12 @@ machine:
     #     exampleTaint: exampleTaintValue:NoSchedule
 # Provides cluster specific configuration options.
 cluster:
-    id: fY1eslO6VEfXPobEBL19f0qn9VgP1fa_uAssABK4q4I= # Globally unique identifier for this cluster (base64 encoded random 32 bytes).
-    secret: tcJiB30qyrpniCi3WO3CelAK1WcsgzsOzeknagDpETY= # Shared secret of cluster (base64 encoded random 32 bytes).
+    id: Z0jxUcUJtWkk4Pg_uWudnRo_qWsh01hJDq5rqbQjI40= # Globally unique identifier for this cluster (base64 encoded random 32 bytes).
+    secret: p9FoVruRl0+Fvs5qODSQNekoEpAaG+cjN2S470JTlaE= # Shared secret of cluster (base64 encoded random 32 bytes).
     # Provides control plane specific configuration options.
     controlPlane:
-        endpoint: https://192.168.0.110:6443 # Endpoint is the canonical controlplane endpoint, which can be an IP address or a DNS hostname.
-    clusterName: cla # Configures the cluster's name.
+        endpoint: https://192.168.0.120:6443 # Endpoint is the canonical controlplane endpoint, which can be an IP address or a DNS hostname.
+    clusterName: admin@clb # Configures the cluster's name.
     # Provides cluster specific network configuration options.
     network:
         # The CNI used.
@@ -423,10 +423,10 @@ cluster:
         # The service subnet CIDR.
         serviceSubnets:
             - 10.96.0.0/12
-    token: lmmf0a.houacvnj9ra2u5qv # The [bootstrap token](https://kubernetes.io/docs/reference/access-authn-authz/bootstrap-tokens/) used to join the cluster.
+    token: 4q787a.tqils4sg3l23lrma # The [bootstrap token](https://kubernetes.io/docs/reference/access-authn-authz/bootstrap-tokens/) used to join the cluster.
     # The base64 encoded root certificate authority used by Kubernetes.
     ca:
-        crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJpVENDQVMrZ0F3SUJBZ0lRVVVrSEJVYUpPbHQ4M2plL1VTWlJSekFLQmdncWhrak9QUVFEQWpBVk1STXcKRVFZRFZRUUtFd3ByZFdKbGNtNWxkR1Z6TUI0WERUSTFNRFV4TkRBNE1qYzBOVm9YRFRNMU1EVXhNakE0TWpjMApOVm93RlRFVE1CRUdBMVVFQ2hNS2EzVmlaWEp1WlhSbGN6QlpNQk1HQnlxR1NNNDlBZ0VHQ0NxR1NNNDlBd0VICkEwSUFCR29NcWszTG5SS3ZFTUR6RUgxaDVzNnRnNXYyUUdWeW80MElTZGNZL3k4dWtzMVpzaW9NbjMxOTMyZkEKYUtmbkkrRmNoWDFFN2xqTHhvMFp2d1MzcXMyallUQmZNQTRHQTFVZER3RUIvd1FFQXdJQ2hEQWRCZ05WSFNVRQpGakFVQmdnckJnRUZCUWNEQVFZSUt3WUJCUVVIQXdJd0R3WURWUjBUQVFIL0JBVXdBd0VCL3pBZEJnTlZIUTRFCkZnUVUya1I3YTViVGRNUmMrUlA4T1NoT1orUTJmc2t3Q2dZSUtvWkl6ajBFQXdJRFNBQXdSUUlnVlBMQ0xGcFYKcUdzV1BUdGJXYUt2VHN6Mlg2YnBNZlZqaEdvZFFiclBsL1FDSVFDaEhBYXRXc3FVRHhLdk1iRW5WV25kRTVvcQo3cVhEVVJLRHdOM0JJMCsrVXc9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+        crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJpVENDQVMrZ0F3SUJBZ0lRZWR6b3h0NlIwN2kzdzZ3Vmt2NnRsakFLQmdncWhrak9QUVFEQWpBVk1STXcKRVFZRFZRUUtFd3ByZFdKbGNtNWxkR1Z6TUI0WERUSTFNRFV4TlRFek16WXpOVm9YRFRNMU1EVXhNekV6TXpZegpOVm93RlRFVE1CRUdBMVVFQ2hNS2EzVmlaWEp1WlhSbGN6QlpNQk1HQnlxR1NNNDlBZ0VHQ0NxR1NNNDlBd0VICkEwSUFCRHFHNmpFV3o1amRrOG5oTEQyMVRpYmZXZXYrNk9ZZ2dReWdJR0hWcnd1N3JlK3JYamhycDUvOGVaQnUKTTM5K3RPVFZOV3JjK2FPRUEwVUxDUWxEMTZHallUQmZNQTRHQTFVZER3RUIvd1FFQXdJQ2hEQWRCZ05WSFNVRQpGakFVQmdnckJnRUZCUWNEQVFZSUt3WUJCUVVIQXdJd0R3WURWUjBUQVFIL0JBVXdBd0VCL3pBZEJnTlZIUTRFCkZnUVVXaFVTV1ZkWEhDZnMvcVVEY0ZoSTk5eFhtVW93Q2dZSUtvWkl6ajBFQXdJRFNBQXdSUUloQVBCRGY1dmIKKzByWUlkUEJiWFhKMWxZdGxiMXZWSlVqZG1hRytkNW1SZUlHQWlCRVRWSlFEQmxNekhBbW9tSUV2aW9CeU5MNgpSSUd4bEJBSG9pWUhtTThpWFE9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
         key: ""
     # Kube-proxy server-specific configuration options
     proxy:

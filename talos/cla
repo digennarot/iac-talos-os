@@ -1,15 +1,60 @@
+
+source <(talosctl completion zsh)
 1. Bootstrap the first control-plane
+
+Generating Talos Configuration using Talhelper
+
+Generate Talos secrets.
+  talhelper gensecret
+  talhelper gensecret > talsecret.sops.yaml
+talhelper gensecret > talsecret.sops.cla.yaml
+talhelper gensecret > talsecret.sops.clb.yaml
+talhelper gensecret > talsecret.sops.clc.yaml
+sops -e -i talsecret.sops.cla.yaml
+sops -e -i talsecret.sops.clb.yaml
+sops -e -i talsecret.sops.clc.yaml
+
+
+Create Age secret key.
+  mkdir -p $HOME/.config/sops/age/
+  age-keygen -o $HOME/.config/sops/age/keys.txt
+
+creation_rules:
+  - age: >-
+   <age-public-key> ## get this in the keys.txt file from previous step
+
+Encrypt Talos secrets with Age and Sops.
+  sops -e -i talsecret.sops.yaml
+
+Generate Talos configuration
+  talhelper genconfig -o clusterconfig/a -c talconfig-a.yaml -n -s talsecret.sops.cla.yaml
+  talhelper genconfig -o clusterconfig/b -c talconfig-b.yaml -n -s talsecret.sops.clb.yaml
+  talhelper genconfig -o clusterconfig/c -c talconfig-c.yaml -n -s talsecret.sops.clc.yaml
+
+Configuration for each Talos node will be generated in clusterconfig directory.
+
+talosctl -n 192.168.0.110 get disks --insecure
+talosctl -n 192.168.0.110 get cpu --insecure
+talosctl -n 192.168.0.113 get rd --insecure
+talosctl -n 192.168.0.110 get svc --insecure
+
+
 If this is your first control-plane node, you need to run:
 
-talosctl apply-config --nodes 192.168.0.110 --file clusterconfig/a/cla-cla-cp01.yaml --insecure  
+talosctl apply-config --nodes 192.168.0.110 --file clusterconfig/a/cla-cla-cp01.yaml --insecure
 talosctl apply-config --nodes 192.168.0.113 --file clusterconfig/a/cla-cla-wk01.yaml --insecure
 
-mkdir -p $HOME/.talos
-cp clusterconfig/talosconfig $HOME/.talos/cla
+#mkdir -p $HOME/.talos
+#cp clusterconfig/a/talosconfig $HOME/.talos/cla
+
+export TALOSCONFIG=/home/tdigenna/repo/iac-talos-os/talos/clusterconfig/a/talosconfig
+
+talosctl -n 192.168.0.110 service
+
 
 talosctl bootstrap \
-  --nodes 192.168.0.110 \
-  --config $HOME/.talos/cla
+  --nodes 192.168.0.110 -e 192.168.0.110
+  # --talosconfig $HOME/.talos/cla
 
 2. Verify
 
@@ -30,4 +75,44 @@ NODE            SERVICE                STATE     HEALTH   LAST CHANGE   LAST EVE
 192.168.0.110   trustd                 Running   OK       41m21s ago    Health check successful
 192.168.0.110   udevd                  Running   OK       41m24s ago    Health check successful
 
-talosctl dashboard -n 192.168.0.110                                                                                                                              main ● ?  11:00:36 
+talosctl -n 192.168.0.110,192.168.0.111,192.168.0.112 logs -f --tail=1 kubelet
+
+# big shell
+export TALOSCONFIG=/home/tdigenna/repo/iac-talos-os/talos/clusterconfig/a/talosconfig
+
+talosctl dashboard -n 192.168.0.110
+talosctl upgrade --nodes 192.168.0.110 --image factory.talos.dev/nocloud-installer-secureboot/a592b45d1c5c37b9d4c0f957a3ecadaeafc147903043e65d469f2684692795b2:v1.10.1
+talosctl upgrade --nodes 192.168.0.113 --image factory.talos.dev/nocloud-installer-secureboot/a592b45d1c5c37b9d4c0f957a3ecadaeafc147903043e65d469f2684692795b2:v1.10.1
+
+talosctl --nodes 192.168.0.110 upgrade-k8s --to 1.33.0 --dry-run 
+
+talosctl get extensions --nodes 192.168.0.113 
+
+NODE            NAMESPACE   TYPE              ID   VERSION   NAME               VERSION
+192.168.0.113   runtime     ExtensionStatus   0    1         qemu-guest-agent   9.2.3
+192.168.0.113   runtime     ExtensionStatus   1    1         schematic          ce4c980550dd2ab1b17bbf2b08801c7eb59418eafe8f279833297925d67c7515
+
+talosctl get extensions --nodes 192.168.0.110
+
+NODE            NAMESPACE   TYPE              ID   VERSION   NAME               VERSION
+192.168.0.110   runtime     ExtensionStatus   0    1         qemu-guest-agent   9.2.3
+192.168.0.110   runtime     ExtensionStatus   1    1         schematic          ce4c980550dd2ab1b17bbf2b08801c7eb59418eafe8f279833297925d67c7515
+
+mkdir -p $HOME/.kube
+talosctl -n 192.168.0.110 kubeconfig $HOME/.kube/config
+
+kubectl config get-contexts
+kubectx
+kubectl get nodes -o wide
+kubectl get pods -A
+
+# List all DaemonSets in kube-system and grep for known CNI names
+kubectl get daemonsets -n kube-system \
+  | grep -E 'flannel|calico|weave|cilium|canal|romana'
+
+./install-cilium-cni.sh -c 'admin@cla' -v 192.168.0.110 --enable-encryption --encryption-type wireguard  --remote-contexts  "admin@cla"
+#./install-cilium-cni.sh -c a -v 192.168.0.110 --enable-encryption --encryption-type wireguard --enable-clustermesh --clustermesh-secret 's3cr3tKey!' --remote-contexts  "admin@cla,admin@clb,admin@clc" --enable-loadbalancing --lb-mode cluster --enable-servicemesh
+
+kubectl get pods -A
+
+k9s -A 

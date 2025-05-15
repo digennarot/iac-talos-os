@@ -1,5 +1,7 @@
 Talos Packer Build
-This repository contains a Packer HCL2 template (talos.pkr.hcl) to build a Talos Linux VM-template on one or more Proxmox nodes, using the Talos Image Factory.
+This repository contains a Packer HCL2 template (talos.pkr.hcl) 
+to build a Talos Linux VM-template on one or more Proxmox nodes, 
+using the Talos Image Factory.
 
 Prerequisites
 Packer ≥ 1.8.0
@@ -12,17 +14,16 @@ An Arch (or other) ISO uploaded to your Proxmox datastore (e.g. local:iso/archli
 
 A Talos Image Factory schematic file, for example schematic.yaml:
 
-yaml
-Copia
-Modifica
+```yaml
+
 customization:
   systemExtensions:
     officialExtensions:
       - siderolabs/i915-ucode
       - siderolabs/intel-ucode
       - siderolabs/qemu-guest-agent
-Files
-talos.pkr.hcl
+```
+main.pkr.hcl
 The Packer template defining:
 
 Proxmox-ISO builder

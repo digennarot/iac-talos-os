@@ -16,10 +16,9 @@ additionalMachineCertSans:
   - 192.168.0.232
   - 127.0.0.1
 
-
-# Centralized patches for network, time and kubelet
+# Centralized patches for network, time, kubelet cert rotation, audit policy, CNI, and control-plane tuning
 patches:
-  # Machine-level patches: DNS, NTP and kubelet certificate rotation
+  # Machine-level patches
   - |-
     machine:
       network:
@@ -31,7 +30,16 @@ patches:
         servers:
           - time.cloudflare.com
           - time.google.com
-
+      kubelet:
+        extraArgs:
+          authorization-mode: AlwaysAllow
+          
+cluster:
+  discovery:
+    enabled: false
+    registries:
+      service:
+        disabled: true
 
 controlPlane:
   patches:
@@ -44,7 +52,7 @@ controlPlane:
           disabled: true
         network:
           cni:
-            name: none
+            name: flannel
         scheduler:
           extraArgs:
             bind-address: 0.0.0.0
@@ -55,8 +63,7 @@ nodes:
     ipAddress: 192.168.0.130
     installDisk: /dev/sda
     networkInterfaces:
-      - deviceSelector:
-          hardwareAddr: "02:00:0A:02:00:01"
+      - interface: eth0
         dhcp: false
         vip:
           ip: 192.168.0.232
@@ -66,8 +73,7 @@ nodes:
     ipAddress: 192.168.0.131
     installDisk: /dev/sda
     networkInterfaces:
-      - deviceSelector:
-          hardwareAddr: "02:00:0A:02:00:02"
+      - interface: eth0
         dhcp: false
         vip:
           ip: 192.168.0.232
@@ -77,8 +83,7 @@ nodes:
     ipAddress: 192.168.0.132
     installDisk: /dev/sda
     networkInterfaces:
-      - deviceSelector:
-          hardwareAddr: "02:00:0A:02:00:03"
+      - interface: eth0
         dhcp: false
         vip:
           ip: 192.168.0.232
@@ -88,8 +93,7 @@ nodes:
     ipAddress: 192.168.0.133
     installDisk: /dev/sda
     networkInterfaces:
-      - deviceSelector:
-          hardwareAddr: "02:00:0A:02:10:01"
+      - interface: eth0
         dhcp: false
 
   - hostname: clc-wk02
@@ -97,8 +101,7 @@ nodes:
     ipAddress: 192.168.0.134
     installDisk: /dev/sda
     networkInterfaces:
-      - deviceSelector:
-          hardwareAddr: "02:00:0A:02:10:02"
+      - interface: eth0
         dhcp: false
 
   - hostname: clc-wk03
@@ -106,7 +109,6 @@ nodes:
     ipAddress: 192.168.0.135
     installDisk: /dev/sda
     networkInterfaces:
-      - deviceSelector:
-          hardwareAddr: "02:00:0A:02:10:03"
+      - interface: eth0
         dhcp: false
 

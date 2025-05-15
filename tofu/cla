@@ -1,2 +1,4 @@
+docker start d76ed069f292
+tofu workspace select a
 tofu plan -out .tfplan 
 tofu apply ".tfplan"

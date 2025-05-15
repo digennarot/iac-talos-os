@@ -1,0 +1,76 @@
+
+source <(talosctl completion zsh)
+1. Bootstrap the first control-plane
+
+Generating Talos Configuration using Talhelper
+
+Generate Talos secrets.
+  talhelper gensecret
+  talhelper gensecret > talsecret.sops.yaml
+
+Create Age secret key.
+  mkdir -p $HOME/.config/sops/age/
+  age-keygen -o $HOME/.config/sops/age/keys.txt
+
+creation_rules:
+  - age: >-
+   <age-public-key> ## get this in the keys.txt file from previous step
+
+Encrypt Talos secrets with Age and Sops.
+  sops -e -i talsecret.sops.yaml
+
+Generate Talos configuration
+  talhelper genconfig -o clusterconfig/c/ -c talconfig-c.yaml -n
+
+Configuration for each Talos node will be generated in clusterconfig directory.
+
+talosctl -n 192.168.0.130 get disks --insecure
+talosctl -n 192.168.0.130 get cpu --insecure
+talosctl -n 192.168.0.131 get rd --insecure
+talosctl -n 192.168.0.130 get svc --insecure
+
+
+If this is your first control-plane node, you need to run:
+
+export TALOSCONFIG=/home/tdigenna/repo/iac-talos-os/talos/clusterconfig/c/talosconfig
+
+talosctl apply-config --nodes 192.168.0.130 --file clusterconfig/c/clc-clc-cp01.yaml --insecure
+talosctl apply-config --nodes 192.168.0.131 --file clusterconfig/c/clc-clc-cp02.yaml --insecure
+talosctl apply-config --nodes 192.168.0.132 --file clusterconfig/c/clc-clc-cp03.yaml --insecure
+talosctl apply-config --nodes 192.168.0.133 --file clusterconfig/c/clc-clc-wk01.yaml --insecure
+talosctl apply-config --nodes 192.168.0.134 --file clusterconfig/c/clc-clc-wk02.yaml --insecure
+talosctl apply-config --nodes 192.168.0.135 --file clusterconfig/c/clc-clc-wk03.yaml --insecure
+..
+
+#mkdir -p $HOME/.talos
+#cp clusterconfig/a/talosconfig $HOME/.talos/cla
+
+talosctl -n 192.168.0.130 service
+
+
+talosctl bootstrap \
+  --nodes 192.168.0.130
+  # --talosconfig $HOME/.talos/cla
+
+2. Verify
+
+talosctl -n 192.168.0.130 service
+
+talosctl dashboard -n 192.168.0.130
+
+mkdir -p $HOME/.kube
+talosctl -n 192.168.0.130 kubeconfig
+
+kubectx
+kubectl get nodes -o wide
+kubectl get pods -A
+
+# List all DaemonSets in kube-system and grep for known CNI names
+kubectl get daemonsets -n kube-system \
+  | grep -E 'flannel|calico|weave|cilium|canal|romana'
+
+./install-cilium-cni.sh -c clc -v 192.168.0.130 --enable-encryption
+
+kubectl get pods -A
+
+k9s -A 
