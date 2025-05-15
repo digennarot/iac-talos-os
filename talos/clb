@@ -53,18 +53,25 @@ talosctl bootstrap \
   --nodes 192.168.0.120
   # --talosconfig $HOME/.talos/cla
 
+talosctl -n 192.168.0.131 kubeconfig $HOME/.kube/config
+
+
 2. Verify
 
 talosctl -n 192.168.0.120 service
 
 talosctl -n 192.168.0.120,192.168.0.121,192.168.0.122 get links
 
+talosctl -n 192.168.0.120 -e 192.168.0.120 etcd status
+
+talosctl -n 192.168.0.120,192.168.0.121,192.168.0.122 -e 192.168.0.120 get members
+
 talosctl dashboard -n 192.168.0.120
 
 talosctl -n 192.168.0.120 edit mc
 
 mkdir -p $HOME/.kube
-talosctl -n 192.168.0.120 kubeconfig
+talosctl -n 192.168.0.120 kubeconfig --force-context-name clb
 
 kubectx
 kubectl get nodes -o wide
@@ -74,7 +81,25 @@ kubectl get pods -A
 kubectl get daemonsets -n kube-system \
   | grep -E 'flannel|calico|weave|cilium|canal|romana'
 
-./install-cilium-cni.sh -c 'admin@clb' -v 192.168.0.120 --enable-encryption --encryption-type wireguard  --remote-contexts  "admin@clb"
+#./install-cilium-cluster-mesh.sh --control-plane-vip 192.168.0.120 --cluster-id 1 --enable-encryption --encryption-type wireguard
+
+source <(cilium completion zsh)
+
+
+cilium install \
+  --helm-set ipam.mode=kubernetes \
+  --helm-set kubeProxyReplacement=true \
+  --helm-set securityContext.capabilities.ciliumAgent="{CHOWN,KILL,NET_ADMIN,NET_RAW,IPC_LOCK,SYS_ADMIN,SYS_RESOURCE,DAC_OVERRIDE,FOWNER,SETGID,SETUID}" \
+  --helm-set securityContext.capabilities.cleanCiliumState="{NET_ADMIN,SYS_ADMIN,SYS_RESOURCE}" \
+  --helm-set cgroup.autoMount.enabled=false \
+  --helm-set cgroup.hostRoot=/sys/fs/cgroup \
+  --helm-set hubble.enabled=true \
+  --helm-set hubble.relay.enabled=true \
+  --helm-set hubble.ui.enabled=true \
+  --helm-set hubble.ui.frontend.server.ipv6.enabled=false \
+  --helm-set encryption.enabled=true \
+  --helm-set encryption.type=wireguard \
+  --helm-set encryption.nodeEncryption=true
 
 kubectl get pods -A
 

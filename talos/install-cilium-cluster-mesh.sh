@@ -1,69 +1,129 @@
 #!/usr/bin/env bash
-# install-cilium.sh
-# 1. Remove Flannel
-# 2. Discover etcd pod hosts (for endpoints & cert fetch)
-# 3. Fetch or read etcd TLS certificates
-# 4. Create/update k8s Secret for etcd TLS
-# 5. Auto-detect cluster name & ID
-# 6. Install/upgrade Cilium with ClusterMesh + external etcd
-#    – includes IPAM, kube-proxy replacement, securityContext, cgroups
-#    – optional data-plane encryption via env vars
-# 7. Verify pods Ready & ClusterMesh active
+# install-cilium-clustermesh.sh
+# Installs/upgrades Cilium via Helm, optionally enables ClusterMesh.
+# Derives CTX_NAME automatically from CONTROL_PLANE_VIP.
 
 set -euo pipefail
 IFS=$'\n\t'
 
-# ————— Configuration —————
-CERT_DIR=${CERT_DIR:-/etc/cilium/etcd-certs}
+# ————— Defaults —————
+CERT_DIR=/etc/cilium/etcd-certs
+NAMESPACE=kube-system
+SECRET_NAME=cilium-etcd-secrets
+ENABLE_ENCRYPTION=false
+ENCRYPTION_TYPE=wireguard
+POD_TIMEOUT=120
+CM_SECRET="$(openssl rand -hex 16)"
+ENABLE_CLUSTERMESH=false
+CLUSTER_ID=""
+CONTROL_PLANE_VIP=""
+# —————————————————
+
+usage() {
+  cat <<EOF
+Usage: $0 --control-plane-vip <VIP> --cluster-id <ID> [options]
+
+Required:
+  --control-plane-vip   IP of your Talos control-plane
+  --cluster-id          Numeric cluster ID (0–255)
+
+Options:
+  --enable-clustermesh  Enable ClusterMesh after install
+  --cm-secret           Shared secret for ClusterMesh
+  --enable-encryption   Enable data-plane encryption
+  --encryption-type     Type of encryption (wireguard|ipsec)
+  --help                Show this help
+EOF
+  exit 1
+}
+
+# Parse args
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    --control-plane-vip) CONTROL_PLANE_VIP=$2; shift 2;;
+    --cluster-id)        CLUSTER_ID=$2;        shift 2;;
+    --enable-clustermesh)ENABLE_CLUSTERMESH=true; shift;;
+    --cm-secret)         CM_SECRET=$2;         shift 2;;
+    --enable-encryption) ENABLE_ENCRYPTION=true; shift;;
+    --encryption-type)   ENCRYPTION_TYPE=$2;   shift 2;;
+    -h|--help)           usage;;
+    *)                   echo "Unknown arg: $1"; usage;;
+  esac
+done
+
+# Validate
+[[ -z "$CONTROL_PLANE_VIP" ]] && echo "ERROR: --control-plane-vip required" && usage
+[[ -z "$CLUSTER_ID" ]]        && echo "ERROR: --cluster-id required" && usage
+(( CLUSTER_ID>=0 && CLUSTER_ID<=255 )) || { echo "ERROR: cluster-id must be 0–255"; exit 1; }
+
+info(){ echo "INFO: $*"; }
+error(){ echo "ERROR: $*" >&2; exit 1; }
+
+# Prereqs
+for cmd in kubectl helm cilium talosctl openssl base64; do
+  command -v "$cmd" &>/dev/null || error "Missing '$cmd'"
+done
+
+# Derive context name from VIP (e.g. 192.168.0.120 → talos-192-168-0-120)
+CTX_NAME="talos-${CONTROL_PLANE_VIP//./-}"
+info "Using kubeconfig context: ${CTX_NAME}"
+
+# 1) Fetch kubeconfig
+info "Fetching kubeconfig from Talos ${CONTROL_PLANE_VIP}..."
+talosctl kubeconfig \
+  --force-context-name "${CTX_NAME}" \
+  --nodes "${CONTROL_PLANE_VIP}" \
+  --force \
+  "${HOME}/.kube/talos-${CTX_NAME}.config"
+export KUBECONFIG="${HOME}/.kube/talos-${CTX_NAME}.config"
+
+# 2) Remove Flannel
+info "Removing Flannel..."
+kubectl delete ds kube-flannel -n "${NAMESPACE}" --ignore-not-found
+
+# 3) (Optional) etcd TLS secret logic if using external etcd
+#    [Insert fetch logic here, if needed]
+
+# 4) Detect cluster name & ID
+CLUSTER_NAME="${CTX_NAME}"
+info "Cluster name/id: ${CLUSTER_NAME}/${CLUSTER_ID}"
+
+# 5) Build Helm args
+HELM_ARGS=(
+  --namespace "${NAMESPACE}"
+  --set clustermesh.enabled="${ENABLE_CLUSTERMESH}"
+  --set cluster.id="${CLUSTER_ID}"
+  --set cluster.name="${CLUSTER_NAME}"
+  --set k8sServiceHost="${CONTROL_PLANE_VIP}"
+  --set k8sServicePort="6443"
+  --set ipam.mode=kubernetes
+  --set kubeProxyReplacement=true
+  --set securityContext.capabilities.ciliumAgent="{CHOWN,KILL,NET_ADMIN,NET_RAW,IPC_LOCK,SYS_ADMIN,SYS_RESOURCE,DAC_OVERRIDE,FOWNER,SETGID,SETUID}"
+  --set securityContext.capabilities.cleanCiliumState="{NET_ADMIN,SYS_ADMIN,SYS_RESOURCE}"
+  --set cgroup.autoMount.enabled=false
+  --set cgroup.hostRoot=/sys/fs/cgroup
+)
+if [[ "${ENABLE_ENCRYPTION}" == "true" ]]; then
+  info "Enabling encryption (${ENCRYPTION_TYPE})"
+  HELM_ARGS+=(--set encryption.enabled=true --set encryption.type="${ENCRYPTION_TYPE}")
+fi
+
+# 6) Install/upgrade Cilium
+info "Updating Cilium Helm repo..."
+helm repo add cilium https://helm.cilium.io/ &>/dev/null || true
+helm repo update &>/dev/null
+
+info "Installing/upgrading Cilium..."
+helm upgrade --install cilium cilium/cilium "${HELM_ARGS[@]}"
+
+# 7) Create/update TLS Secret (if needed)
 CA_FILE="${CERT_DIR}/ca.crt"
 CLIENT_CERT="${CERT_DIR}/client.crt"
 CLIENT_KEY="${CERT_DIR}/client.key"
-NAMESPACE="kube-system"
-SECRET_NAME="cilium-etcd-secrets"
-
-# Optional encryption settings (export these or rely on defaults)
-ENABLE_ENCRYPTION=${ENABLE_ENCRYPTION:-true}
-ENCRYPTION_TYPE=${ENCRYPTION_TYPE:-wireguard}
-# ——————————————————————
-
-cleanup() {
-  [[ -n "${TMP_CERT_DIR-}" ]] && rm -rf "${TMP_CERT_DIR}"
-}
-trap cleanup EXIT
-
-# 1) Remove Flannel DaemonSet if present
-echo "Removing Flannel DaemonSet (if any)…"
-kubectl delete ds kube-flannel -n "${NAMESPACE}" --ignore-not-found
-
-# 2) Discover etcd pod host IPs
-echo "Discovering etcd pod hosts…"
-ETCD_HOSTS=( $(kubectl get pods -n "${NAMESPACE}" -l component=etcd \
-  -o jsonpath='{.items[*].status.hostIP}') )
-if [[ ${#ETCD_HOSTS[@]} -eq 0 ]]; then
-  echo "ERROR: No etcd pods found in namespace ${NAMESPACE}" >&2
-  exit 1
-fi
-echo "Found etcd hosts: ${ETCD_HOSTS[*]}"
-
-# 3) Ensure TLS certs: local or fetch from first etcd host
 if [[ -r "$CA_FILE" && -r "$CLIENT_CERT" && -r "$CLIENT_KEY" ]]; then
-  echo "Using local TLS certs from ${CERT_DIR}"
-else
-  echo "Local certs not found; fetching from etcd host ${ETCD_HOSTS[0]}…"
-  TMP_CERT_DIR=$(mktemp -d)
-  for f in ca.crt client.crt client.key; do
-    echo "  pulling /persist/secrets/etcd/${f}"
-    talosctl -n "${ETCD_HOSTS[0]}" fs read "/persist/secrets/etcd/${f}" > "${TMP_CERT_DIR}/${f}"
-  done
-  CA_FILE="${TMP_CERT_DIR}/ca.crt"
-  CLIENT_CERT="${TMP_CERT_DIR}/client.crt"
-  CLIENT_KEY="${TMP_CERT_DIR}/client.key"
-fi
-
-# 4) Create or update the Kubernetes Secret for etcd TLS
-if ! kubectl -n "${NAMESPACE}" get secret "${SECRET_NAME}" &>/dev/null; then
-  echo "Creating Secret '${SECRET_NAME}' in namespace '${NAMESPACE}'…"
-  kubectl apply -f - <<EOF
+  info "Creating etcd TLS Secret..."
+  if ! kubectl -n "${NAMESPACE}" get secret "${SECRET_NAME}" &>/dev/null; then
+    kubectl apply -f - <<EOF
 apiVersion: v1
 kind: Secret
 metadata:
@@ -75,81 +135,34 @@ data:
   cert.crt: $(base64 -w0 "${CLIENT_CERT}")
   key.key:  $(base64 -w0 "${CLIENT_KEY}")
 EOF
-else
-  echo "Secret '${SECRET_NAME}' already exists; skipping."
+  else
+    info "Secret '${SECRET_NAME}' exists; skipping."
+  fi
 fi
 
-# 5) Auto-detect cluster name & ID
-CLUSTER_NAME=$(kubectl config current-context)
-if [[ -z "$CLUSTER_NAME" ]]; then
-  echo "ERROR: Could not detect current kubeconfig context." >&2
-  exit 1
-fi
-CLUSTER_ID=$(echo -n "${CLUSTER_NAME}" | cksum | awk '{print $1}')
-echo "Detected CLUSTER_NAME='${CLUSTER_NAME}', CLUSTER_ID='${CLUSTER_ID}'"
+# 8) Optionally enable ClusterMesh
+if [[ "${ENABLE_CLUSTERMESH}" == "true" ]]; then
+  info "Creating ClusterMesh secret..."
+  kubectl -n "${NAMESPACE}" create secret generic clustermesh-secrets \
+    --from-literal=secret="${CM_SECRET}" \
+    --dry-run=client -o yaml | kubectl apply -f -
 
-# 6) Prepare etcd endpoint flags
-ETCD_FLAGS=()
-for idx in "${!ETCD_HOSTS[@]}"; do
-  ETCD_FLAGS+=(--set global.etcd.endpoints["${idx}"]="https://${ETCD_HOSTS[$idx]}:2379")
-done
-
-# 7) Add/update Cilium Helm repo
-echo "Updating Cilium Helm repo…"
-helm repo add cilium https://helm.cilium.io/ 2>/dev/null || true
-helm repo update
-
-# 8) Construct base Helm args
-HELM_ARGS=(
-  --namespace "${NAMESPACE}"
-  --set clustermesh.enabled=true
-  --set cluster.id="${CLUSTER_ID}"
-  --set cluster.name="${CLUSTER_NAME}"
-  --set global.etcd.enabled=true
-  "${ETCD_FLAGS[@]}"
-  --set global.etcd.secrets.secretName="${SECRET_NAME}"
-
-  # Core Cilium settings
-  --set ipam.mode=kubernetes
-  --set kubeProxyReplacement=true
-  --set securityContext.capabilities.ciliumAgent="{CHOWN,KILL,NET_ADMIN,NET_RAW,IPC_LOCK,SYS_ADMIN,SYS_RESOURCE,DAC_OVERRIDE,FOWNER,SETGID,SETUID}"
-  --set securityContext.capabilities.cleanCiliumState="{NET_ADMIN,SYS_ADMIN,SYS_RESOURCE}"
-  --set cgroup.autoMount.enabled=false
-  --set cgroup.hostRoot=/sys/fs/cgroup
-)
-
-# 9) Optionally enable data-plane encryption
-if [[ "${ENABLE_ENCRYPTION}" == "true" ]]; then
-  echo "Enabling data-plane encryption (type=${ENCRYPTION_TYPE})"
-  HELM_ARGS+=(--set encryption.enabled=true --set encryption.type="${ENCRYPTION_TYPE}")
+  info "Enabling ClusterMesh..."
+  cilium clustermesh enable --service-type=LoadBalancer
 fi
 
-# 10) Install or upgrade Cilium
-echo "Installing/upgrading Cilium with ClusterMesh + external etcd…"
-helm upgrade --install cilium cilium/cilium "${HELM_ARGS[@]}"
+# 9) Wait for pods Ready
+info "Waiting up to ${POD_TIMEOUT}s for Cilium pods..."
+kubectl -n "${NAMESPACE}" wait --for=condition=Ready pod -l k8s-app=cilium \
+  --timeout="${POD_TIMEOUT}s" || {
+    kubectl -n "${NAMESPACE}" get pods -l k8s-app=cilium
+    error "Cilium pods did not become Ready"
+  }
 
-# 11) Wait for all Cilium pods to be Ready
-echo
-echo "Waiting up to 120s for Cilium pods to be Ready…"
-if kubectl -n "${NAMESPACE}" wait --for=condition=Ready pod -l k8s-app=cilium --timeout=120s; then
-  echo "✅ All Cilium pods are Ready."
-else
-  echo "❌ Timeout waiting for pods; current status:"
-  kubectl -n "${NAMESPACE}" get pods -l k8s-app=cilium
-  exit 1
+# 10) Final status
+info "Cilium status:"; cilium status
+if [[ "${ENABLE_CLUSTERMESH}" == "true" ]]; then
+  info "ClusterMesh status:"; cilium clustermesh status
 fi
 
-# 12) Verify ClusterMesh in cilium status
-echo
-echo "Checking 'cilium status' for ClusterMesh…"
-CM_LINE=$(cilium status | grep -E 'ClusterMesh')
-if [[ -n "$CM_LINE" ]]; then
-  echo "✅ ClusterMesh is active: $CM_LINE"
-else
-  echo "❌ ClusterMesh not detected."
-  cilium status
-  exit 1
-fi
-
-echo
-echo "🎉 Cilium + ClusterMesh installation & verification complete!"
+echo "🎉 Done."

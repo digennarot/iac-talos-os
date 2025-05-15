@@ -37,7 +37,14 @@ Finally, generate some cross-node pod traffic (e.g. kubectl exec from a pod on n
 kubectl -n kube-system exec -it ds/cilium -- bash -c "\
   apt-get update && apt-get install -y tcpdump && \
   tcpdump -n -i cilium_wg0"
+kubectl -n kube-system exec -it ds/cilium -- bash -c "\
+  apt-get update && apt-get install -y tcpdump && \
+  tcpdump -nni any udp port 51871 -vv"
+  
 You should see raw IP packets (encrypted payloads) flowing over cilium_wg0. 
 
 If all of the above line up—WireGuard shows “Encryption: Wireguard”, you have a cilium_wg0 interface, 
 peers are listed in the debug info, and you see traffic on that interface—then your Cilium WireGuard encryption is working correctly.
+
+kubectl -n kube-system exec -it ds/cilium -- cilium-dbg encrypt status
+kubectl -n kube-system exec -it ds/cilium --  wg show cilium_wg0

@@ -1,0 +1,9 @@
+cilium config set cluster-id 1
+cilium config set cluster-name cla 
+
+
+cilium config set cluster-id 2
+cilium config set cluster-name clb
+
+cilium config set cluster-id 3
+cilium config set cluster-name clc

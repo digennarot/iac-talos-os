@@ -2,7 +2,7 @@ talosVersion: v1.10.0
 kubernetesVersion: v1.33.0
 
 clusterName: clc
-endpoint: https://192.168.0.130:6443
+endpoint: https://192.168.0.232:6443
 
 clusterPodNets:
   - 10.18.0.0/16

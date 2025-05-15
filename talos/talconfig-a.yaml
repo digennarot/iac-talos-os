@@ -26,12 +26,6 @@ patches:
         nameservers:
           - 1.1.1.1
           - 1.0.0.1
-      interfaces:
-        - deviceSelector:
-            physical: true # should select any hardware network device, if you have just one, it will be selected
-          dhcp: true
-          vip:
-            ip: 192.168.0.230
       time:
         disabled: false
         servers:
@@ -72,9 +66,6 @@ nodes:
     networkInterfaces:
       - interface: eth0
         dhcp: false
-      # - deviceSelector:
-      #     hardwareAddr: "02:00:0A:00:00:01"
-        # dhcp: false
 
   - hostname: cla-wk01
     controlPlane: false
@@ -83,6 +74,3 @@ nodes:
     networkInterfaces:
       - interface: eth0
         dhcp: false
-      # - deviceSelector:
-      #     hardwareAddr: "02:00:0A:00:10:01"
-        # dhcp: false
