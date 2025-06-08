@@ -29,20 +29,11 @@
         pve_cluster_clustername: pve-cluster
 
         pve_storages:
-          # storage ZFS locale rimane per i dataset di root
-          - name: zfs-local
-            type: zfspool
-            pool: rpool/data
-            content:
-              - images
-              - rootdir
-            sparse: true
-
           # NFS condiviso
           - name: nfs-shared
             type: nfs
-            server: 192.168.0.240
-            export: /export/proxmox
+            server: 192.168.1.240
+            export: /Volume1/proxmox
             options: vers=4
             content:
               - images

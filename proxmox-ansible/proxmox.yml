@@ -38,10 +38,6 @@
       ansible.builtin.include_role:
         name: 08_prepare_system
 
-    - name: Configure-zfs
-      ansible.builtin.include_role:
-        name: 10_configure_zfs
-
     - name: Configure-proxmox
       ansible.builtin.include_role:
         name: 11_configure_proxmox

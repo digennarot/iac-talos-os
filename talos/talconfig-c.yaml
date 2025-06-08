@@ -2,7 +2,7 @@ talosVersion: v1.10.0
 kubernetesVersion: v1.33.0
 
 clusterName: clc
-endpoint: https://192.168.0.232:6443
+endpoint: https://192.168.0.232:6443   # Talos endpoint (direct individual node IPs will be used)
 
 clusterPodNets:
   - 10.18.0.0/16
@@ -10,15 +10,20 @@ clusterSvcNets:
   - 10.19.0.0/16
 
 additionalApiServerCertSans:
-  - 192.168.0.232
-  - 127.0.0.1
-additionalMachineCertSans:
-  - 192.168.0.232
+  - 192.168.0.232  # VIP
+  - 192.168.0.130
+  - 192.168.0.131
+  - 192.168.0.132
   - 127.0.0.1
 
-# Centralized patches for network, time, kubelet cert rotation, audit policy, CNI, and control-plane tuning
+additionalMachineCertSans:
+  - 192.168.0.232  # VIP
+  - 192.168.0.130
+  - 192.168.0.131
+  - 192.168.0.132
+  - 127.0.0.1
+
 patches:
-  # Machine-level patches
   - |-
     machine:
       network:
@@ -33,7 +38,7 @@ patches:
       kubelet:
         extraArgs:
           authorization-mode: AlwaysAllow
-          
+
 cluster:
   discovery:
     enabled: false
@@ -65,8 +70,6 @@ nodes:
     networkInterfaces:
       - interface: eth0
         dhcp: false
-        vip:
-          ip: 192.168.0.232
 
   - hostname: clc-cp02
     controlPlane: true
@@ -75,8 +78,6 @@ nodes:
     networkInterfaces:
       - interface: eth0
         dhcp: false
-        vip:
-          ip: 192.168.0.232
 
   - hostname: clc-cp03
     controlPlane: true
@@ -85,8 +86,6 @@ nodes:
     networkInterfaces:
       - interface: eth0
         dhcp: false
-        vip:
-          ip: 192.168.0.232
 
   - hostname: clc-wk01
     controlPlane: false
@@ -103,12 +102,3 @@ nodes:
     networkInterfaces:
       - interface: eth0
         dhcp: false
-
-  - hostname: clc-wk03
-    controlPlane: false
-    ipAddress: 192.168.0.135
-    installDisk: /dev/sda
-    networkInterfaces:
-      - interface: eth0
-        dhcp: false
-

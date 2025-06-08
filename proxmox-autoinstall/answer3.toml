@@ -1,15 +1,15 @@
 [global]
 keyboard      = "it"
 country       = "it"
-fqdn          = "pve2.tss.com"
+fqdn          = "pve3.tss.com"
 mailto        = "admin@no.invalid"
 timezone      = "Europe/Rome"
-root-password = "CambiarePassword"
+root-password = "12345678"
 
 [network]
 source             = "from-answer"
-cidr               = "192.168.0.202/24"
-gateway            = "192.168.0.1"
+cidr               = "192.168.1.203/24"
+gateway            = "192.168.1.254"
 dns                = "8.8.8.8"
 filter.ID_NET_NAME = "enp3s0"
 
@@ -17,4 +17,3 @@ filter.ID_NET_NAME = "enp3s0"
 filesystem     = "zfs"
 zfs.raid       = "raid0"
 filter.DEVTYPE = "disk"
-

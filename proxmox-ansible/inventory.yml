@@ -3,8 +3,6 @@ all:
     proxmox_cluster:
       hosts:
         pve1:
-          ansible_host: 192.168.0.200
+          ansible_host: 192.168.1.201
         pve2:
-          ansible_host: 192.168.0.201
-        pve3:
-          ansible_host: 192.168.0.202
+          ansible_host: 192.168.1.202

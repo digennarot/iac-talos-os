@@ -28,9 +28,9 @@ sops -e -i talsecret.sops.clb.yaml
 sops -e -i talsecret.sops.clc.yaml
 
 Generate Talos configuration
-  talhelper genconfig -o clusterconfig/a -c talconfig-a.yaml -n -s talsecret.sops.cla.yaml
-  talhelper genconfig -o clusterconfig/b -c talconfig-b.yaml -n -s talsecret.sops.clb.yaml
-  talhelper genconfig -o clusterconfig/c -c talconfig-c.yaml -n -s talsecret.sops.clc.yaml
+  talhelper genconfig -o clusterconfig/a -c talconfig-a.yaml -s talsecret.sops.cla.yaml -n
+  talhelper genconfig -o clusterconfig/b -c talconfig-b.yaml -s talsecret.sops.clb.yaml -n 
+  talhelper genconfig -o clusterconfig/c -c talconfig-c.yaml -s talsecret.sops.clc.yaml -n 
 
 Configuration for each Talos node will be generated in clusterconfig directory.
 
@@ -175,3 +175,4 @@ kubectl get pods -A
 k9s -A 
 
 cilium hubble ui 
+

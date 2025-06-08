@@ -48,6 +48,8 @@ talosctl apply-config --nodes 192.168.0.125 --file clusterconfig/b/clb-clb-wk03.
 #mkdir -p $HOME/.talos
 #cp clusterconfig/a/talosconfig $HOME/.talos/cla
 
+talosctl dashboard -n 192.168.0.120
+
 
 talosctl bootstrap \
   --nodes 192.168.0.120

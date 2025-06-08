@@ -58,7 +58,7 @@ variable "talos_version" {
 variable "base_iso_file" {
   description = "ISO placeholder da montare (es: ArchLinux ISO)"
   type        = string
-  default     = "local:iso/archlinux-2025.04.01-x86_64.iso"
+  default     = "local:iso/archlinux-2025.06.01-x86_64.iso"
 }
 
 variable "storage_pool" {

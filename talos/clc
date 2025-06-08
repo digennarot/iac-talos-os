@@ -65,11 +65,36 @@ kubectx
 kubectl get nodes -o wide
 kubectl get pods -A
 
+helm repo update
+helm install metallb metallb/metallb -n metallb-system --create-namespace \
+  --set installCRDs=true -f metallb-values.yaml
+
+kubectl label namespace metallb-system \
+  pod-security.kubernetes.io/enforce=privileged \
+  pod-security.kubernetes.io/audit=privileged \
+  pod-security.kubernetes.io/warn=privileged
+
 # List all DaemonSets in kube-system and grep for known CNI names
 kubectl get daemonsets -n kube-system \
   | grep -E 'flannel|calico|weave|cilium|canal|romana'
 
-./install-cilium-cni.sh -c clc -v 192.168.0.130 --enable-encryption
+source <(cilium completion zsh)
+
+cilium install \
+  --helm-set ipam.mode=kubernetes \
+  --helm-set kubeProxyReplacement=true \
+  --helm-set securityContext.capabilities.ciliumAgent="{CHOWN,KILL,NET_ADMIN,NET_RAW,IPC_LOCK,SYS_ADMIN,SYS_RESOURCE,DAC_OVERRIDE,FOWNER,SETGID,SETUID}" \
+  --helm-set securityContext.capabilities.cleanCiliumState="{NET_ADMIN,SYS_ADMIN,SYS_RESOURCE}" \
+  --helm-set cgroup.autoMount.enabled=false \
+  --helm-set cgroup.hostRoot=/sys/fs/cgroup \
+  --helm-set hubble.enabled=true \
+  --helm-set hubble.relay.enabled=true \
+  --helm-set hubble.ui.enabled=true \
+  --helm-set hubble.ui.frontend.server.ipv6.enabled=false \
+  --helm-set encryption.enabled=true \
+  --helm-set encryption.type=wireguard \
+  --helm-set encryption.nodeEncryption=true
+
 
 kubectl get pods -A
 

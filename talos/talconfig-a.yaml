@@ -2,7 +2,7 @@ talosVersion: v1.10.0
 kubernetesVersion: v1.33.0
 
 clusterName: cla
-endpoint: https://192.168.0.110:6443
+endpoint: https://192.168.1.230:6443
 
 clusterPodNets:
   - 10.14.0.0/16
@@ -10,11 +10,17 @@ clusterSvcNets:
   - 10.15.0.0/16
 
 additionalApiServerCertSans:
+  - 192.168.0.230  # VIP
   - 192.168.0.110
+  - 192.168.0.111
+  - 192.168.0.112
   - 127.0.0.1
 
 additionalMachineCertSans:
+  - 192.168.0.230  # VIP
   - 192.168.0.110
+  - 192.168.0.111
+  - 192.168.0.112
   - 127.0.0.1
 
 # Centralized patches for network, time, kubelet cert rotation, audit policy, CNI, and control-plane tuning
@@ -61,7 +67,23 @@ controlPlane:
 nodes:
   - hostname: cla-cp01
     controlPlane: true
-    ipAddress: 192.168.0.110
+    ipAddress: 192.168.1.110
+    installDisk: /dev/sda
+    networkInterfaces:
+      - interface: eth0
+        dhcp: false
+
+  - hostname: cla-cp02
+    controlPlane: true
+    ipAddress: 192.168.1.111
+    installDisk: /dev/sda
+    networkInterfaces:
+      - interface: eth0
+        dhcp: false
+
+  - hostname: cla-cp03
+    controlPlane: true
+    ipAddress: 192.168.1.112
     installDisk: /dev/sda
     networkInterfaces:
       - interface: eth0
@@ -69,7 +91,15 @@ nodes:
 
   - hostname: cla-wk01
     controlPlane: false
-    ipAddress: 192.168.0.113
+    ipAddress: 192.168.1.113
+    installDisk: /dev/sda
+    networkInterfaces:
+      - interface: eth0
+        dhcp: false
+
+  - hostname: cla-wk02
+    controlPlane: false
+    ipAddress: 192.168.1.114
     installDisk: /dev/sda
     networkInterfaces:
       - interface: eth0

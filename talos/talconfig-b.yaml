@@ -10,15 +10,20 @@ clusterSvcNets:
   - 10.17.0.0/16
 
 additionalApiServerCertSans:
-  - 192.168.0.231
-  - 127.0.0.1
-additionalMachineCertSans:
-  - 192.168.0.231
+  - 192.168.0.231  # VIP
+  - 192.168.0.120
+  - 192.168.0.121
+  - 192.168.0.122
   - 127.0.0.1
 
-# Centralized patches for network, time, kubelet cert rotation, audit policy, CNI, and control-plane tuning
+additionalMachineCertSans:
+  - 192.168.0.231  # VIP
+  - 192.168.0.120
+  - 192.168.0.121
+  - 192.168.0.122
+  - 127.0.0.1
+
 patches:
-  # Machine-level patches
   - |-
     machine:
       network:
@@ -65,8 +70,6 @@ nodes:
     networkInterfaces:
       - interface: eth0
         dhcp: false
-        vip:
-          ip: 192.168.0.231
 
   - hostname: clb-cp02
     controlPlane: true
@@ -75,8 +78,6 @@ nodes:
     networkInterfaces:
       - interface: eth0
         dhcp: false
-        vip:
-          ip: 192.168.0.231
 
   - hostname: clb-cp03
     controlPlane: true
@@ -85,8 +86,6 @@ nodes:
     networkInterfaces:
       - interface: eth0
         dhcp: false
-        vip:
-          ip: 192.168.0.231
 
   - hostname: clb-wk01
     controlPlane: false
@@ -99,14 +98,6 @@ nodes:
   - hostname: clb-wk02
     controlPlane: false
     ipAddress: 192.168.0.124
-    installDisk: /dev/sda
-    networkInterfaces:
-      - interface: eth0
-        dhcp: false
-
-  - hostname: clb-wk03
-    controlPlane: false
-    ipAddress: 192.168.0.125
     installDisk: /dev/sda
     networkInterfaces:
       - interface: eth0
