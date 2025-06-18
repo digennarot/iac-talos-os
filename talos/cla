@@ -11,8 +11,6 @@ talhelper gensecret > talsecret.sops.cla.yaml
 talhelper gensecret > talsecret.sops.clb.yaml
 talhelper gensecret > talsecret.sops.clc.yaml
 
-
-
 Create Age secret key.
   mkdir -p $HOME/.config/sops/age/
   age-keygen -o $HOME/.config/sops/age/keys.txt
@@ -34,77 +32,78 @@ Generate Talos configuration
 
 Configuration for each Talos node will be generated in clusterconfig directory.
 
-talosctl -n 192.168.0.110 get disks --insecure
-talosctl -n 192.168.0.110 get cpu --insecure
-talosctl -n 192.168.0.113 get rd --insecure
-talosctl -n 192.168.0.110 get svc --insecure
+talosctl -n 192.168.1.110 get disks --insecure
+talosctl -n 192.168.1.110 get cpu --insecure
+talosctl -n 192.168.1.113 get rd --insecure
+talosctl -n 192.168.1.110 get svc --insecure
 
 
 If this is your first control-plane node, you need to run:
 
-talosctl apply-config --nodes 192.168.0.110 --file clusterconfig/a/cla-cla-cp01.yaml --insecure
-talosctl apply-config --nodes 192.168.0.113 --file clusterconfig/a/cla-cla-wk01.yaml --insecure
+
+talosctl apply-config --nodes 192.168.1.110 --file clusterconfig/a/cla-cla-cp01.yaml --insecure
+talosctl apply-config --nodes 192.168.1.111 --file clusterconfig/a/cla-cla-cp02.yaml --insecure
+talosctl apply-config --nodes 192.168.1.112 --file clusterconfig/a/cla-cla-cp03.yaml --insecure
+talosctl apply-config --nodes 192.168.1.113 --file clusterconfig/a/cla-cla-wk01.yaml --insecure
+talosctl apply-config --nodes 192.168.1.114 --file clusterconfig/a/cla-cla-wk02.yaml --insecure
+#talosctl apply-config --nodes 192.168.1.115 --file clusterconfig/a/cla-cla-wk03.yaml --insecure
 
 #mkdir -p $HOME/.talos
 #cp clusterconfig/a/talosconfig $HOME/.talos/cla
 
 export TALOSCONFIG=/home/tdigenna/repo/iac-talos-os/talos/clusterconfig/a/talosconfig
-
-talosctl -n 192.168.0.110 service
-
-
 talosctl bootstrap \
-  --nodes 192.168.0.110
+  --nodes 192.168.1.110
   # --talosconfig $HOME/.talos/cla
 
 2. Verify
 
-talosctl -n 192.168.0.110 service
+talosctl -n 192.168.1.110 service
 You should see:
 
 NODE            SERVICE                STATE     HEALTH   LAST CHANGE   LAST EVENT
-192.168.0.110   apid                   Running   OK       41m22s ago    Health check successful
-192.168.0.110   auditd                 Running   OK       41m33s ago    Health check successful
-192.168.0.110   containerd             Running   OK       41m33s ago    Health check successful
-192.168.0.110   cri                    Running   OK       41m21s ago    Health check successful
-192.168.0.110   dashboard              Running   ?        41m23s ago    Process Process(["/sbin/dashboard"]) started with PID 2003
-192.168.0.110   etcd                   Running   OK       41m16s ago    Health check successful
-192.168.0.110   ext-qemu-guest-agent   Waiting   ?        41m32s ago    Waiting for file "/dev/virtio-ports/org.qemu.guest_agent.0" to exist
-192.168.0.110   kubelet                Running   OK       41m14s ago    Health check successful
-192.168.0.110   machined               Running   OK       41m33s ago    Health check successful
-192.168.0.110   syslogd                Running   OK       41m32s ago    Health check successful
-192.168.0.110   trustd                 Running   OK       41m21s ago    Health check successful
-192.168.0.110   udevd                  Running   OK       41m24s ago    Health check successful
+192.168.1.110   apid                   Running   OK       41m22s ago    Health check successful
+192.168.1.110   auditd                 Running   OK       41m33s ago    Health check successful
+192.168.1.110   containerd             Running   OK       41m33s ago    Health check successful
+192.168.1.110   cri                    Running   OK       41m21s ago    Health check successful
+192.168.1.110   dashboard              Running   ?        41m23s ago    Process Process(["/sbin/dashboard"]) started with PID 2003
+192.168.1.110   etcd                   Running   OK       41m16s ago    Health check successful
+192.168.1.110   ext-qemu-guest-agent   Waiting   ?        41m32s ago    Waiting for file "/dev/virtio-ports/org.qemu.guest_agent.0" to exist
+192.168.1.110   kubelet                Running   OK       41m14s ago    Health check successful
+192.168.1.110   machined               Running   OK       41m33s ago    Health check successful
+192.168.1.110   syslogd                Running   OK       41m32s ago    Health check successful
+192.168.1.110   trustd                 Running   OK       41m21s ago    Health check successful
+192.168.1.110   udevd                  Running   OK       41m24s ago    Health check successful
 
-talosctl -n 192.168.0.110 logs -f --tail=1 kubelet
-talosctl -n 192.168.0.110 -e 192.168.0.110 etcd status
+talosctl -n 192.168.1.110 logs -f --tail=1 kubelet
+talosctl -n 192.168.1.110 -e 192.168.1.110 etcd status
 
 # big shell
 export TALOSCONFIG=/home/tdigenna/repo/iac-talos-os/talos/clusterconfig/a/talosconfig
 
-talosctl dashboard -n 192.168.0.110
-talosctl upgrade --nodes 192.168.0.110 --image factory.talos.dev/nocloud-installer-secureboot/a592b45d1c5c37b9d4c0f957a3ecadaeafc147903043e65d469f2684692795b2:v1.10.1
-talosctl upgrade --nodes 192.168.0.113 --image factory.talos.dev/nocloud-installer-secureboot/a592b45d1c5c37b9d4c0f957a3ecadaeafc147903043e65d469f2684692795b2:v1.10.1
+talosctl dashboard -n 192.168.1.110
+talosctl upgrade --nodes 192.168.1.110 --image factory.talos.dev/nocloud-installer-secureboot/a592b45d1c5c37b9d4c0f957a3ecadaeafc147903043e65d469f2684692795b2:v1.10.1
+talosctl upgrade --nodes 192.168.1.113 --image factory.talos.dev/nocloud-installer-secureboot/a592b45d1c5c37b9d4c0f957a3ecadaeafc147903043e65d469f2684692795b2:v1.10.1
 
-talosctl --nodes 192.168.0.110 upgrade-k8s --to 1.33.0 --dry-run 
+talosctl --nodes 192.168.1.110 upgrade-k8s --to 1.33.0 --dry-run 
 
-talosctl get extensions --nodes 192.168.0.113 
-
-NODE            NAMESPACE   TYPE              ID   VERSION   NAME               VERSION
-192.168.0.113   runtime     ExtensionStatus   0    1         qemu-guest-agent   9.2.3
-192.168.0.113   runtime     ExtensionStatus   1    1         schematic          ce4c980550dd2ab1b17bbf2b08801c7eb59418eafe8f279833297925d67c7515
-
-talosctl get extensions --nodes 192.168.0.110
+talosctl get extensions --nodes 192.168.1.113 
 
 NODE            NAMESPACE   TYPE              ID   VERSION   NAME               VERSION
-192.168.0.110   runtime     ExtensionStatus   0    1         qemu-guest-agent   9.2.3
-192.168.0.110   runtime     ExtensionStatus   1    1         schematic          ce4c980550dd2ab1b17bbf2b08801c7eb59418eafe8f279833297925d67c7515
+192.168.1.113   runtime     ExtensionStatus   0    1         qemu-guest-agent   9.2.3
+192.168.1.113   runtime     ExtensionStatus   1    1         schematic          ce4c980550dd2ab1b17bbf2b08801c7eb59418eafe8f279833297925d67c7515
+
+talosctl get extensions --nodes 192.168.1.110
+
+NODE            NAMESPACE   TYPE              ID   VERSION   NAME               VERSION
+192.168.1.110   runtime     ExtensionStatus   0    1         qemu-guest-agent   9.2.3
+192.168.1.110   runtime     ExtensionStatus   1    1         schematic          ce4c980550dd2ab1b17bbf2b08801c7eb59418eafe8f279833297925d67c7515
 
 mkdir -p $HOME/.kube
-talosctl -n 192.168.0.110 kubeconfig $HOME/.kube/config
+talosctl -n 192.168.1.110 -e 192.168.1.230 kubeconfig --force-context-name cla
 
 kubectl config get-contexts
-kubectx
+kubectx cla
 kubectl get nodes -o wide
 kubectl get pods -A
 
@@ -112,8 +111,17 @@ kubectl get pods -A
 kubectl get daemonsets -n kube-system \
   | grep -E 'flannel|calico|weave|cilium|canal|romana'
 
-source <(cilium completion zsh)
 
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.2.0/config/crd/standard/gateway.networking.k8s.io_gatewayclasses.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.2.0/config/crd/standard/gateway.networking.k8s.io_gateways.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.2.0/config/crd/standard/gateway.networking.k8s.io_httproutes.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.2.0/config/crd/standard/gateway.networking.k8s.io_referencegrants.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.2.0/config/crd/standard/gateway.networking.k8s.io_grpcroutes.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.2.0/config/crd/experimental/gateway.networking.k8s.io_tlsroutes.yaml
+
+source <(cilium completion zsh)
+cilium uninstall --wait
+kubectx cla
 cilium install \
   --helm-set ipam.mode=kubernetes \
   --helm-set kubeProxyReplacement=true \
@@ -127,8 +135,57 @@ cilium install \
   --helm-set hubble.ui.frontend.server.ipv6.enabled=false \
   --helm-set encryption.enabled=true \
   --helm-set encryption.type=wireguard \
-  --helm-set encryption.nodeEncryption=true
+  --helm-set encryption.nodeEncryption=true  \
+  --helm-set gatewayAPI.enabled=true \
+  --helm-set gatewayAPI.enableAlpn=true \
+  --helm-set gatewayAPI.enableAppProtocol=true \
+  --helm-set ipv6.enabled=false \
+  --helm-set l2announcements.enabled=true \
+  --helm-set externalIPs.enabled=true \
+  --helm-set l2announcements.leaseDuration=3s \
+  --helm-set l2announcements.leaseRenewDeadline=1s \
+  --helm-set l2announcements.leaseRetryPeriod=200ms \
+  --helm-set cluster.id=1
+cilium status --wait
+kubectx cla
+kubectl apply -f clustermesh-pool-a.yaml
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm repo update
+helm install ingress-nginx ingress-nginx/ingress-nginx \
+  --namespace ingress-nginx \
+  --create-namespace \
+  --set controller.externalTrafficPolicy="Local" \
+  --set controller.kind="DaemonSet" \
+  --set controller.service.annotations."io.cilium/lb-ipam-ips"="172.20.0.101"
+# Check if the LB service has the EXTERNAL-IP assigned
+kubectl get svc ingress-nginx-controller -n ingress-nginx
 
+cilium clustermesh enable --context cla --service-type LoadBalancer --enable-kvstoremesh=false
+kubectl -n kube-system label svc clustermesh-apiserver clustermesh=enabled --overwrite
+kubectl -n kube-system rollout restart deployment clustermesh-apiserver && kubectl -n kube-system rollout status deployment clustermesh-apiserver
+cilium clustermesh status --context cla --wait
+kubectl -n kube-system get svc clustermesh-apiserver -o wide
+
+cilium connectivity test --test '!pod-to-world'
+kubectl label --overwrite namespace cilium-test-1 pod-security.kubernetes.io/enforce=privileged
+kubectl label --overwrite namespace cluster-mesh-test-1 pod-security.kubernetes.io/enforce=privileged
+
+kubectl get pods -n cluster-mesh-test -o wide --context cla
+# kubectl -n kube-system patch svc clustermesh-apiserver \                                                                                                               main ● ?  17:08:22 
+#   --type='merge' \
+#   -p '{"spec":{"externalIPs":["192.168.1.230"]}}'
+
+
+cilium clustermesh status --context cla --wait
+
+
+# cilium upgrade --version 1.17.4 \
+#   --set ingressController.enabled=true \
+#   --set ingressController.loadbalancerMode=dedicated
+
+
+
+# cilium config set cluster-id 1
 # ipam.mode=kubernetes
 # Use the Kubernetes API (PodCIDR) for IP address management instead of an external IPAM.
 
@@ -171,6 +228,7 @@ cilium install \
 
 k9s
 kubectl get pods -A
+
 
 k9s -A 
 

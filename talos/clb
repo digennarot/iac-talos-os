@@ -37,45 +37,44 @@ If this is your first control-plane node, you need to run:
 
 
 
-talosctl apply-config --nodes 192.168.0.120 --file clusterconfig/b/clb-clb-cp01.yaml --insecure
-talosctl apply-config --nodes 192.168.0.121 --file clusterconfig/b/clb-clb-cp02.yaml --insecure
-talosctl apply-config --nodes 192.168.0.122 --file clusterconfig/b/clb-clb-cp03.yaml --insecure
-talosctl apply-config --nodes 192.168.0.123 --file clusterconfig/b/clb-clb-wk01.yaml --insecure
-talosctl apply-config --nodes 192.168.0.124 --file clusterconfig/b/clb-clb-wk02.yaml --insecure
-talosctl apply-config --nodes 192.168.0.125 --file clusterconfig/b/clb-clb-wk03.yaml --insecure
-..
+talosctl apply-config --nodes 192.168.1.120 --file clusterconfig/b/clb-clb-cp01.yaml --insecure
+talosctl apply-config --nodes 192.168.1.121 --file clusterconfig/b/clb-clb-cp02.yaml --insecure
+talosctl apply-config --nodes 192.168.1.122 --file clusterconfig/b/clb-clb-cp03.yaml --insecure
+talosctl apply-config --nodes 192.168.1.123 --file clusterconfig/b/clb-clb-wk01.yaml --insecure
+talosctl apply-config --nodes 192.168.1.124 --file clusterconfig/b/clb-clb-wk02.yaml --insecure
+#talosctl apply-config --nodes 192.168.0.125 --file clusterconfig/b/clb-clb-wk03.yaml --insecure
+
 
 #mkdir -p $HOME/.talos
 #cp clusterconfig/a/talosconfig $HOME/.talos/cla
 
-talosctl dashboard -n 192.168.0.120
+talosctl dashboard -n 192.168.1.120
 
-
+export TALOSCONFIG=/home/tdigenna/repo/iac-talos-os/talos/clusterconfig/b/talosconfig
 talosctl bootstrap \
-  --nodes 192.168.0.120
+  --nodes 192.168.1.120
   # --talosconfig $HOME/.talos/cla
 
-talosctl -n 192.168.0.131 kubeconfig $HOME/.kube/config
-
+talosctl -n 192.168.1.120 kubeconfig $HOME/.kube/config --force-context-name clb
 
 2. Verify
 
-talosctl -n 192.168.0.120 service
+talosctl -n 192.168.1.120 service
 
-talosctl -n 192.168.0.120,192.168.0.121,192.168.0.122 get links
+talosctl -n 192.168.1.120,192.168.0.121,192.168.0.122 get links
 
-talosctl -n 192.168.0.120 -e 192.168.0.120 etcd status
+talosctl -n 192.168.1.120 -e 192.168.1.120 etcd status
 
-talosctl -n 192.168.0.120,192.168.0.121,192.168.0.122 -e 192.168.0.120 get members
+talosctl -n 192.168.1.120,192.168.0.121,192.168.0.122 -e 192.168.0.120 get members
 
 talosctl dashboard -n 192.168.0.120
 
 talosctl -n 192.168.0.120 edit mc
 
 mkdir -p $HOME/.kube
-talosctl -n 192.168.0.120 kubeconfig --force-context-name clb
+talosctl -n 192.168.1.120 -e 192.168.1.231 kubeconfig --force-context-name clb
 
-kubectx
+kubectx clb
 kubectl get nodes -o wide
 kubectl get pods -A
 
@@ -83,11 +82,16 @@ kubectl get pods -A
 kubectl get daemonsets -n kube-system \
   | grep -E 'flannel|calico|weave|cilium|canal|romana'
 
-#./install-cilium-cluster-mesh.sh --control-plane-vip 192.168.0.120 --cluster-id 1 --enable-encryption --encryption-type wireguard
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.2.0/config/crd/standard/gateway.networking.k8s.io_gatewayclasses.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.2.0/config/crd/standard/gateway.networking.k8s.io_gateways.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.2.0/config/crd/standard/gateway.networking.k8s.io_httproutes.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.2.0/config/crd/standard/gateway.networking.k8s.io_referencegrants.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.2.0/config/crd/standard/gateway.networking.k8s.io_grpcroutes.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.2.0/config/crd/experimental/gateway.networking.k8s.io_tlsroutes.yaml
 
+kubectx clb
 source <(cilium completion zsh)
-
-
+cilium uninstall --wait
 cilium install \
   --helm-set ipam.mode=kubernetes \
   --helm-set kubeProxyReplacement=true \
@@ -101,8 +105,58 @@ cilium install \
   --helm-set hubble.ui.frontend.server.ipv6.enabled=false \
   --helm-set encryption.enabled=true \
   --helm-set encryption.type=wireguard \
-  --helm-set encryption.nodeEncryption=true
+  --helm-set encryption.nodeEncryption=true  \
+  --helm-set gatewayAPI.enabled=true \
+  --helm-set gatewayAPI.enableAlpn=true \
+  --helm-set gatewayAPI.enableAppProtocol=true \
+  --helm-set ipv6.enabled=false \
+  --helm-set l2announcements.enabled=true \
+  --helm-set externalIPs.enabled=true \
+  --helm-set l2announcements.leaseDuration=3s \
+  --helm-set l2announcements.leaseRenewDeadline=1s \
+  --helm-set l2announcements.leaseRetryPeriod=200ms \
+  --helm-set ipv4NativeRoutingCIDR=10.0.0.0/8 \
+  --helm-set cluster.id=2
 
-kubectl get pods -A
+cilium status --wait
+
+
+kubectl --context=clb delete secret cilium-ca -n kube-system
+kubectl --context=cla get secret -n kube-system cilium-ca -o yaml | \
+  kubectl --context=clb create -f -
+
+kubectl apply -f clustermesh-pool-b.yaml
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm repo update
+helm install ingress-nginx ingress-nginx/ingress-nginx \
+  --namespace ingress-nginx \
+  --create-namespace \
+  --set controller.externalTrafficPolicy="Local" \
+  --set controller.kind="DaemonSet" \
+  --set controller.service.annotations."io.cilium/lb-ipam-ips"="172.21.0.101"
+# Check if the LB service has the EXTERNAL-IP assigned
+kubectl get svc ingress-nginx-controller -n ingress-nginx
+
+cilium clustermesh enable --context clb --service-type LoadBalancer --enable-kvstoremesh=false
+kubectl -n kube-system label svc clustermesh-apiserver clustermesh=enabled --overwrite
+kubectl -n kube-system rollout restart deployment clustermesh-apiserver && kubectl -n kube-system rollout status deployment clustermesh-apiserver
+cilium clustermesh status --context clb --wait
+kubectl get svc ingress-nginx-controller -n ingress-nginx
+
+
+kubectl -n kube-system get svc clustermesh-apiserver -o wide
+
+cilium clustermesh connect --context cla --destination-context clb
+cilium connectivity test --test '!pod-to-world'
+
+cilium connectivity test --context cla --multi-cluster clb
+kubectl label --overwrite namespace cilium-test-1 pod-security.kubernetes.io/enforce=privileged
+
+kubectl get pods -n cilium-test-1 wide --context cla
+kubectl label --overwrite namespace cilium-test-1 pod-security.kubernetes.io/enforce=privileged
+
 
 k9s -A 
+
+#cilium config set cluster-id 2
+

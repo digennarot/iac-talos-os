@@ -14,6 +14,5 @@ dns                = "8.8.8.8"
 filter.ID_NET_NAME = "enp3s0"
 
 [disk-setup]
-filesystem     = "zfs"
-zfs.raid       = "raid0"
-filter.DEVTYPE = "disk"
+filesystem = "xfs"
+disk-list = ["sda"]

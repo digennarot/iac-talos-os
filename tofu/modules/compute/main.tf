@@ -19,6 +19,11 @@ resource "proxmox_vm_qemu" "nodes" {
   scsihw        = var.scsihw
   skip_ipv6     = true
 
+  timeouts {
+    create = "10m"
+    delete = "10m"
+  }
+
   disk {
     slot     = "scsi0"
     size     = each.value.node_disk
@@ -26,6 +31,13 @@ resource "proxmox_vm_qemu" "nodes" {
     storage  = var.shared_storage_id
     format   = var.disk_format
     iothread = true
+  }
+
+  lifecycle {
+    ignore_changes = [
+      # skip resizing on initial apply
+      disk[0].size,
+    ]
   }
 
   dynamic "disk" {

@@ -1,26 +1,26 @@
-talosVersion: v1.10.0
-kubernetesVersion: v1.33.0
+talosVersion: v1.10.3
+kubernetesVersion: v1.33.1
 
 clusterName: cla
 endpoint: https://192.168.1.230:6443
 
 clusterPodNets:
-  - 10.14.0.0/16
+  - 10.1.0.0/16
 clusterSvcNets:
-  - 10.15.0.0/16
+  - 172.20.0.0/24
 
 additionalApiServerCertSans:
-  - 192.168.0.230  # VIP
-  - 192.168.0.110
-  - 192.168.0.111
-  - 192.168.0.112
+  - 192.168.1.230  # VIP
+  - 192.168.1.110
+  - 192.168.1.111
+  - 192.168.1.112
   - 127.0.0.1
 
 additionalMachineCertSans:
-  - 192.168.0.230  # VIP
-  - 192.168.0.110
-  - 192.168.0.111
-  - 192.168.0.112
+  - 192.168.1.230  # VIP
+  - 192.168.1.110
+  - 192.168.1.111
+  - 192.168.1.112
   - 127.0.0.1
 
 # Centralized patches for network, time, kubelet cert rotation, audit policy, CNI, and control-plane tuning
@@ -31,7 +31,7 @@ patches:
       network:
         nameservers:
           - 1.1.1.1
-          - 1.0.0.1
+          - 8.8.8.8
       time:
         disabled: false
         servers:
@@ -67,40 +67,47 @@ controlPlane:
 nodes:
   - hostname: cla-cp01
     controlPlane: true
-    ipAddress: 192.168.1.110
     installDisk: /dev/sda
+    ipAddress: 192.168.1.110
+    gateway: 192.168.1.254
     networkInterfaces:
-      - interface: eth0
-        dhcp: false
+      - interface: ens18
+        dhcp: true
+        vip:
+          ip: 192.168.1.230
 
   - hostname: cla-cp02
     controlPlane: true
-    ipAddress: 192.168.1.111
     installDisk: /dev/sda
+    ipAddress: 192.168.1.111
+    gateway: 192.168.1.254
     networkInterfaces:
-      - interface: eth0
-        dhcp: false
+      - interface: ens18
+        dhcp: true
+        vip:
+          ip: 192.168.1.230
 
   - hostname: cla-cp03
     controlPlane: true
-    ipAddress: 192.168.1.112
     installDisk: /dev/sda
+    ipAddress: 192.168.1.112
+    gateway: 192.168.1.254
     networkInterfaces:
-      - interface: eth0
-        dhcp: false
+      - interface: ens18
+        dhcp: true
+        vip:
+          ip: 192.168.1.230
 
   - hostname: cla-wk01
     controlPlane: false
-    ipAddress: 192.168.1.113
     installDisk: /dev/sda
-    networkInterfaces:
-      - interface: eth0
-        dhcp: false
+    ipAddress: 192.168.1.113
+    gateway: 192.168.1.254
 
   - hostname: cla-wk02
     controlPlane: false
-    ipAddress: 192.168.1.114
     installDisk: /dev/sda
-    networkInterfaces:
-      - interface: eth0
-        dhcp: false
+    ipAddress: 192.168.1.114
+    gateway: 192.168.1.254
+
+

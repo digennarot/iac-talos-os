@@ -1,26 +1,26 @@
-talosVersion: v1.10.0
-kubernetesVersion: v1.33.0
+talosVersion: v1.10.3
+kubernetesVersion: v1.33.1
 
 clusterName: clb
-endpoint: https://192.168.0.231:6443
+endpoint: https://192.168.1.231:6443
 
 clusterPodNets:
-  - 10.16.0.0/16
+  - 10.2.0.0/16
 clusterSvcNets:
-  - 10.17.0.0/16
+  - 172.21.0.0/24
 
 additionalApiServerCertSans:
-  - 192.168.0.231  # VIP
-  - 192.168.0.120
-  - 192.168.0.121
-  - 192.168.0.122
+  - 192.168.1.231  # VIP
+  - 192.168.1.120
+  - 192.168.1.121
+  - 192.168.1.122
   - 127.0.0.1
 
 additionalMachineCertSans:
-  - 192.168.0.231  # VIP
-  - 192.168.0.120
-  - 192.168.0.121
-  - 192.168.0.122
+  - 192.168.1.231  # VIP
+  - 192.168.1.120
+  - 192.168.1.121
+  - 192.168.1.122
   - 127.0.0.1
 
 patches:
@@ -29,7 +29,7 @@ patches:
       network:
         nameservers:
           - 1.1.1.1
-          - 1.0.0.1
+          - 8.8.8.8
       time:
         disabled: false
         servers:
@@ -65,40 +65,45 @@ controlPlane:
 nodes:
   - hostname: clb-cp01
     controlPlane: true
-    ipAddress: 192.168.0.120
+    ipAddress: 192.168.1.120
     installDisk: /dev/sda
+    gateway: 192.168.1.254
     networkInterfaces:
-      - interface: eth0
-        dhcp: false
+      - interface: ens18
+        dhcp: true
+        vip:
+          ip: 192.168.1.231
 
   - hostname: clb-cp02
     controlPlane: true
-    ipAddress: 192.168.0.121
+    ipAddress: 192.168.1.121
     installDisk: /dev/sda
+    gateway: 192.168.1.254
     networkInterfaces:
-      - interface: eth0
-        dhcp: false
+      - interface: ens18
+        dhcp: true
+        vip:
+          ip: 192.168.1.231
 
   - hostname: clb-cp03
     controlPlane: true
-    ipAddress: 192.168.0.122
+    ipAddress: 192.168.1.122
     installDisk: /dev/sda
+    gateway: 192.168.1.254
     networkInterfaces:
-      - interface: eth0
-        dhcp: false
+      - interface: ens18
+        dhcp: true
+        vip:
+          ip: 192.168.1.231
 
   - hostname: clb-wk01
     controlPlane: false
-    ipAddress: 192.168.0.123
+    ipAddress: 192.168.1.123
     installDisk: /dev/sda
-    networkInterfaces:
-      - interface: eth0
-        dhcp: false
-
+    gateway: 192.168.1.254
+      
   - hostname: clb-wk02
     controlPlane: false
-    ipAddress: 192.168.0.124
+    ipAddress: 192.168.1.124
     installDisk: /dev/sda
-    networkInterfaces:
-      - interface: eth0
-        dhcp: false
+    gateway: 192.168.1.254

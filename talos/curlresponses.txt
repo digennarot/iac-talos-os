@@ -1,0 +1,3400 @@
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=0e72e415-44d3-4bae-8983-316ae767ea9e  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=64824791-60b6-4fbe-8ab4-a858fa59bd88  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=84cc60da-338f-4e9e-b003-74e514150071  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=7d300a44-2e6c-4b65-b9b5-20b5a41491c2  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=90f2b45e-be07-40f8-9876-0c533b092068  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=3e90f14b-da32-4a08-8ddf-30f38bdc41d8  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=1d2b5015-a77f-4db1-a328-25049c2eac8d  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=de295f96-130a-4129-beb0-0d26c2bfe928  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=685107b2-2f62-4c45-a08a-e604916576c6  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=84fb4233-5e59-43e8-857c-929fcb6360e2  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=cd885c83-1cc2-4bdb-9a47-9a1e43f50d6f  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=17e7a5fe-54a4-4e33-bc79-ee96a6649dba  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=5e74a5a6-39c4-4b8c-9cdd-b6771b713506  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=e1169f47-944e-46f1-81c1-936411f51065  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=ec11fb02-e027-4e46-ada7-0e2615342ce9  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=b7c25e95-2d14-45de-9702-dc31f04aabfa  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=f56a2d1d-a640-4450-93fc-f00cf7814d72  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=219a1e7d-1191-47a6-be09-53c520a0af23  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=c26a9a4c-012e-4a2f-a9f2-7d950383fdf7  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-2-76674b7895-vs99j
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-2-76674b7895-vs99j
+	pod namespace:	default
+	pod IP:	10.1.0.31
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=639e66bf-c582-4d56-b4e1-eb9c2963dc6e  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=fa788c45-11ec-41b0-94ca-2059178ab1eb  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=4947fd5d-7711-4107-97b8-a3ae13c47671  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=89d4f357-28a0-4f41-9eca-31c7366b996d  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=dad75ba3-d469-464f-8017-3a2d77e763cc  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=733eeacd-1ab4-44df-805c-deedf7be8106  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-2-76674b7895-vs99j
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-2-76674b7895-vs99j
+	pod namespace:	default
+	pod IP:	10.1.0.31
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=56ed81cc-2cc8-43a2-9fd2-f6cb260bef60  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-2-76674b7895-vs99j
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-2-76674b7895-vs99j
+	pod namespace:	default
+	pod IP:	10.1.0.31
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=17e005a3-8e0f-4c3c-90d9-51f9360c4467  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=1e4ffc29-edad-4213-a095-91e92f9a5422  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=89913cb0-ecac-4db1-966a-103611b95053  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=32f0ed30-d31d-44fb-b23e-aaed69a9e800  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=3306557d-2c39-4dfd-86af-47eed946d743  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=0e2c5f0d-f148-4052-9f8f-485c394c3b69  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=58059f5d-bbba-4dd5-baaa-052b4d880437  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-2-76674b7895-vs99j
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-2-76674b7895-vs99j
+	pod namespace:	default
+	pod IP:	10.1.0.31
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=b3260da7-6322-48fe-8e14-f99fe1f946e2  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=7e068df6-6273-4446-b6c9-093460dc1eda  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=8e1b5098-ac58-4a3d-a555-758f42fa2061  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=e1bd0a30-1f26-444d-9bf4-05fc6c7ab46d  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=1b5668b8-53ff-44b7-bdce-a2fc86da5bcb  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=ca8a4a44-7240-41c6-993c-1ac5afaf1438  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=ee771220-0d56-4eee-9139-18a4a24650dc  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=1e213c00-4f67-4b4b-bb46-9c59b44a132c  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-2-76674b7895-vs99j
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-2-76674b7895-vs99j
+	pod namespace:	default
+	pod IP:	10.1.0.31
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=5c7d7cf0-447c-40b6-9b53-361933e80c97  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=3b43ac04-9ece-4ee1-8070-e8e34069841e  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=253340cd-4c3e-44e9-ad2c-cbb67a8ee83f  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=93b3f9ed-3e7f-4844-b0f8-9def633e6be5  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=460857ce-be38-4e11-b7bc-5a6c2b84fc69  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=848a0613-0def-4d21-aa0b-d810fe6a41c6  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=cd33e596-4d98-476d-83a8-a8165ddc38bc  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=76dd7ade-a2a5-4d50-a846-d69c942b8e1a  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=3b56270d-b396-4a73-a6bf-0c5663b46765  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=20f01510-17f2-48ee-be61-0faf168b001f  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=dfb7b522-8ab8-4f57-90b3-62d34d023af3  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=53f3332c-c549-4410-b384-e3d9b313d21e  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=8348de1e-c84b-4520-96c2-ac6ca4fa15b5  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=6f116a70-7d94-4696-a232-3b8628e25949  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=a89fdc6b-c9c7-4e72-8bea-e8f67128069c  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=8abaf861-a51e-4352-b199-9ccbacb09bb9  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=e1bc776c-aace-43f4-a3b5-67af022adc94  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=63af1399-0dc4-4186-82d4-6d310b6425ae  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=b304c10e-f513-4322-8694-8e245c91ddb4  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=d7a52e6f-aa6d-4614-a5ba-cb09389cd619  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=6a8807c0-08c7-4df8-9cc1-0c765c544dec  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=2bd9fb62-12a9-40bd-96dd-24788fea7fe1  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=fdc6e132-7715-4584-8243-ec4143b639ce  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=50d993a0-1a12-476e-8ba5-3aa55bb619dc  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=875e3687-d42c-47a4-a475-343f3e6dc166  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=7854bf98-133e-4668-b3c9-3aef907bd592  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=ce516195-e22f-4e8e-9c66-c576df86eda2  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=cd97b9d2-b8c2-4297-82d1-fcccb730c012  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=6ca01c09-4045-44ce-acd0-a53c8a82f6eb  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=e7f28654-cc17-4dde-9644-9ac7b2e7be12  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-2-76674b7895-vs99j
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-2-76674b7895-vs99j
+	pod namespace:	default
+	pod IP:	10.1.0.31
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=06e16ee4-d23d-437d-99b6-56a6ebb10fd3  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=49b9714f-49ec-4cfb-ac08-7348e01c3d1e  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=f6d3425a-318a-4d92-945a-202dcaa788d7  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=86e25397-edad-44de-953e-dcf1971c2dc9  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-2-76674b7895-vs99j
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-2-76674b7895-vs99j
+	pod namespace:	default
+	pod IP:	10.1.0.31
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=379b2f32-33b4-4284-a424-59c9e83b8686  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=32bfdf14-1bb7-4460-bc72-f7b9783b66f6  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=b4b6be37-6a2b-447f-b305-8b56ceb848bb  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=321b36d6-459e-47b8-b63b-380a64ac4669  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-2-76674b7895-vs99j
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-2-76674b7895-vs99j
+	pod namespace:	default
+	pod IP:	10.1.0.31
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=46ebaa12-9d22-4b3d-9b0e-757a8a475f95  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=efae4517-44ce-4045-8a5c-e38daf8c052d  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=58fe8a53-014d-4d1c-a588-bd72aeb0c4a3  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=27f73880-d992-4e5c-940f-a4980020c27f  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-2-76674b7895-vs99j
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-2-76674b7895-vs99j
+	pod namespace:	default
+	pod IP:	10.1.0.31
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=2cc50a27-acbf-4ff7-af2e-c8cbff30d9bd  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=2946f9ee-cb6b-49d2-82b1-ce663d643905  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=4c710b28-fb10-47d8-be4f-478a7762eec2  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=d1efc1cc-69b8-4883-ace0-11245acc44ae  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=24f24a3c-b6b5-474b-825b-5c7209a3dbd1  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=ca7438fb-257d-4aad-a69e-27c1eda89625  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=45a42ce6-8aa1-4027-b163-27cb0e20da67  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=2d519135-10e5-4619-ae3d-7296d6b50197  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=302fcc9b-f106-4567-81d7-1739788612e9  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=1f24afa8-0188-41bd-9a00-5f1677a50bbb  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-2-76674b7895-vs99j
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-2-76674b7895-vs99j
+	pod namespace:	default
+	pod IP:	10.1.0.31
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=12889a88-d17f-459b-9b65-21a3f7fa3675  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=a5e3a582-c8d4-4f96-a5a0-63ee1195127f  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=117d67c7-c87c-4afd-aa6a-1b8635bf75a5  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=4734dee7-9564-4be4-9560-5f80aacfe07c  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=3260363a-841f-4eed-8bdf-a2a9ca70a580  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=604fc836-512e-4c43-8c0b-31d1e14a6829  
+
+Request Body:
+	-no body in request-
+
+
+
+Hostname: echo-1-6555b459d9-ndjsn
+
+Pod Information:
+	node name:	cla-wk01
+	pod name:	echo-1-6555b459d9-ndjsn
+	pod namespace:	default
+	pod IP:	10.1.0.78
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=10.1.4.187
+	method=GET
+	real path=/echo
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://192.168.1.43:8080/echo
+
+Request Headers:
+	accept=*/*  
+	host=192.168.1.43  
+	user-agent=curl/8.13.0  
+	x-envoy-internal=true  
+	x-forwarded-for=192.168.1.18  
+	x-forwarded-proto=http  
+	x-request-id=3aa91aee-3a2b-405a-a880-948da34c273d  
+
+Request Body:
+	-no body in request-
+

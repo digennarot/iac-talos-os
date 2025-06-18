@@ -1,0 +1,35 @@
+# global-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-global
+  annotations:
+    service.cilium.io/global: "true"
+spec:
+  selector:
+    app: hello
+  ports:
+    - port: 80
+      targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello
+  template:
+    metadata:
+      labels:
+        app: hello
+    spec:
+      containers:
+      - name: hello
+        image: hashicorp/http-echo
+        args:
+          - "-text=Hello from $(CLUSTER_NAME)"
+        ports:
+          - containerPort: 8080
