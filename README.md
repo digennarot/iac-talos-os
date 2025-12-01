@@ -1,11 +1,29 @@
-# Infrastructure-as-Code Quick Reference
+# Infrastructure-as-Code for Talos OS on Proxmox VE
 
 ## Introduction
-This document provides a concise, step-by-step guide to setting up a Kubernetes cluster using the following key components:
 
-- **Talos**: A minimal, secure operating system for running Kubernetes clusters.  
-- **Cilium**: Advanced networking and L2 load balancing for Kubernetes.  
+This repository provides a complete Infrastructure-as-Code (IaC) solution for deploying and managing **Talos OS-based Kubernetes clusters** on **Proxmox VE** infrastructure. It combines multiple automation tools to create a production-ready, secure, and highly available Kubernetes environment.
 
+### Key Components
+
+- **Talos OS**: A minimal, secure, immutable operating system designed specifically for Kubernetes
+- **Proxmox VE**: Open-source virtualization platform
+- **Cilium**: Advanced networking and L2 load balancing with eBPF
+- **OpenTofu/Terraform**: Infrastructure provisioning
+- **Packer**: Automated VM template creation
+- **Ansible**: Proxmox host configuration and hardening
+
+## 📚 Documentation
+
+Comprehensive documentation is available in the [`docs/`](./docs/) directory:
+
+- **[Main Documentation](./docs/README.md)** - Complete overview, architecture, and usage guide
+- **[Workflows](./docs/WORKFLOWS.md)** - Step-by-step deployment and operational procedures
+- **[Architecture](./docs/ARCHITECTURE.md)** - Detailed system architecture and design decisions
+- **[Configuration Reference](./docs/CONFIGURATION.md)** - Complete configuration options for all components
+- **[Troubleshooting](./docs/TROUBLESHOOTING.md)** - Common issues and solutions
+- **[Quick Reference](./docs/QUICK_REFERENCE.md)** - Quick commands and daily operations
+- **[Contributing](./docs/CONTRIBUTING.md)** - How to contribute to this project
 
 ## Prerequisites
 1. A Proxmox VE cluster or standalone Proxmox VE server.  
