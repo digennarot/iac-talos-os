@@ -1,12 +1,14 @@
 terraform {
+  required_version = ">= 1.8"
+
   required_providers {
     proxmox = {
       source  = "telmate/proxmox"
-      version = "3.0.1-rc8"
+      version = "~> 3.0"
     }
     talos = {
       source  = "siderolabs/talos"
-      version = "0.8.0-alpha.0"
+      version = "~> 0.7"
     }
   }
 }
@@ -18,6 +20,4 @@ provider "proxmox" {
   pm_tls_insecure     = true
 }
 
-provider "talos" {
-  # Se in futuro servono configurazioni, qui
-}
+provider "talos" {}

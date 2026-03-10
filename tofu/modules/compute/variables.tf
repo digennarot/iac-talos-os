@@ -1,5 +1,5 @@
 variable "proxmox_api_url" {
-  description = "URL API di Proxmox"
+  description = "Proxmox API URL"
   type        = string
 }
 
@@ -14,14 +14,13 @@ variable "proxmox_api_token_secret" {
   sensitive   = true
 }
 
-
 variable "role" {
-  description = "Ruolo dei nodi: 'master' o 'worker'"
+  description = "Node role: 'master' or 'worker'"
   type        = string
 }
 
 variable "nodes" {
-  description = "Mappa dei nodi da creare"
+  description = "Map of nodes to create"
   type = map(object({
     vm_id                = number
     node_name            = string
@@ -34,90 +33,77 @@ variable "nodes" {
   }))
 }
 
-
 variable "shared_storage_id" {
-  description = "ID dello storage condiviso (ZFS)"
+  description = "Shared storage ID (ZFS)"
   type        = string
 }
 
-
 variable "target_node" {
-  description = "Proxmox node su cui clonare (es. pve1)"
+  description = "Proxmox node to clone onto (e.g. pve1)"
   type        = string
 }
 
 variable "clone" {
-  description = "Nome del template o VMID da clonare"
+  description = "Template name or VMID to clone"
   type        = string
 }
 
-# Opzionali con default per togliere hardcoding
 variable "full_clone" {
-  description = "Esegue full clone del template"
+  description = "Perform a full clone of the template"
   type        = bool
   default     = true
 }
 
 variable "onboot" {
-  description = "Avvia VM al boot"
+  description = "Start VM on host boot"
   type        = bool
   default     = true
 }
 
 variable "boot_order" {
-  description = "Stringa ordine di boot"
+  description = "Boot order string"
   type        = string
   default     = "order=scsi0"
 }
 
 variable "agent" {
-  description = "Abilita QEMU guest agent"
+  description = "Enable QEMU guest agent"
   type        = number
   default     = 1
 }
 
 variable "agent_timeout" {
-  description = "Timeout del guest agent"
+  description = "Guest agent timeout"
   type        = number
   default     = 90
 }
 
 variable "cpu_type" {
-  description = "Tipo CPU da esporre"
+  description = "CPU type to expose to the guest"
   type        = string
   default     = "host"
 }
 
 variable "sockets" {
-  description = "Numero di socket CPU"
+  description = "Number of CPU sockets"
   type        = number
   default     = 1
 }
 
 variable "scsihw" {
-  description = "Controller SCSI da usare"
+  description = "SCSI controller type"
   type        = string
   default     = "virtio-scsi-single"
 }
 
 variable "disk_format" {
-  description = "Formato del disco principale"
+  description = "Primary disk format"
   type        = string
   default     = "raw"
 }
 
 variable "bridge" {
-  description = "Bridge di rete da usare"
+  description = "Network bridge to use"
   type        = string
   default     = "vmbr0"
-}
-
-variable "gateway" {
-  type    = string
-  default = "192.168.0.1"
-}
-
-variable "talos_version" {
-  type    = string
-  default = "1.10.0"
 }

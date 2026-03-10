@@ -34,31 +34,23 @@ source "proxmox-iso" "talos" {
   cpu_type = var.cpu_type
   sockets  = var.sockets
 
-  # Proxmox-specific optimizations per Talos guide
   qemu_agent         = true
   ballooning_minimum = 0
 
-  # 2) credenziali SSH e timeout prolungato
   ssh_username = "root"
   ssh_password = "packer"
   ssh_timeout  = "15m"
 
-  # 3) non usiamo più cloud-init perché Talos non lo supporta come cloud image
   cloud_init              = false
   cloud_init_storage_pool = ""
 
-  # 4) aspettiamo un po’ di più prima di inviare i tasti
   boot_wait = "45s"
 
-  # 5) boot_command: settaggio password + rete statica  
+  # Set root password and configure a static IP so Packer can reach the VM
+  # Replace 'ens18' with your actual interface name (check with `ip addr` in Proxmox console)
   boot_command = [
     "<enter><wait5s>",
-
-    # impostiamo password root=packer
     "passwd<enter><wait1s>packer<enter><wait1s>packer<enter>",
-
-    # configuriamo IP statico e gateway
-    # ATTENZIONE: sostituisci 'ens18' con la tua interfaccia (usa `ip addr` in console Proxmox)
     "ip address add ${var.static_ip} broadcast + dev ${var.interface}<enter><wait1s>",
     "ip route add 0.0.0.0/0 via ${var.gateway} dev ${var.interface}<enter><wait1s>",
   ]
@@ -70,7 +62,7 @@ source "proxmox-iso" "talos" {
 build {
   sources = ["source.proxmox-iso.talos"]
 
-  # 1) Generiamo on-the-fly lo schematic di Image Factory
+  # Upload the schematic to Talos Image Factory
   provisioner "file" {
     destination = "/tmp/schematic.yaml"
     content     = <<EOF
@@ -83,7 +75,8 @@ customization:
 EOF
   }
 
-  # 2) Carichiamo lo schematic, prendiamo l’ID, scarichiamo il raw.xz e lo riversiamo su /dev/sda
+  # Submit the schematic, fetch the resulting image ID, download the raw image,
+  # and write it directly to /dev/sda
   provisioner "shell" {
     inline = [
       "echo 'Requesting build image from Talos Factory'",

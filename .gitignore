@@ -1,22 +1,31 @@
-# Terraform/Tofu state files
+# OpenTofu / Terraform state files
 tofu/terraform.tfstate
 tofu/terraform.tfstate.backup
 tofu/.terraform/
 tofu/.terraform.lock.hcl
 tofu/.terraform.tfstate.*
 
-# Tofu plan file
+# OpenTofu plan files
 tofu/.tfplan
 
-# Sensitive user files
-tofu/credentails.auto.tfvars
+# Sensitive credential files – never commit these
 tofu/credentials.auto.tfvars
+tofu/credentails.auto.tfvars
 tofu/*.tfvars.json
 tofu/*.tfvars.local
 tofu/override.tf
 tofu/override.tf.json
 
-# VS Code and editor junk
+# Packer: local variable overrides with real credentials
+packer/vars/local.pkrvars.hcl
+packer/.terraform.lock.hcl
+
+# Talos state and generated secrets
+talos/terraform.tfstate
+talos/talsecret.sops.*.yaml
+talos/clusterconfig/
+
+# Editor artifacts
 *.swp
 *.swo
 *.bak
@@ -24,4 +33,6 @@ tofu/override.tf.json
 .tofu_history
 .idea/
 .vscode/
+
+# ISO images
 *.iso

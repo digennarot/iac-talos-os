@@ -8,26 +8,26 @@ packer {
 }
 
 variable "proxmox_api_url" {
-  description = "URL dell API Proxmox"
+  description = "Proxmox API URL (e.g. https://pve1:8006/api2/json)"
   type        = string
   default     = "pve"
 }
 
 variable "proxmox_api_token_id" {
-  description = "ID del token API (es. terraform@pve!mytoken)"
+  description = "Proxmox API Token ID (e.g. terraform@pve!mytoken)"
   type        = string
   default     = "terraform@pve!mytoken"
 }
 
 variable "proxmox_api_token_secret" {
-  description = "Segreto del token API Proxmox"
+  description = "Proxmox API Token Secret"
   type        = string
   sensitive   = true
   default     = "none"
 }
 
 variable "proxmox_node" {
-  description = "Nome del nodo Proxmox su cui verrà creata la VM"
+  description = "Proxmox node on which the VM will be created"
   type        = string
   default     = "pve1"
 }
@@ -38,67 +38,67 @@ variable "proxmox_storage" {
 }
 
 variable "template_vmid" {
-  description = "VMID per il template Talos"
+  description = "VMID for the Talos template"
   type        = number
   default     = 9700
 }
 
 variable "schematic_id" {
-  description = "ID dello schematic Talos Image Factory"
+  description = "Talos Image Factory schematic ID"
   type        = string
   default     = "376567988ad370138ad8b2698212367b8edcb69b5fd68c80be1f2ec7d603b4ba"
 }
 
 variable "talos_version" {
-  description = "Versione di Talos da usare (per nomi template e URL)"
+  description = "Talos version to use (for template names and URLs)"
   type        = string
   default     = "v1.10.0"
 }
 
 variable "base_iso_file" {
-  description = "ISO placeholder da montare (es: ArchLinux ISO)"
+  description = "Placeholder ISO to mount (e.g. an ArchLinux ISO)"
   type        = string
   default     = "local:iso/archlinux-2025.06.01-x86_64.iso"
 }
 
 variable "storage_pool" {
-  description = "Pool di storage per il disco principale"
+  description = "Storage pool for the primary disk"
   type        = string
   default     = "nfs-shared"
 }
 
 variable "cloudinit_storage_pool" {
-  description = "Pool di storage per il disco Cloud-Init"
+  description = "Storage pool for the Cloud-Init disk"
   type        = string
   default     = "nfs-shared"
 }
 
 variable "disk_size" {
-  description = "Dimensione del disco placeholder (>= raw image Talos)"
+  description = "Placeholder disk size (must be >= Talos raw image size)"
   type        = string
   default     = "8G"
 }
 
 variable "memory" {
-  description = "Quantità di memoria RAM per la VM"
+  description = "RAM for the build VM (MB)"
   type        = number
   default     = 2048
 }
 
 variable "cores" {
-  description = "Numero di core CPU"
+  description = "Number of CPU cores"
   type        = number
   default     = 2
 }
 
 variable "sockets" {
-  description = "Numero di socket CPU"
+  description = "Number of CPU sockets"
   type        = number
   default     = 1
 }
 
 variable "cpu_type" {
-  description = "Tipo di CPU virtuale (host, kvm64, qemu64)"
+  description = "Virtual CPU type (host, kvm64, qemu64)"
   type        = string
   default     = "host"
 }
@@ -107,7 +107,6 @@ variable "static_ip" {
   type    = string
   default = "host"
 }
-
 
 variable "gateway" {
   type    = string
@@ -118,4 +117,3 @@ variable "interface" {
   type    = string
   default = "eth0"
 }
-

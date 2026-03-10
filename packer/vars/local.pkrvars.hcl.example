@@ -1,0 +1,14 @@
+# Copy this file to local.pkrvars.hcl and fill in your values.
+# local.pkrvars.hcl is gitignored to prevent accidental credential commits.
+
+proxmox_node             = "pve1"
+proxmox_api_url          = "https://pve1:8006/api2/json"
+proxmox_api_token_id     = "root@pam!iac"
+proxmox_api_token_secret = "YOUR_TOKEN_SECRET_HERE"
+proxmox_storage          = "nfs-shared"
+cpu_type                 = "host"
+talos_version            = "v1.10.3"
+base_iso_file            = "nfs-shared:iso/archlinux-2025.06.01-x86_64.iso"
+static_ip                = "192.168.1.50/24"
+gateway                  = "192.168.1.254"
+interface                = "ens18"

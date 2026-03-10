@@ -1,34 +1,22 @@
 variable "proxmox_api_url" {
-  description = "URL API di Proxmox"
+  description = "Proxmox API URL"
   type        = string
 }
 
 variable "proxmox_api_token_id" {
-  description = "Token ID per l’API Proxmox"
+  description = "Proxmox API Token ID"
   type        = string
   sensitive   = true
 }
 
 variable "proxmox_api_token_secret" {
-  description = "Secret del token Proxmox"
+  description = "Proxmox API Token Secret"
   type        = string
   sensitive   = true
-
-
-}
-
-variable "talos_version" {
-  type    = string
-  default = "1.10.0"
-}
-
-variable "kubernetes_version" {
-  type    = string
-  default = "1.33.0"
 }
 
 variable "clusters" {
-  description = "Mappa di configurazione per tutti i cluster"
+  description = "Map of cluster configurations"
   type = map(object({
     masters = map(object({
       vm_id                = number
@@ -39,9 +27,7 @@ variable "clusters" {
       node_disk            = string
       additional_node_disk = optional(string)
       patches              = optional(list(string))
-       mac_address          = string
-
-
+      mac_address          = string
     }))
     workers = map(object({
       vm_id                = number
@@ -52,14 +38,12 @@ variable "clusters" {
       node_disk            = string
       additional_node_disk = optional(string)
       patches              = optional(list(string))
-       mac_address          = string
-
-
+      mac_address          = string
     }))
     target_nodes = list(string)
-    vip          = string # ✅ Obbligatorio
-    pod_net      = string # ✅ Obbligatorio
-    svc_net      = string # ✅ Obbligatorio
+    vip          = string
+    pod_net      = string
+    svc_net      = string
   }))
 }
 
@@ -67,7 +51,6 @@ variable "minio_access_key" {
   type      = string
   default   = "minioadmin"
   sensitive = true
-
 }
 
 variable "minio_secret_key" {
@@ -77,14 +60,16 @@ variable "minio_secret_key" {
 }
 
 variable "proxmox_nodes" {
-  description = "Lista dei nodi fisici Proxmox (es: pve1, pve2, pve3)"
+  description = "List of physical Proxmox nodes (e.g. pve1, pve2, pve3)"
   type        = list(string)
   default     = ["pve1", "pve2", "pve3"]
 }
+
 variable "shared_storage_id" {
-  description = "ID dello storage condiviso (ZFS) usato per clonare i template e creare i volumi"
+  description = "Shared storage ID (ZFS) used for cloning templates and creating volumes"
   type        = string
 }
+
 variable "talos" {
   type = object({
     factory_url = optional(string, "https://factory.talos.dev")
@@ -96,6 +81,7 @@ variable "talos" {
     arch        = optional(string, "amd64")
   })
 }
+
 variable "template_vmids" {
   description = "One VMID per node for the Talos template"
   type        = map(number)
@@ -105,7 +91,6 @@ variable "template_vmids" {
     pve3 = 9702
   }
 }
-
 
 variable "global_patches" {
   default = [
