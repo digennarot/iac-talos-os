@@ -27,7 +27,6 @@ variable "nodes" {
     node_name            = string
     node_cpu_cores       = string
     node_memory          = number
-    node_ipconfig        = string
     node_disk            = string
     additional_node_disk = optional(string)
     mac_address          = string
@@ -111,13 +110,4 @@ variable "bridge" {
   type        = string
   default     = "vmbr0"
 }
-
-variable "gateway" {
-  type    = string
-  default = "192.168.0.1"
-}
-
-variable "talos_version" {
-  type    = string
-  default = "1.10.0"
-}
+

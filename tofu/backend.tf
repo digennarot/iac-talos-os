@@ -20,8 +20,9 @@ terraform {
     # that “clusters/” prefix:
     workspace_key_prefix = "clusters"
 
-    # If credentials are required
-    access_key = "minioadmin"
-    secret_key = "minioadmin"
+    # If credentials are required, pass them via environment variables 
+    # (AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY) or a .tfbackend file.
+    # access_key = "minioadmin"
+    # secret_key = "minioadmin"
   }
 }
