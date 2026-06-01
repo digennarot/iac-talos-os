@@ -1,6 +1,8 @@
 # Terraform/Tofu state files
 tofu/terraform.tfstate
 tofu/terraform.tfstate.backup
+talos/terraform.tfstate
+talos/terraform.tfstate.backup
 tofu/.terraform/
 tofu/.terraform.lock.hcl
 tofu/.terraform.tfstate.*

@@ -62,7 +62,8 @@ cilium install \
   --helm-set autoDirectNodeRoutes=true \
   --helm-set encryption.enabled=true \
   --helm-set encryption.type=wireguard \
-  --helm-set cluster.id=1
+  --helm-set cluster.id=1 \
+  --helm-set cluster.name=cla
 
 # === Step 3: Wait for Cilium components to become ready ===
 echo "Waiting for Cilium to be ready..."

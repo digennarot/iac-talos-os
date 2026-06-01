@@ -62,12 +62,17 @@ cilium install \
   --helm-set autoDirectNodeRoutes=true \
   --helm-set encryption.enabled=true \
   --helm-set encryption.type=wireguard \
-  --helm-set cluster.id=2
+  --helm-set cluster.id=2 \
+  --helm-set cluster.name=clb
 
-# Sync the Cilium CA from the 'cla' cluster so both clusters share trust
-kubectl --context=clb delete secret cilium-ca -n kube-system
-kubectl --context=cla get secret -n kube-system cilium-ca -o yaml | \
-  kubectl --context=clb create -f -
+# Sync the Cilium CA from the 'cla' cluster so both clusters share trust.
+# Strip server-managed metadata and use `apply` so clb is never left without a
+# CA (the old delete+create left a gap and failed on resourceVersion).
+kubectl --context=cla get secret -n kube-system cilium-ca -o yaml \
+  | grep -v -E '^[[:space:]]+(resourceVersion|uid|creationTimestamp|selfLink):' \
+  | kubectl --context=clb apply -f -
+# Restart Cilium so agents regenerate certs from the shared CA
+kubectl --context=clb -n kube-system rollout restart daemonset cilium
 
 # === Step 3: Wait for Cilium to be ready, retrying if necessary ===
 echo "Waiting for Cilium to be ready..."

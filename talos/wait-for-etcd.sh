@@ -8,7 +8,7 @@ RESET="\e[0m"
 # 1️⃣ Ottieni la lista dei nodi dal contesto attivo, se non fornita via env
 if [[ -z "${TALOS_NODES:-}" ]]; then
   echo "🔍 Ricavo lista nodi dal contesto attivo di talosctl..."
-  ENDPOINTS_LINE=$(talosctl config contexts | grep -v CURRENT | awk '{print $3}')
+  ENDPOINTS_LINE=$(talosctl config contexts | awk '$1=="*"{print $3}')
   if [[ -z "$ENDPOINTS_LINE" ]]; then
     echo -e "${RED}❌ Impossibile trovare alcun endpoint nel contesto attivo.${RESET}"
     exit 1
